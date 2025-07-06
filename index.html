@@ -99,147 +99,6 @@
             background-color: #0097a7; /* Darker cyan on hover */
         }
 
-        /* Chatbot specific styles */
-        .chatbot-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: #00bcd4; /* Cyan button */
-            color: black; /* Black icon */
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        .chatbot-button:hover {
-            transform: scale(1.1);
-            background-color: #0097a7; /* Darker cyan */
-        }
-        .chatbot-window {
-            position: fixed;
-            bottom: 90px; /* Above the button */
-            right: 20px;
-            z-index: 999;
-            width: 350px;
-            height: 500px;
-            background-color: #121212; /* Dark grey background for chat */
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border: 1px solid #00bcd4; /* Cyan border */
-        }
-        .chat-header {
-            background-color: #00bcd4; /* Cyan header */
-            color: black; /* Black text */
-            padding: 12px 16px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-        }
-        .chat-messages {
-            flex-grow: 1;
-            padding: 16px;
-            overflow-y: auto;
-            background-color: #000000; /* Black background for messages area */
-        }
-        .chat-messages::-webkit-scrollbar {
-            width: 6px;
-        }
-        .chat-messages::-webkit-scrollbar-track {
-            background: #111111;
-        }
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: #00bcd4;
-            border-radius: 3px;
-        }
-        .chat-input-area {
-            display: flex;
-            padding: 16px;
-            border-top: 1px solid #333333; /* Dark grey border */
-            background-color: #121212; /* Dark grey input area background */
-        }
-        .chat-input-area input {
-            flex-grow: 1;
-            background-color: #333333; /* Dark grey input background */
-            border: 1px solid #555555;
-            border-radius: 8px;
-            padding: 10px 14px;
-            color: white; /* White text input */
-            outline: none;
-            margin-right: 10px;
-        }
-        .chat-input-area button {
-            background-color: #00bcd4; /* Cyan send button */
-            color: black; /* Black icon */
-            border-radius: 8px;
-            padding: 10px 16px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        .chat-input-area button:hover {
-            background-color: #0097a7;
-        }
-        .message {
-            margin-bottom: 12px;
-            display: flex;
-            flex-direction: column;
-        }
-        .message.user {
-            align-items: flex-end;
-        }
-        .message.bot {
-            align-items: flex-start;
-        }
-        .message-bubble {
-            max-width: 80%;
-            padding: 10px 14px;
-            border-radius: 18px;
-            line-height: 1.4;
-            word-wrap: break-word;
-        }
-        .message.user .message-bubble {
-            background-color: #00bcd4; /* Cyan for user bubble */
-            color: black; /* Black text */
-            border-bottom-right-radius: 4px;
-        }
-        .message.bot .message-bubble {
-            background-color: #333333; /* Dark grey for bot bubble */
-            color: white; /* White text */
-            border-bottom-left-radius: 4px;
-        }
-        .loading-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            color: white;
-        }
-        .loading-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #00bcd4; /* Cyan loading dots */
-            border-radius: 50%;
-            margin: 0 4px;
-            animation: bounce 1.4s infinite ease-in-out both;
-        }
-        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
-        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
-
         /* Custom Modal for alerts */
         .modal {
             display: none; /* Hidden by default */
@@ -288,24 +147,6 @@
         }
         .modal-close-button:hover {
             background-color: #0097a7;
-        }
-
-
-        /* Responsive adjustments for chatbot window */
-        @media (max-width: 768px) {
-            .chatbot-window {
-                width: 90%;
-                height: 80%;
-                bottom: 10px;
-                right: 5%;
-                left: 5%;
-            }
-            .chatbot-button {
-                bottom: 10px;
-                right: 10px;
-                width: 50px;
-                height: 50px;
-            }
         }
     </style>
 </head>
@@ -368,11 +209,26 @@
         <h2 class="section-heading">About Me</h2>
         <div class="card-background p-8">
             <p class="text-lg card-text leading-relaxed mb-6">
-                As a passionate and dedicated AI student, I am eager to apply my technical skills and knowledge in Cyber Security, Software Development, and Network Administration. Currently pursuing HSSC with AI majors, I have gained hands-on experience through coursework and personal projects.
+                As a passionate and dedicated **AI Programmer**, I am driven by the exciting intersection of artificial intelligence, software development, and digital security. Currently pursuing my HSSC with a strong focus on AI, I am actively building a robust foundation in both theoretical concepts and practical applications.
             </p>
             <p class="text-lg card-text leading-relaxed mb-6">
-                I possess strong problem-solving skills and a keen eye for details, always striving for precision and efficiency in my work. With a commitment to continuous learning and staying updated with the latest technologies, I am poised to contribute effectively to any AI team and drive innovative solutions.
+                My technical journey has equipped me with proficiency in **C/C++** and **Python**, alongside foundational knowledge in **HTML** for web development. I am deeply interested in **Cyber Security** and **Network Administration**, understanding the critical importance of secure and resilient systems in today's digital landscape. My hands-on experience through coursework and personal projects, such as developing an AI-based robotics project and an Airline Reservation System, has solidified my problem-solving abilities and attention to detail.
             </p>
+
+            <h3 class="text-3xl font-semibold text-white mt-10 mb-6 border-b border-gray-700 pb-3">My Passions</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1 card-background p-6">
+                    <h4 class="text-2xl font-bold text-white mb-3">Reading Books</h4>
+                    <p class="card-text leading-relaxed">
+                        Beyond the code, I find immense joy and inspiration in reading, which constantly broadens my perspective and fuels my analytical thinking. It's a vital part of my continuous learning journey, allowing me to explore diverse ideas and concepts.
+                    </p>
+                </div>
+                <div class="flex-1 card-background p-6">
+                    <h4 class="text-2xl font-bold text-white mb-3">Cricket</h4>
+                    <p class="card-text leading-relaxed">
+                        My love for cricket instills valuable qualities such as teamwork, strategic planning, and perseverance. The dynamic nature of the game mirrors the challenges in software development, teaching me to adapt and perform under pressure.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -480,23 +336,43 @@
                 <!-- <a href="#" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-semibold transition duration-300">View Project &rarr;</a> -->
             </div>
 
-            <!-- Project Card 4 (Web Development Learning Project - kept for structure) -->
+            <!-- Project Card 4: One Dollar Shop Project -->
             <div class="card-background p-6">
-                <h3 class="card-heading mb-4">Web Development Learning Project (Ongoing)</h3>
+                <h3 class="card-heading mb-4">One Dollar Shop Project</h3>
                 <p class="card-text leading-relaxed mb-4">
-                    Currently engaged in personal projects to deepen my understanding and practical skills in web development. This involves exploring front-end technologies and building responsive user interfaces.
+                    Developed a functional e-commerce website for a "one dollar shop" concept. This project involved both frontend and backend development to create an interactive shopping experience.
                 </p>
                 <ul class="list-disc list-inside text-gray-400 mb-4">
-                    <li>Learning modern HTML, CSS (Tailwind CSS), and JavaScript.</li>
-                    <li>Focus on responsive design principles.</li>
-                    <li>Building interactive web components.</li>
+                    <li>Designed user interface and experience.</li>
+                    <li>Implemented product display and basic shopping cart features.</li>
+                    <li>Managed product data and user information.</li>
                 </ul>
                 <div class="flex flex-wrap gap-3 mt-4">
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Web Development</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">HTML/CSS</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">JavaScript</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">HTML</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">CSS</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">MySQL</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">phpMyAdmin</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">E-commerce</span>
                 </div>
-                <!-- <a href="#" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-semibold transition duration-300">View Project &rarr;</a> -->
+            </div>
+
+            <!-- Project Card 5: Robotic Lab Project - Parking Management System -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-4">Robotic Lab Project - Parking Management System</h3>
+                <p class="card-text leading-relaxed mb-4">
+                    Developed an automated parking management system as part of a robotics lab project. This system efficiently handles vehicle parking and slot management.
+                </p>
+                <ul class="list-disc list-inside text-gray-400 mb-4">
+                    <li>Designed and programmed the system logic.</li>
+                    <li>Integrated Arduino for hardware control.</li>
+                    <li>Implemented automated car parking and empty slot retrieval.</li>
+                </ul>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Robotics</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Arduino</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Automation</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Embedded Systems</span>
+                </div>
             </div>
 
         </div>
@@ -591,39 +467,16 @@
         </div>
     </div>
 
-    <!-- Chatbot Button -->
-    <div class="chatbot-button" id="chatbot-button">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-    </div>
-
-    <!-- Chatbot Window -->
-    <div class="chatbot-window hidden" id="chatbot-window">
-        <div class="chat-header">
-            <span>Rohaan's AI Assistant</span>
-            <button class="text-black hover:text-gray-800" onclick="document.getElementById('chatbot-window').classList.add('hidden')">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-        </div>
-        <div class="chat-messages" id="chat-messages">
-            <!-- Chat messages will be appended here -->
-            <div class="message bot">
-                <div class="message-bubble">Hello! I'm Rohaan's AI assistant. How can I help you learn more about him?</div>
-            </div>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
-            <button id="send-button">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </button>
-        </div>
-    </div>
+    <!-- Chatbase Chatbot -->
+    <script>
+        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="I2lpeEpaZZmNHHrOBoDaD";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
 
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS (replace with your actual User ID)
-        // You can find your User ID in your EmailJS account dashboard.
+        // Initialize EmailJS
         (function() {
-            emailjs.init("G7iko1rlntjIgNiyd"); // <<< IMPORTANT: Replaced with your EmailJS User ID
+            emailjs.init("G7iko1rlntjIgNiyd"); // Your EmailJS Public API Key (User ID)
         })();
 
         // Function to show custom modal
@@ -672,97 +525,7 @@
             });
         });
 
-
-        // Chatbot functionality (remains largely the same, just color adjustments)
-        const chatbotButton = document.getElementById('chatbot-button');
-        const chatbotWindow = document.getElementById('chatbot-window');
-        const chatMessages = document.getElementById('chat-messages');
-        const chatInput = document.getElementById('chat-input');
-        const sendButton = document.getElementById('send-button');
-
-        let chatHistory = [{ role: "model", parts: [{ text: "Hello! I'm Rohaan's AI assistant. How can I help you learn more about him?" }] }];
-        let isGenerating = false;
-
-        chatbotButton.addEventListener('click', () => {
-            chatbotWindow.classList.toggle('hidden');
-            if (!chatbotWindow.classList.contains('hidden')) {
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-        });
-
-        async function sendMessage() {
-            const userMessage = chatInput.value.trim();
-            if (userMessage === '' || isGenerating) return;
-
-            appendMessage(userMessage, 'user');
-            chatInput.value = '';
-            isGenerating = true;
-
-            chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
-
-            const loadingMessageDiv = document.createElement('div');
-            loadingMessageDiv.classList.add('message', 'bot', 'loading-indicator');
-            loadingMessageDiv.innerHTML = `
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
-                <div class="loading-dot"></div>
-            `;
-            chatMessages.appendChild(loadingMessageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            try {
-                const payload = { contents: chatHistory };
-                const apiKey = "AIzaSyD_2U7Ld49m23sHqjSNsLz6Y6piJGd9Hz0"; // Canvas will provide this at runtime if empty
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-
-                chatMessages.removeChild(loadingMessageDiv);
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const botResponse = result.candidates[0].content.parts[0].text;
-                    appendMessage(botResponse, 'bot');
-                    chatHistory.push({ role: "model", parts: [{ text: botResponse }] });
-                } else {
-                    appendMessage("Sorry, I couldn't get a response. Please try again.", 'bot');
-                    console.error('Unexpected API response structure:', result);
-                }
-            } catch (error) {
-                chatMessages.removeChild(loadingMessageDiv);
-                appendMessage("An error occurred while fetching the response. Please try again later.", 'bot');
-                console.error('Error calling Gemini API:', error);
-            } finally {
-                isGenerating = false;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-        }
-
-        function appendMessage(text, sender) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', sender);
-            const messageBubble = document.createElement('div');
-            messageBubble.classList.add('message-bubble');
-            messageBubble.innerText = text;
-            messageDiv.appendChild(messageBubble);
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        sendButton.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
+        // Mobile menu toggle functionality
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.querySelector('header button');
             const mobileMenu = document.getElementById('mobile-menu');
