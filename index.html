@@ -166,6 +166,16 @@
             display: block; /* Ensures it takes up full space */
             background-color: #000000; /* Base background color */
         }
+        /* Profile image styling */
+        .profile-image {
+            width: 150px; /* Adjust size as needed */
+            height: 150px; /* Adjust size as needed */
+            border-radius: 50%; /* Makes the image round */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            border: 4px solid #00bcd4; /* Cyan border */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); /* Subtle glow around the image */
+            margin-bottom: 20px; /* Space below the image */
+        }
     </style>
 </head>
 <body class="text-white antialiased">
@@ -195,8 +205,7 @@
                 <a href="#about" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
                 <a href="#skills" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Skills</a>
                 <a href="#projects" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
-                <a href="#education" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Education</a>
-                <a href="#contact" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+                <a href="#education" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
             </div>
         </div>
     </header>
@@ -204,6 +213,8 @@
     <!-- Hero Section -->
     <section id="hero" class="relative flex items-center justify-center min-h-screen bg-transparent text-center py-20 px-4 pt-24 md:pt-0">
         <div class="container mx-auto flex flex-col items-center justify-center">
+            <!-- Profile Photo -->
+            <img src="image_24f3e0.png" alt="M. Rohaan Zahid Profile Photo" class="profile-image">
             <!-- Heading and Tagline -->
             <div class="text-center max-w-2xl">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
@@ -409,19 +420,19 @@
                 <h3 class="card-heading mb-2">Sir Syed Case University</h3>
                 <p class="text-xl card-text mb-3">Ongoing</p>
                 <ul class="list-disc list-inside text-gray-400 space-y-2">
-                    <li>1st Semester:
+                    <li>**1st Semester:**
                         <ul class="list-circle list-inside ml-4">
                             <li>Learning web development</li>
                             <li>Advancing programming with C++ and basics of Python</li>
                         </ul>
                     </li>
-                    <li>2nd Semester:
+                    <li>**2nd Semester:**
                         <ul class="list-circle list-inside ml-4">
                             <li>Learning database working using phpMyAdmin.</li>
                             <li>Advancing my skills in C++ and C#.</li>
                         </ul>
                     </li>
-                    <li>3rd Semester (Ongoing):
+                    <li>**3rd Semester (Ongoing):**
                         <ul class="list-circle list-inside ml-4">
                             <li>Currently engaged in advanced topics and projects.</li>
                         </ul>
