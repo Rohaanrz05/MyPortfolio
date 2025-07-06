@@ -8,12 +8,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- particles.js CDN -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         /* Custom styles for Inter font and smooth scrolling */
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            background: linear-gradient(to right, #000000, #1a1a1a); /* Dark gradient background */
+            /* The overall background will now be managed by particles.js */
             color: white; /* Default text color */
         }
         /* Custom scrollbar for better aesthetics */
@@ -36,6 +38,13 @@
             padding: 50px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative; /* Ensure sections are above particles */
+            z-index: 1; /* Bring content above the particle background */
+            /* Backgrounds for sections are now semi-transparent to show particles */
+            background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black for sections */
+            border-radius: 10px; /* Added for consistency with cards */
+            margin-bottom: 30px; /* Space between sections */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1); /* Subtle glow */
         }
         .section-heading {
             font-size: 36px;
@@ -46,7 +55,7 @@
 
         /* Card/Box styling */
         .card-background {
-            background: #121212; /* Dark grey for cards/boxes */
+            background: rgba(18, 18, 18, 0.8); /* Dark grey for cards/boxes, now semi-transparent */
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.2); /* Cyan glow shadow */
@@ -148,12 +157,28 @@
         .modal-close-button:hover {
             background-color: #0097a7;
         }
+
+        /* Styles for particles.js background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #000000; /* Base background color for particles */
+            background-image: url(''); /* No background image */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+            z-index: -1; /* Ensure it's behind other content */
+        }
     </style>
 </head>
-<body class="bg-black text-white antialiased">
+<body class="text-white antialiased">
+
+    <!-- particles.js container -->
+    <div id="particles-js"></div>
 
     <!-- Header/Navigation -->
-    <header class="bg-gray-900 shadow-lg py-4 fixed w-full z-10">
+    <header class="bg-gray-900 shadow-lg py-4 fixed w-full z-10" style="background-color: rgba(17, 24, 39, 0.9);">
         <nav class="container mx-auto px-4 flex justify-between items-center">
             <a href="#hero" class="text-2xl font-bold text-white hover:text-cyan-400 transition duration-300">Rohaan Zahid</a>
             <div class="hidden md:flex space-x-6">
@@ -169,20 +194,20 @@
             </button>
         </nav>
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 py-4">
+        <div id="mobile-menu" class="hidden md:hidden py-4" style="background-color: rgba(17, 24, 39, 0.9);">
             <div class="flex flex-col items-center space-y-4">
                 <a href="#about" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
                 <a href="#skills" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Skills</a>
                 <a href="#projects" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
-                <a href="#education" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+                <a href="#education" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Education</a>
+                <a href="#contact" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-black to-gray-900 text-center py-20 px-4 pt-24 md:pt-0">
+    <section id="hero" class="relative flex items-center justify-center min-h-screen bg-transparent text-center py-20 px-4 pt-24 md:pt-0">
         <div class="container mx-auto flex flex-col items-center justify-center">
-            <!-- Profile Picture section removed -->
             <!-- Heading and Tagline -->
             <div class="text-center max-w-2xl">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
@@ -204,7 +229,7 @@
     </section>
 
     <!-- About Me Section -->
-    <section id="about" class="section-container bg-gray-900">
+    <section id="about" class="section-container">
         <h2 class="section-heading">About Me</h2>
         <div class="card-background p-8">
             <p class="text-lg card-text leading-relaxed mb-6">
@@ -233,7 +258,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section-container bg-black">
+    <section id="skills" class="section-container">
         <h2 class="section-heading">My Skills</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Technical Skills -->
@@ -272,7 +297,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section-container bg-gray-900">
+    <section id="projects" class="section-container">
         <h2 class="section-heading">My Projects</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Project Card 1: Airline Reservation System -->
@@ -380,7 +405,7 @@
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="section-container bg-black">
+    <section id="education" class="section-container">
         <h2 class="section-heading">Education</h2>
         <div class="space-y-8">
             <!-- Sir Syed Case University -->
@@ -414,7 +439,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-container bg-gray-900">
+    <section id="contact" class="section-container">
         <h2 class="section-heading">Get in Touch</h2>
         <div class="card-background p-8 max-w-2xl mx-auto">
             <p class="text-lg card-text leading-relaxed mb-8">
@@ -452,7 +477,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-8 text-center text-gray-400 border-t border-gray-800">
+    <footer class="bg-black py-8 text-center text-gray-400 border-t border-gray-800" style="background-color: rgba(0, 0, 0, 0.7);">
         <div class="container mx-auto px-4">
             <p>&copy; 2024 M. Rohaan Zahid. All rights reserved.</p>
             <p class="mt-2 text-sm">Designed with <span class="text-gray-500">&hearts;</span> by AI</p>
@@ -542,6 +567,113 @@
                     });
                 });
             }
+        });
+
+        // particles.js config
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#00bcd4" // Cyan color for particles
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00bcd4", // Cyan color for lines
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
         });
     </script>
 </body>
