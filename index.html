@@ -8,8 +8,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- particles.js CDN -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         /* Custom styles for Inter font and smooth scrolling */
         body {
@@ -37,9 +35,9 @@
             padding: 50px 20px;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative; /* Ensure sections are above particles */
-            z-index: 1; /* Bring content above the particle background */
-            /* Backgrounds for sections are now semi-transparent to show particles */
+            position: relative; /* Ensure sections are above canvas */
+            z-index: 1; /* Bring content above the canvas background */
+            /* Backgrounds for sections are now semi-transparent to show canvas animation */
             background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black for sections */
             border-radius: 10px; /* Added for consistency with cards */
             margin-bottom: 30px; /* Space between sections */
@@ -157,24 +155,23 @@
             background-color: #0097a7;
         }
 
-        /* Styles for particles.js background */
-        #particles-js {
+        /* Canvas styling for Quantum Particles */
+        #quantum-canvas {
             position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Ensure it's behind other content */
             width: 100%;
             height: 100%;
-            background-color: #000000; /* Base background color for particles */
-            background-image: url(''); /* No background image */
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: 50% 50%;
-            z-index: -1; /* Ensure it's behind other content */
+            display: block; /* Ensures it takes up full space */
+            background-color: #000000; /* Base background color */
         }
     </style>
 </head>
 <body class="text-white antialiased">
 
-    <!-- particles.js container -->
-    <div id="particles-js"></div>
+    <!-- Canvas for Quantum Particles -->
+    <canvas id="quantum-canvas"></canvas>
 
     <!-- Header/Navigation -->
     <header class="bg-gray-900 shadow-lg py-4 fixed w-full z-10" style="background-color: rgba(17, 24, 39, 0.9);">
@@ -237,6 +234,21 @@
             <p class="text-lg card-text leading-relaxed mb-6">
                 My technical journey has equipped me with proficiency in **C/C++** and **Python**, alongside foundational knowledge in **HTML** for web development. I am deeply interested in **Cyber Security** and **Network Administration**, understanding the critical importance of secure and resilient systems in today's digital landscape. My hands-on experience through coursework and personal projects, such as developing an AI-based robotics project and an Airline Reservation System, has solidified my problem-solving abilities and attention to detail.
             </p>
+
+            <h3 class="text-3xl font-semibold text-white mt-10 mb-6 border-b border-gray-700 pb-3">My Passions</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1 card-background p-6">
+                    <h4 class="text-2xl font-bold text-white mb-3">Reading Books</h4>
+                    <p class="card-text leading-relaxed">
+                        Beyond the code, I find immense joy and inspiration in reading, which constantly broadens my perspective and fuels my analytical thinking. It's a vital part of my continuous learning journey, allowing me to explore diverse ideas and concepts.
+                    </p>
+                </div>
+                <div class="flex-1 card-background p-6">
+                    <h4 class="text-2xl font-bold text-white mb-3">Cricket</h4>
+                    <p class="card-text leading-relaxed">
+                        My love for cricket instills valuable qualities suchs as teamwork, strategic planning, and perseverance. The dynamic nature of the game mirrors the challenges in software development, teaching me to adapt and perform under pressure.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -328,7 +340,7 @@
             <div class="card-background p-6">
                 <h3 class="card-heading mb-4">One Dollar Shop Project</h3>
                 <p class="card-text leading-relaxed mb-4">
-                    Developed a functional e-commerce website for a "one dollar shop" concept. This project involved both frontend and backend development to create an interactive shopping experience.
+                    Developed a functional e-commerce website for a "one dollar shop" concept. This project involved both frontend and backend development to create an an interactive shopping experience.
                 </p>
                 <ul class="list-disc list-inside text-gray-400 mb-4">
                     <li>Designed user interface and experience.</li>
@@ -556,112 +568,247 @@
             }
         });
 
-        // particles.js config
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
+        // Quantum Particle System
+        class QuantumParticle {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.particles = [];
+                this.entangledPairs = [];
+                this.quantumStates = []; // Not directly used in this version but kept for concept
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+            }
+
+            resize() {
+                this.width = this.canvas.width = window.innerWidth;
+                this.height = this.canvas.height = window.innerHeight;
+            }
+
+            init(count = 100) {
+                // Create particles with quantum spin states
+                for (let i = 0; i < count; i++) {
+                    const spin = Math.random() > 0.5 ? 1 : -1; // Spin up or spin down
+                    this.particles.push({
+                        x: Math.random() * this.width,
+                        y: Math.random() * this.height,
+                        vx: (Math.random() - 0.5) * 1.5, // Slower movement
+                        vy: (Math.random() - 0.5) * 1.5,
+                        size: 1.5 + Math.random() * 2, // Smaller particles
+                        color: spin === 1 ?
+                            `hsl(${200 + Math.random() * 40}, 100%, 60%)` : // Blueish-cyan for spin up
+                            `hsl(${300 + Math.random() * 40}, 100%, 60%)`, // Purplish-pink for spin down
+                        spin: spin,
+                        entangledWith: null,
+                        phase: Math.random() * Math.PI * 2 // Initial quantum phase
+                    });
+                }
+
+                // Create quantum entanglement between particles
+                this.createEntanglements();
+                this.animate(); // Start the animation loop
+            }
+
+            createEntanglements() {
+                // Entangle particles in pairs (EPR pairs)
+                const available = [...this.particles];
+
+                while (available.length >= 2) {
+                    const a = Math.floor(Math.random() * available.length);
+                    const p1 = available.splice(a, 1)[0];
+                    const b = Math.floor(Math.random() * available.length);
+                    const p2 = available.splice(b, 1)[0];
+
+                    p1.entangledWith = p2;
+                    p2.entangledWith = p1;
+
+                    // Ensure opposite spins (like quantum entangled particles)
+                    p2.spin = -p1.spin;
+                    // Assign color based on the *new* spin state of p2
+                    p2.color = p2.spin === 1 ?
+                        `hsl(${200 + Math.random() * 40}, 100%, 60%)` :
+                        `hsl(${300 + Math.random() * 40}, 100%, 60%)`;
+
+                    this.entangledPairs.push([p1, p2]);
+                }
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.width, this.height); // Clear canvas each frame
+
+                // Update and draw particles
+                this.particles.forEach(p => {
+                    // Quantum tunneling effect (random position jumps) - less frequent
+                    if (Math.random() < 0.0005) {
+                        p.x = Math.random() * this.width;
+                        p.y = Math.random() * this.height;
                     }
-                },
-                "color": {
-                    "value": "#00bcd4" // Cyan color for particles
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
+
+                    // Normal movement with boundary checking (wrap around)
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    // Wrap particles around the screen edges
+                    if (p.x < 0) p.x = this.width;
+                    if (p.x > this.width) p.x = 0;
+                    if (p.y < 0) p.y = this.height;
+                    if (p.y > this.height) p.y = 0;
+
+                    // Quantum phase evolution
+                    p.phase += 0.02; // Faster phase evolution for more dynamic wave
+                    p.phase = p.phase % (Math.PI * 2); // Keep phase within 0 to 2PI
+
+                    // Draw particle with wave function visualization
+                    this.drawParticle(p);
+
+                    // Draw entanglement connection if exists
+                    if (p.entangledWith) {
+                        this.drawEntanglement(p, p.entangledWith);
                     }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
+                });
+
+                // Quantum measurement effect (random collapse) - less frequent
+                if (Math.random() < 0.002) {
+                    this.quantumCollapse();
+                }
+
+                requestAnimationFrame(() => this.animate()); // Loop animation
+            }
+
+            drawParticle(p) {
+                // Draw probability cloud (fuzzy halo)
+                const gradient = this.ctx.createRadialGradient(
+                    p.x, p.y, 0,
+                    p.x, p.y, p.size * 5
+                );
+                gradient.addColorStop(0, p.color);
+                gradient.addColorStop(1, 'rgba(0,0,0,0)'); // Fade to transparent
+
+                this.ctx.beginPath();
+                this.ctx.fillStyle = gradient;
+                this.ctx.arc(p.x, p.y, p.size * 5, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                // Draw particle core with spin indication
+                this.ctx.beginPath();
+                this.ctx.fillStyle = p.color;
+                this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                this.ctx.fill();
+
+                // Draw spin direction indicator (a small line rotating with phase)
+                this.ctx.beginPath();
+                this.ctx.strokeStyle = 'white';
+                this.ctx.lineWidth = 1;
+                const lineLength = p.size * 2;
+                this.ctx.moveTo(p.x + Math.cos(p.phase) * lineLength, p.y + Math.sin(p.phase) * lineLength);
+                this.ctx.lineTo(p.x - Math.cos(p.phase) * lineLength, p.y - Math.sin(p.phase) * lineLength);
+                this.ctx.stroke();
+            }
+
+            drawEntanglement(p1, p2) {
+                // Draw quantum connection with subtle interference pattern
+                const dx = p2.x - p1.x;
+                const dy = p2.y - p1.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 250) { // Only draw connections for relatively nearby particles
+                    const alpha = 0.5 * (1 - dist / 250); // Fade out with distance
+
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle = `hsla(${p1.spin === 1 ? 220 : 320}, 100%, 70%, ${alpha})`; // Color based on spin
+                    this.ctx.lineWidth = 0.8; // Slightly thicker lines for visibility
+                    this.ctx.moveTo(p1.x, p1.y);
+
+                    // Create wave-like path for entanglement, influenced by phase
+                    const steps = 8; // Fewer steps for smoother waves
+                    for (let i = 1; i <= steps; i++) {
+                        const t = i / steps;
+                        const x = p1.x + dx * t;
+                        const y = p1.y + dy * t;
+                        const offset = Math.sin(t * Math.PI * 3 + p1.phase) * 8; // Wave amplitude and frequency
+                        const perpX = -dy / dist * offset;
+                        const perpY = dx / dist * offset;
+                        this.ctx.lineTo(x + perpX, y + perpY);
                     }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#00bcd4", // Cyan color for lines
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 6,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
+
+                    this.ctx.stroke();
+
+                    // Draw a subtle "quantum bridge" effect for very close particles
+                    if (dist < 100) {
+                        const gradient = this.ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
+                        gradient.addColorStop(0, p1.color);
+                        gradient.addColorStop(1, p2.color);
+
+                        this.ctx.beginPath();
+                        this.ctx.strokeStyle = gradient;
+                        this.ctx.lineWidth = 0.2; // Very thin line
+                        this.ctx.moveTo(p1.x, p1.y);
+                        this.ctx.lineTo(p2.x, p2.y);
+                        this.ctx.stroke();
                     }
                 }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
+            }
+
+            quantumCollapse() {
+                // Randomly "measure" a particle causing its entangled pair to react
+                if (this.entangledPairs.length > 0) {
+                    const randomPairIndex = Math.floor(Math.random() * this.entangledPairs.length);
+                    const [p1, p2] = this.entangledPairs[randomPairIndex];
+
+                    // Randomly choose which particle to "measure"
+                    const measured = Math.random() > 0.5 ? p1 : p2;
+                    const other = measured === p1 ? p2 : p1;
+
+                    // Visual effect of measurement (brief glow/pulse)
+                    const originalSize = measured.size;
+                    measured.size *= 3; // Temporarily make it larger
+                    measured.color = 'rgba(255, 255, 255, 0.8)'; // Briefly white flash
+                    setTimeout(() => {
+                        measured.size = originalSize; // Revert size
+                        measured.color = measured.spin === 1 ?
+                            `hsl(${200 + Math.random() * 40}, 100%, 60%)` :
+                            `hsl(${300 + Math.random() * 40}, 100%, 60%)`;
+                    }, 150); // Short duration
+
+                    // Entanglement effect - change the other particle's state instantly
+                    // Teleport 'other' particle close to 'measured' particle, with opposite spin
+                    other.x = measured.x + (Math.random() - 0.5) * 30; // Slightly offset
+                    other.y = measured.y + (Math.random() - 0.5) * 30;
+                    other.spin = -measured.spin; // Instant spin correlation
+                    other.color = other.spin === 1 ?
+                        `hsl(${200 + Math.random() * 40}, 100%, 60%)` :
+                        `hsl(${300 + Math.random() * 40}, 100%, 60%)`;
+
+                    // Add a subtle "quantum ripple" effect around the measured particle
+                    this.drawRipple(measured.x, measured.y, measured.color);
                 }
-            },
-            "retina_detect": true
-        });
+            }
+
+            drawRipple(x, y, color) {
+                const maxRadius = 50;
+                let radius = 0;
+                const animateRipple = () => {
+                    if (radius < maxRadius) {
+                        this.ctx.beginPath();
+                        this.ctx.arc(x, y, radius, 0, Math.PI * 2);
+                        this.ctx.strokeStyle = `rgba(255, 255, 255, ${1 - (radius / maxRadius)})`; // Fading white ripple
+                        this.ctx.lineWidth = 2;
+                        this.ctx.stroke();
+                        radius += 2; // Expand ripple
+                        requestAnimationFrame(animateRipple);
+                    }
+                };
+                animateRipple();
+            }
+        }
+
+        // Initialize the quantum particle system
+        // Ensure this runs after the DOM is ready
+        window.onload = function () {
+            const canvas = document.getElementById('quantum-canvas'); // Get the canvas element
+            const quantumParticles = new QuantumParticle(canvas);
+            quantumParticles.init(80); // Initialize with 80 particles
+        };
     </script>
 </body>
 </html>
