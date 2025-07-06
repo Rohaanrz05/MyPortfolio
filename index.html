@@ -15,7 +15,6 @@
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            /* The overall background will now be managed by particles.js */
             color: white; /* Default text color */
         }
         /* Custom scrollbar for better aesthetics */
@@ -443,12 +442,13 @@
         <h2 class="section-heading">Get in Touch</h2>
         <div class="card-background p-8 max-w-2xl mx-auto">
             <p class="text-lg card-text leading-relaxed mb-8">
-                I'm always open to new opportunities, collaborations, and discussions. Feel free to reach out to me via the form below, email, or phone.
+                I'm always open to new opportunities, collaborations, and discussions. Feel free to reach out to me via the form below.
             </p>
-            <form id="contactForm">
-                <input type="text" id="name" placeholder="Your Name" class="input-field">
-                <input type="email" id="email" placeholder="Your Email" class="input-field">
-                <textarea id="message" placeholder="Your Message" class="input-field h-32 resize-y"></textarea>
+            <!-- Formspree form integration -->
+            <form id="contactForm" action="https://formspree.io/f/mblyeqol" method="POST">
+                <input type="text" id="name" name="name" placeholder="Your Name" class="input-field" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" class="input-field" required>
+                <textarea id="message" name="message" placeholder="Your Message" class="input-field h-32 resize-y" required></textarea>
                 <button type="submit" class="primary-button">Send Message</button>
                 <p class="text-red-400 text-center mt-4 hidden" id="formError">Please fill in all fields.</p>
             </form>
@@ -498,13 +498,7 @@
         (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="I2lpeEpaZZmNHHrOBoDaD";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
     </script>
 
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
-        // Initialize EmailJS
-        (function() {
-            emailjs.init("G7iko1rlntjIgNiyd"); // Your EmailJS Public API Key (User ID)
-        })();
-
         // Function to show custom modal
         function showModal(title, message) {
             document.getElementById('modalTitle').innerText = title;
@@ -517,38 +511,46 @@
             document.getElementById('messageModal').style.display = 'none';
         }
 
-        // Handle contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
+        // Handle Formspree contact form submission
+        document.getElementById('contactForm').addEventListener('submit', async function(event) {
             event.preventDefault(); // Prevent default form submission
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            const form = event.target;
+            const formData = new FormData(form);
             const formError = document.getElementById('formError');
 
-            if (!name || !email || !message) {
+            // Basic validation
+            if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
                 formError.classList.remove('hidden');
                 return;
             }
             formError.classList.add('hidden'); // Hide error if all fields are filled
 
-            // Send email using EmailJS
-            emailjs.send("service_rol2niu", "template_7d7zn9w", { // Service ID and Template ID from your screenshots
-                from_name: name,
-                from_email: email,
-                message: message
-            })
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                showModal('Success!', 'Your message has been sent successfully!');
-                // Clear the form
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('message').value = '';
-            }, function(error) {
-                console.log('FAILED...', error);
-                showModal('Error!', 'Failed to send message. Please try again later.');
-            });
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showModal('Success!', 'Your message has been sent successfully!');
+                    form.reset(); // Clear the form
+                } else {
+                    const data = await response.json();
+                    if (data.errors) {
+                        // Formspree might return specific errors
+                        showModal('Error!', 'Failed to send message: ' + data.errors.map(e => e.message).join(', '));
+                    } else {
+                        showModal('Error!', 'Failed to send message. Please try again later.');
+                    }
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                showModal('Error!', 'An error occurred while sending your message. Please try again later.');
+            }
         });
 
         // Mobile menu toggle functionality
