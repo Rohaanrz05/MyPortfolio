@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M. Rohaan Zahid - AI Programmer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for Inter font and smooth scrolling */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background: linear-gradient(to right, #000000, #1a1a1a); /* Dark gradient background */
+            color: white; /* Default text color */
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111111; /* Darker track */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00bcd4; /* Cyan/teal thumb */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0097a7; /* Darker cyan on hover */
+        }
+
+        /* General section styling */
+        .section-container {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-heading {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: white; /* Headings are white on dark background */
+        }
+
+        /* Card/Box styling */
+        .card-background {
+            background: #121212; /* Dark grey for cards/boxes */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2); /* Cyan glow shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-background:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+        }
+        .card-heading {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .card-text {
+            color: #b0bec5; /* Light grey/blue for card text */
+        }
+
+        /* Input field styling */
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            background: #333; /* Darker input background */
+            color: white;
+            font-size: 16px;
+        }
+        .input-field:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #00bcd4; /* Cyan focus ring */
+        }
+
+        /* Button styling */
+        .primary-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            background-color: #00bcd4; /* Cyan button */
+            color: black; /* Black text on cyan */
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .primary-button:hover {
+            transform: scale(1.02);
+            background-color: #0097a7; /* Darker cyan on hover */
+        }
+
+        /* Chatbot specific styles */
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #00bcd4; /* Cyan button */
+            color: black; /* Black icon */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            background-color: #0097a7; /* Darker cyan */
+        }
+        .chatbot-window {
+            position: fixed;
+            bottom: 90px; /* Above the button */
+            right: 20px;
+            z-index: 999;
+            width: 350px;
+            height: 500px;
+            background-color: #121212; /* Dark grey background for chat */
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #00bcd4; /* Cyan border */
+        }
+        .chat-header {
+            background-color: #00bcd4; /* Cyan header */
+            color: black; /* Black text */
+            padding: 12px 16px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        .chat-messages {
+            flex-grow: 1;
+            padding: 16px;
+            overflow-y: auto;
+            background-color: #000000; /* Black background for messages area */
+        }
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-messages::-webkit-scrollbar-track {
+            background: #111111;
+        }
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #00bcd4;
+            border-radius: 3px;
+        }
+        .chat-input-area {
+            display: flex;
+            padding: 16px;
+            border-top: 1px solid #333333; /* Dark grey border */
+            background-color: #121212; /* Dark grey input area background */
+        }
+        .chat-input-area input {
+            flex-grow: 1;
+            background-color: #333333; /* Dark grey input background */
+            border: 1px solid #555555;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: white; /* White text input */
+            outline: none;
+            margin-right: 10px;
+        }
+        .chat-input-area button {
+            background-color: #00bcd4; /* Cyan send button */
+            color: black; /* Black icon */
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .chat-input-area button:hover {
+            background-color: #0097a7;
+        }
+        .message {
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+        .message.user {
+            align-items: flex-end;
+        }
+        .message.bot {
+            align-items: flex-start;
+        }
+        .message-bubble {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 18px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+        .message.user .message-bubble {
+            background-color: #00bcd4; /* Cyan for user bubble */
+            color: black; /* Black text */
+            border-bottom-right-radius: 4px;
+        }
+        .message.bot .message-bubble {
+            background-color: #333333; /* Dark grey for bot bubble */
+            color: white; /* White text */
+            border-bottom-left-radius: 4px;
+        }
+        .loading-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            color: white;
+        }
+        .loading-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00bcd4; /* Cyan loading dots */
+            border-radius: 50%;
+            margin: 0 4px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Custom Modal for alerts */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #121212; /* Dark grey modal background */
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #00bcd4; /* Cyan border */
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .modal-content h3 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .modal-content p {
+            color: #b0bec5;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        .modal-close-button {
+            background-color: #00bcd4;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .modal-close-button:hover {
+            background-color: #0097a7;
+        }
+
+
+        /* Responsive adjustments for chatbot window */
+        @media (max-width: 768px) {
+            .chatbot-window {
+                width: 90%;
+                height: 80%;
+                bottom: 10px;
+                right: 5%;
+                left: 5%;
+            }
+            .chatbot-button {
+                bottom: 10px;
+                right: 10px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white antialiased">
+
+    <!-- Header/Navigation -->
+    <header class="bg-gray-900 shadow-lg py-4 fixed w-full z-10">
+        <nav class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-white hover:text-cyan-400 transition duration-300">Rohaan Zahid</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="text-white hover:text-cyan-400 transition duration-300">About</a>
+                <a href="#skills" class="text-white hover:text-cyan-400 transition duration-300">Skills</a>
+                <a href="#projects" class="text-white hover:text-cyan-400 transition duration-300">Projects</a>
+                <a href="#education" class="text-white hover:text-cyan-400 transition duration-300">Education</a>
+                <a href="#contact" class="text-white hover:text-cyan-400 transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button class="md:hidden text-white focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 py-4">
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#about" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+                <a href="#skills" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Skills</a>
+                <a href="#projects" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
+                <a href="#education" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Education</a>
+                <a href="#contact" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-black to-gray-900 text-center py-20 px-4 pt-24 md:pt-0">
+        <div class="container mx-auto flex flex-col items-center justify-center">
+            <!-- Profile Picture section removed -->
+            <!-- Heading and Tagline -->
+            <div class="text-center max-w-2xl">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
+                    M. Rohaan Zahid
+                </h1>
+                <p class="text-2xl sm:text-3xl text-gray-300 font-semibold mb-6">
+                    AI Programmer & Innovator
+                </p>
+                <p class="text-lg sm:text-xl text-gray-400 leading-relaxed max-w-xl mx-auto">
+                    Dedicated to building intelligent systems and secure digital futures.
+                </p>
+                <div class="mt-8">
+                    <a href="#contact" class="inline-block primary-button">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section-container bg-gray-900">
+        <h2 class="section-heading">About Me</h2>
+        <div class="card-background p-8">
+            <p class="text-lg card-text leading-relaxed mb-6">
+                As a passionate and dedicated AI student, I am eager to apply my technical skills and knowledge in Cyber Security, Software Development, and Network Administration. Currently pursuing HSSC with AI majors, I have gained hands-on experience through coursework and personal projects.
+            </p>
+            <p class="text-lg card-text leading-relaxed mb-6">
+                I possess strong problem-solving skills and a keen eye for details, always striving for precision and efficiency in my work. With a commitment to continuous learning and staying updated with the latest technologies, I am poised to contribute effectively to any AI team and drive innovative solutions.
+            </p>
+
+            <h3 class="text-3xl font-semibold text-white mt-10 mb-6 border-b border-gray-700 pb-3">My Passions</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1 card-background p-6">
+                    <h4 class="text-2xl font-bold text-white mb-3">Reading Books</h4>
+                    <p class="card-text leading-relaxed">
+                        Beyond the code, I find immense joy and inspiration in reading, which constantly broadens my perspective and fuels my analytical thinking. It's a vital part of my continuous learning journey, allowing me to explore diverse ideas and concepts.
+                    </p>
+                </div>
+                <div class="flex-1 card-background p-6">
+                    <h4 class="text-2xl font-bold text-white mb-3">Cricket</h4>
+                    <p class="card-text leading-relaxed">
+                        My love for cricket instills valuable qualities such as teamwork, strategic planning, and perseverance. The dynamic nature of the game mirrors the challenges in software development, teaching me to adapt and perform under pressure.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-container bg-black">
+        <h2 class="section-heading">My Skills</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Technical Skills -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-4">Technical Proficiency</h3>
+                <ul class="space-y-3 card-text">
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> C/C++ Programming</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Python Basics</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> HTML Basics</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Cyber Security Concepts</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Network Administration</li>
+                </ul>
+            </div>
+            <!-- Software & Tools -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-4">Software & Tools</h3>
+                <ul class="space-y-3 card-text">
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> MS Word</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> MS Excel</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> PowerPoint</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> AI/ML Frameworks (Basic)</li>
+                </ul>
+            </div>
+            <!-- Core Competencies -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-4">Core Competencies</h3>
+                <ul class="space-y-3 card-text">
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Problem Solving</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Critical Thinking</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Communication Skills</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Process Flow Analysis</li>
+                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Detail-Oriented</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-container bg-gray-900">
+        <h2 class="section-heading">My Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Project Card 1: AI-Based Robotics Project -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-4">AI-Based Robotics Project (2023)</h3>
+                <p class="card-text leading-relaxed mb-4">
+                    As part of the Robotics Lab at Punjab Group of Colleges, I played an important role in managing, designing, and programming an AI-based project. This collaborative effort honed my skills in practical AI application and team leadership.
+                </p>
+                <ul class="list-disc list-inside text-gray-400 mb-4">
+                    <li>Managed project timelines and resources.</li>
+                    <li>Designed key architectural components.</li>
+                    <li>Contributed significantly to programming the AI functionalities.</li>
+                </ul>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">AI/ML</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Robotics</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Teamwork</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">C++</span>
+                </div>
+                <!-- <a href="#" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-semibold transition duration-300">View Details &rarr;</a> -->
+            </div>
+
+            <!-- Project Card 2: Airline Reservation System -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-4">Airline Reservation System</h3>
+                <p class="card-text leading-relaxed mb-4">
+                    Developed a console-based Airline Reservation System using C++ in Visual Studio Code. This project allows users to efficiently book and manage airline tickets through a user-friendly command-line interface.
+                </p>
+                <ul class="list-disc list-inside text-gray-400 mb-4">
+                    <li>Implemented core functionalities for ticket booking and cancellation.</li>
+                    <li>Designed a robust console-based user interface.</li>
+                    <li>Focused on data management and user experience in a text environment.</li>
+                </ul>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">C++</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Console Application</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">VS Code</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Data Management</span>
+                </div>
+                <!-- <a href="#" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-semibold transition duration-300">View Project &rarr;</a> -->
+            </div>
+
+            <!-- Project Card 3: JF-17 Aeroplane Shooting Game -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-4">JF-17 Aeroplane Shooting Game (C#)</h3>
+                <p class="card-text leading-relaxed mb-4">
+                    Created an engaging aeroplane shooting game named "JF-17" using C# in Visual Studio Code 2022. This project showcases my skills in game development fundamentals, object-oriented programming, and interactive design.
+                </p>
+                <ul class="list-disc list-inside text-gray-400 mb-4">
+                    <li>Developed game logic and mechanics.</li>
+                    <li>Implemented player controls and enemy AI.</li>
+                    <li>Utilized C# for object-oriented programming principles.</li>
+                </ul>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">C#</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Game Development</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Visual Studio</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">OOP</span>
+                </div>
+                <!-- <a href="#" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-semibold transition duration-300">View Project &rarr;</a> -->
+            </div>
+
+            <!-- Project Card 4 (Web Development Learning Project - kept for structure) -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-4">Web Development Learning Project (Ongoing)</h3>
+                <p class="card-text leading-relaxed mb-4">
+                    Currently engaged in personal projects to deepen my understanding and practical skills in web development. This involves exploring front-end technologies and building responsive user interfaces.
+                </p>
+                <ul class="list-disc list-inside text-gray-400 mb-4">
+                    <li>Learning modern HTML, CSS (Tailwind CSS), and JavaScript.</li>
+                    <li>Focus on responsive design principles.</li>
+                    <li>Building interactive web components.</li>
+                </ul>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Web Development</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">HTML/CSS</span>
+                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">JavaScript</span>
+                </div>
+                <!-- <a href="#" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-semibold transition duration-300">View Project &rarr;</a> -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section-container bg-black">
+        <h2 class="section-heading">Education</h2>
+        <div class="space-y-8">
+            <!-- Sir Syed Case University -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-2">Sir Syed Case University</h3>
+                <p class="text-xl card-text mb-3">1st Semester (Ongoing)</p>
+                <ul class="list-disc list-inside text-gray-400 space-y-2">
+                    <li>Actively learning web development fundamentals.</li>
+                    <li>Advancing programming skills in C++ and Python basics.</li>
+                </ul>
+            </div>
+            <!-- Punjab College -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-2">Punjab College</h3>
+                <p class="text-xl card-text mb-3">HSSC 1 & 2 (2022 - 2024)</p>
+                <ul class="list-disc list-inside text-gray-400 space-y-2">
+                    <li>Obtained 689 marks (62% out of 1100 total marks).</li>
+                    <li>Opted for ICS (Intermediate in Computer Science) with Physics and Maths.</li>
+                </ul>
+            </div>
+            <!-- SLS High School -->
+            <div class="card-background p-6">
+                <h3 class="card-heading mb-2">SLS High School</h3>
+                <p class="text-xl card-text mb-3">Matriculation (FY 2022)</p>
+                <ul class="list-disc list-inside text-gray-400 space-y-2">
+                    <li>Matriculation Degree awarded in FY 2022.</li>
+                    <li>Obtained 844 marks (79% out of 1100 total marks) in Computer Science field.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-container bg-gray-900">
+        <h2 class="section-heading">Get in Touch</h2>
+        <div class="card-background p-8 max-w-2xl mx-auto">
+            <p class="text-lg card-text leading-relaxed mb-8">
+                I'm always open to new opportunities, collaborations, and discussions. Feel free to reach out to me via the form below, email, or phone.
+            </p>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" class="input-field">
+                <input type="email" id="email" placeholder="Your Email" class="input-field">
+                <textarea id="message" placeholder="Your Message" class="input-field h-32 resize-y"></textarea>
+                <button type="submit" class="primary-button">Send Message</button>
+                <p class="text-red-400 text-center mt-4 hidden" id="formError">Please fill in all fields.</p>
+            </form>
+            <div class="space-y-6 mt-10">
+                <div class="flex items-center justify-center">
+                    <svg class="w-8 h-8 text-cyan-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7m3 4l4 4 4-4"></path></svg>
+                    <a href="mailto:rohaanzahid.04@gmail.com" class="text-xl text-white hover:text-cyan-400 transition duration-300 font-semibold">rohaanzahid.04@gmail.com</a>
+                </div>
+                <div class="flex items-center justify-center">
+                    <svg class="w-8 h-8 text-cyan-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path></svg>
+                    <p class="text-xl text-white font-semibold">03338705793</p>
+                </div>
+            </div>
+            <!-- Optional: Social Media Links -->
+            <div class="mt-10 flex justify-center space-x-6">
+                <!-- Placeholder for LinkedIn -->
+                <a href="#" class="text-gray-400 hover:text-cyan-400 transition duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg>
+                </a>
+                <!-- Placeholder for GitHub -->
+                <a href="#" class="text-gray-400 hover:text-cyan-400 transition duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.799 8.207 11.387.6.111.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.043-1.61-4.043-1.61-.546-1.387-1.334-1.756-1.334-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.775.42-1.305.762-1.605-2.665-.3-5.466-1.33-5.466-5.93 0-1.31.465-2.382 1.235-3.22-.12-.3-.535-1.52.117-3.176 0 0 1-.322 3.3.998.94-.26 1.94-.39 2.94-.39.996 0 1.996.13 2.936.39 2.29-1.32 3.28-1 3.28-1 .653 1.656.239 2.876.12 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.805 5.62-5.475 5.92.43.37.82 1.1.82 2.22 0 1.606-.015 2.895-.015 3.287 0 .32.21.69.825.577C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"></path></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 text-center text-gray-400 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 M. Rohaan Zahid. All rights reserved.</p>
+            <p class="mt-2 text-sm">Designed with <span class="text-gray-500">&hearts;</span> by AI</p>
+        </div>
+    </footer>
+
+    <!-- Custom Message Modal -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle"></h3>
+            <p id="modalMessage"></p>
+            <button class="modal-close-button" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Button -->
+    <div class="chatbot-button" id="chatbot-button">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+    </div>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window hidden" id="chatbot-window">
+        <div class="chat-header">
+            <span>Rohaan's AI Assistant</span>
+            <button class="text-black hover:text-gray-800" onclick="document.getElementById('chatbot-window').classList.add('hidden')">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Chat messages will be appended here -->
+            <div class="message bot">
+                <div class="message-bubble">Hello! I'm Rohaan's AI assistant. How can I help you learn more about him?</div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
+            <button id="send-button">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS (replace with your actual User ID)
+        // You can find your User ID in your EmailJS account dashboard.
+        (function() {
+            emailjs.init("G7iko1rlntjIgNiyd"); // <<< IMPORTANT: Replaced with your EmailJS User ID
+        })();
+
+        // Function to show custom modal
+        function showModal(title, message) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMessage').innerText = message;
+            document.getElementById('messageModal').style.display = 'flex';
+        }
+
+        // Function to close custom modal
+        function closeModal() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
+
+        // Handle contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const formError = document.getElementById('formError');
+
+            if (!name || !email || !message) {
+                formError.classList.remove('hidden');
+                return;
+            }
+            formError.classList.add('hidden'); // Hide error if all fields are filled
+
+            // Send email using EmailJS
+            emailjs.send("service_rol2niu", "template_7d7zn9w", { // Service ID and Template ID from your screenshots
+                from_name: name,
+                from_email: email,
+                message: message
+            })
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                showModal('Success!', 'Your message has been sent successfully!');
+                // Clear the form
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            }, function(error) {
+                console.log('FAILED...', error);
+                showModal('Error!', 'Failed to send message. Please try again later.');
+            });
+        });
+
+
+        // Chatbot functionality (remains largely the same, just color adjustments)
+        const chatbotButton = document.getElementById('chatbot-button');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+
+        let chatHistory = [{ role: "model", parts: [{ text: "Hello! I'm Rohaan's AI assistant. How can I help you learn more about him?" }] }];
+        let isGenerating = false;
+
+        chatbotButton.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('hidden');
+            if (!chatbotWindow.classList.contains('hidden')) {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+
+        async function sendMessage() {
+            const userMessage = chatInput.value.trim();
+            if (userMessage === '' || isGenerating) return;
+
+            appendMessage(userMessage, 'user');
+            chatInput.value = '';
+            isGenerating = true;
+
+            chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
+
+            const loadingMessageDiv = document.createElement('div');
+            loadingMessageDiv.classList.add('message', 'bot', 'loading-indicator');
+            loadingMessageDiv.innerHTML = `
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            `;
+            chatMessages.appendChild(loadingMessageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {
+                const payload = { contents: chatHistory };
+                const apiKey = ""; // Canvas will provide this at runtime if empty
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                chatMessages.removeChild(loadingMessageDiv);
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const botResponse = result.candidates[0].content.parts[0].text;
+                    appendMessage(botResponse, 'bot');
+                    chatHistory.push({ role: "model", parts: [{ text: botResponse }] });
+                } else {
+                    appendMessage("Sorry, I couldn't get a response. Please try again.", 'bot');
+                    console.error('Unexpected API response structure:', result);
+                }
+            } catch (error) {
+                chatMessages.removeChild(loadingMessageDiv);
+                appendMessage("An error occurred while fetching the response. Please try again later.", 'bot');
+                console.error('Error calling Gemini API:', error);
+            } finally {
+                isGenerating = false;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        function appendMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            const messageBubble = document.createElement('div');
+            messageBubble.classList.add('message-bubble');
+            messageBubble.innerText = text;
+            messageDiv.appendChild(messageBubble);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.querySelector('header button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
