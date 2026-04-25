@@ -1,832 +1,1117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M. Rohaan Zahid - AI Programmer Portfolio</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Custom styles for Inter font and smooth scrolling */
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-            color: white; /* Default text color */
-        }
-        /* Custom scrollbar for better aesthetics */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #111111; /* Darker track */
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #00bcd4; /* Cyan/teal thumb */
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0097a7; /* Darker cyan on hover */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M. Rohaan Zahid | AI Programmer Portfolio</title>
 
-        /* General section styling */
-        .section-container {
-            padding: 50px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative; /* Ensure sections are above canvas */
-            z-index: 1; /* Bring content above the canvas background */
-            /* Backgrounds for sections are now semi-transparent to show canvas animation */
-            background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent black for sections */
-            border-radius: 10px; /* Added for consistency with cards */
-            margin-bottom: 30px; /* Space between sections */
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1); /* Subtle glow */
-        }
-        .section-heading {
-            font-size: 36px;
-            text-align: center;
-            margin-bottom: 30px;
-            color: white; /* Headings are white on dark background */
-        }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-        /* Card/Box styling */
-        .card-background {
-            background: rgba(18, 18, 18, 0.8); /* Dark grey for cards/boxes, now semi-transparent */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2); /* Cyan glow shadow */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card-background:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-        }
-        .card-heading {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: white;
-        }
-        .card-text {
-            color: #b0bec5; /* Light grey/blue for card text */
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        /* Input field styling */
-        .input-field {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 10px;
-            background: #333; /* Darker input background */
-            color: white;
-            font-size: 16px;
-        }
-        .input-field:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px #00bcd4; /* Cyan focus ring */
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        /* Button styling */
-        .primary-button {
-            width: 100%;
-            padding: 15px;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 10px;
-            background-color: #00bcd4; /* Cyan button */
-            color: black; /* Black text on cyan */
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        .primary-button:hover {
-            transform: scale(1.02);
-            background-color: #0097a7; /* Darker cyan on hover */
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* Custom Modal for alerts */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 2000; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #121212; /* Dark grey modal background */
-            margin: auto;
-            padding: 30px;
-            border: 1px solid #00bcd4; /* Cyan border */
-            border-radius: 10px;
-            width: 80%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            position: relative;
-        }
-        .modal-content h3 {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        .modal-content p {
-            color: #b0bec5;
-            margin-bottom: 25px;
-            font-size: 16px;
-        }
-        .modal-close-button {
-            background-color: #00bcd4;
-            color: black;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .modal-close-button:hover {
-            background-color: #0097a7;
-        }
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: #020617;
+      color: white;
+      overflow-x: hidden;
+    }
 
-        /* Canvas styling for Quantum Particles */
-        #quantum-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1; /* Ensure it's behind other content */
-            width: 100%;
-            height: 100%;
-            display: block; /* Ensures it takes up full space */
-            background-color: #000000; /* Base background color */
-        }
-        /* Profile image styling */
-        .profile-image {
-            width: 150px; /* Adjust size as needed */
-            height: 150px; /* Adjust size as needed */
-            border-radius: 50%; /* Makes the image round */
-            object-fit: cover; /* Ensures the image covers the area without distortion */
-            border: 4px solid #00bcd4; /* Cyan border */
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); /* Subtle glow around the image */
-            margin-bottom: 20px; /* Space below the image */
-        }
-    </style>
+    #quantum-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: #020617;
+    }
+
+    .glass {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.78));
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 24px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(34, 211, 238, 0.45);
+      box-shadow: 0 18px 45px rgba(34, 211, 238, 0.12);
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeUp 0.35s ease both;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-tab {
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      color: #e2e8f0;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .nav-tab:hover {
+      color: #67e8f9;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-tab.active {
+      color: #020617;
+      background: linear-gradient(135deg, #67e8f9, #a78bfa);
+      box-shadow: 0 0 25px rgba(34, 211, 238, 0.3);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #67e8f9, #a78bfa);
+      color: #020617;
+      font-weight: 900;
+      transition: 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 35px rgba(34, 211, 238, 0.24);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.7);
+      color: #f8fafc;
+      font-weight: 900;
+      transition: 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(34, 211, 238, 0.65);
+      color: #67e8f9;
+      transform: translateY(-3px);
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.75);
+      color: white;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border-color: #67e8f9;
+      box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.15);
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.09);
+      border: 1px solid rgba(34, 211, 238, 0.18);
+      color: #cffafe;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    .mobile-menu.show {
+      display: block;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      #cvPreview,
+      #cvPreview * {
+        visibility: visible;
+      }
+
+      #cvPreview {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
-<body class="text-white antialiased">
 
-    <!-- Canvas for Quantum Particles -->
-    <canvas id="quantum-canvas"></canvas>
+<body>
+  <canvas id="quantum-canvas"></canvas>
 
-    <!-- Header/Navigation -->
-    <header class="bg-gray-900 shadow-lg py-4 fixed w-full z-10" style="background-color: rgba(17, 24, 39, 0.9);">
-        <nav class="container mx-auto px-4 flex justify-between items-center">
-            <a href="#hero" class="text-2xl font-bold text-white hover:text-cyan-400 transition duration-300">Rohaan Zahid</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="#about" class="text-white hover:text-cyan-400 transition duration-300">About</a>
-                <a href="#skills" class="text-white hover:text-cyan-400 transition duration-300">Skills</a>
-                <a href="#projects" class="text-white hover:text-cyan-400 transition duration-300">Projects</a>
-                <a href="#education" class="text-white hover:text-cyan-400 transition duration-300">Education</a>
-                <a href="#contact" class="text-white hover:text-cyan-400 transition duration-300">Contact</a>
-            </div>
-            <!-- Mobile Menu Button (Hamburger) -->
-            <button class="md:hidden text-white focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-        </nav>
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="hidden md:hidden py-4" style="background-color: rgba(17, 24, 39, 0.9);">
-            <div class="flex flex-col items-center space-y-4">
-                <a href="#about" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
-                <a href="#skills" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Skills</a>
-                <a href="#projects" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
-                <a href="#education" class="text-white hover:text-cyan-400 transition duration-300" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Contact</a>
-            </div>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-slate-700/40 bg-slate-950/85 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+      <button onclick="openTab('home')" class="flex items-center gap-3">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/30 bg-cyan-400/10 text-xl font-black text-cyan-200">
+          RZ
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero" class="relative flex items-center justify-center min-h-screen bg-transparent text-center py-20 px-4 pt-24 md:pt-0">
-        <div class="container mx-auto flex flex-col items-center justify-center">
-            <!-- Profile Photo - Updated with the direct link from Postimages -->
-            <img src="https://i.postimg.cc/P5FzQ0S9/mypic.jpg"
-                 alt="M. Rohaan Zahid Profile Photo"
-                 class="profile-image"
-                 onerror="this.onerror=null; this.src='https://placehold.co/150x150/00bcd4/ffffff?text=Image+Error';">
-            <!-- Heading and Tagline -->
-            <div class="text-center max-w-2xl">
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 drop-shadow-lg">
-                    M. Rohaan Zahid
-                </h1>
-                <p class="text-2xl sm:text-3xl text-gray-300 font-semibold mb-6">
-                    AI Programmer & Innovator
-                </p>
-                <p class="text-lg sm:text-xl text-gray-400 leading-relaxed max-w-xl mx-auto">
-                    Dedicated to building intelligent systems and secure digital futures.
-                </p>
-                <div class="mt-8">
-                    <a href="#contact" class="inline-block primary-button">
-                        Get in Touch
-                    </a>
-                </div>
-            </div>
+        <div class="text-left">
+          <h1 class="text-xl font-black">M. Rohaan Zahid</h1>
+          <p class="text-xs font-black tracking-[0.35em] text-cyan-200">AI PROGRAMMER</p>
         </div>
-    </section>
+      </button>
 
-    <!-- About Me Section -->
-    <section id="about" class="section-container">
-        <h2 class="section-heading">About Me</h2>
-        <div class="card-background p-8">
-            <p class="text-lg card-text leading-relaxed mb-6">
-               As a passionate and dedicated AI Programmer, I thrive at the dynamic crossroads of artificial intelligence, software development, and digital security. Currently in my 3rd semester of BS Artificial Intelligence at Sir Syed CASE Institute of Technology, I am deeply committed to mastering both the theoretical foundations and real-world applications of intelligent systems.With hands-on experience in languages like C++, Python, HTML, and CSS, and a growing portfolio of academic and personal projects, I continuously challenge myself to build innovative solutions that make a difference. Whether it’s developing software systems, designing algorithms, or exploring AI models, I bring creativity, logic, and determination to every line of code.
-I aim to contribute to a future where AI enhances lives and solves complex challenges — and I’m just getting started.
-            </p>
-            <p class="text-lg card-text leading-relaxed mb-6">
-                My technical journey has equipped me with proficiency in C/C++, C#, and Python, along with foundational skills in HTML for web development. I am deeply interested in Cyber Security and Network Administration, recognizing the critical need for secure and resilient digital infrastructures in today's world.
+      <nav class="hidden items-center gap-2 lg:flex">
+        <button class="nav-tab active" onclick="openTab('home')">Home</button>
+        <button class="nav-tab" onclick="openTab('about')">About</button>
+        <button class="nav-tab" onclick="openTab('skills')">Skills</button>
+        <button class="nav-tab" onclick="openTab('projects')">Projects</button>
+        <button class="nav-tab" onclick="openTab('education')">Education</button>
+        <button class="nav-tab" onclick="openTab('cv')">CV</button>
+        <button class="nav-tab" onclick="openTab('ai-guide')">AI Guide</button>
+        <button class="nav-tab" onclick="openTab('contact')">Contact</button>
+      </nav>
 
-Through coursework and personal projects — such as an AI-based robotics system and a console-based Airline Reservation System — I’ve developed strong problem-solving skills, a meticulous attention to detail, and a drive to create impactful technological solutions.
+      <div class="hidden lg:block">
+        <button onclick="openTab('cv'); setTimeout(downloadCVPDF, 300);" class="btn-secondary">Download CV</button>
+      </div>
 
-I aspire to contribute to a smarter, safer, and more connected future — powered by innovation and intelligent design.
-            </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section-container">
-        <h2 class="section-heading">My Skills</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Technical Skills -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-4">Technical Proficiency</h3>
-                <ul class="space-y-3 card-text">
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> C/C++ Programming</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Python Basics</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> HTML Basics</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Cyber Security Concepts</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Network Administration</li>
-                </ul>
-            </div>
-            <!-- Software & Tools -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-4">Software & Tools</h3>
-                <ul class="space-y-3 card-text">
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> MS Word</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> MS Excel</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> PowerPoint</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> AI/ML Frameworks (Basic)</li>
-                </ul>
-            </div>
-            <!-- Core Competencies -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-4">Core Competencies</h3>
-                <ul class="space-y-3 card-text">
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Problem Solving</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Critical Thinking</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Communication Skills</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Process Flow Analysis</li>
-                    <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> Detail-Oriented</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section-container">
-        <h2 class="section-heading">My Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Project Card 1: Airline Reservation System -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-4">Airline Reservation System</h3>
-                <p class="card-text leading-relaxed mb-4">
-                    Developed a console-based Airline Reservation System using C++ in Visual Studio Code. This project allows users to efficiently book and manage airline tickets through a user-friendly command-line interface.
-                </p>
-                <ul class="list-disc list-inside text-gray-400 mb-4">
-                    <li>Implemented core functionalities for ticket booking and cancellation.</li>
-                    <li>Designed a robust console-based user interface.</li>
-                    <li>Focused on data management and user experience in a text environment.</li>
-                </ul>
-                <div class="flex flex-wrap gap-3 mt-4">
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">C++</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Console Application</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">VS Code</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Data Management</span>
-                </div>
-                <a href="https://github.com/Rohaanrz05/airline-reservation-system-" target="_blank" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-semibold transition duration-300">View Project &rarr;</a>
-            </div>
-
-            <!-- Project Card 2: JF-17 Aeroplane Shooting Game -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-4">JF-17 Aeroplane Shooting Game (C#)</h3>
-                <p class="card-text leading-relaxed mb-4">
-                    Created an engaging aeroplane shooting game named "JF-17" using C# in Visual Studio Code 2022. This project showcases my skills in game development fundamentals, object-oriented programming, and interactive design.
-                </p>
-                <ul class="list-disc list-inside text-gray-400 mb-4">
-                    <li>Developed game logic and mechanics.</li>
-                    <li>Implemented player controls and enemy AI.</li>
-                    <li>Utilized C# for object-oriented programming principles.</li>
-                </ul>
-                <div class="flex flex-wrap gap-3 mt-4">
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">C#</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Game Development</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Visual Studio</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">OOP</span>
-                </div>
-                <a href="https://github.com/Rohaanrz05/jf-17-shooting-game-" target="_blank" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-semibold transition duration-300">View Project &rarr;</a>
-            </div>
-
-            <!-- Project Card 3: One Dollar Shop Project -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-4">One Dollar Shop Project</h3>
-                <p class="card-text leading-relaxed mb-4">
-                    Developed a functional e-commerce website for a "one dollar shop" concept. This project involved both frontend and backend development to create an an interactive shopping experience.
-                </p>
-                <ul class="list-disc list-inside text-gray-400 mb-4">
-                    <li>Designed user interface and experience.</li>
-                    <li>Implemented product display and basic shopping cart features.</li>
-                    <li>Managed product data and user information.</li>
-                </ul>
-                <div class="flex flex-wrap gap-3 mt-4">
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">HTML</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">CSS</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">MySQL</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">phpMyAdmin</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">E-commerce</span>
-                </div>
-                <!-- Assuming this project might not have a public GitHub repo link provided, leaving as is -->
-            </div>
-
-            <!-- Project Card 4: Robotic Lab Project - Parking Management System -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-4">Robotic Lab Project - Parking Management System</h3>
-                <p class="card-text leading-relaxed mb-4">
-                    Developed an automated parking management system as part of a robotics lab project. This system efficiently handles vehicle parking and slot management.
-                </p>
-                <ul class="list-disc list-inside text-gray-400 mb-4">
-                    <li>Designed and programmed the system logic.</li>
-                    <li>Integrated Arduino for hardware control.</li>
-                    <li>Implemented automated car parking and empty slot retrieval.</li>
-                </ul>
-                <div class="flex flex-wrap gap-3 mt-4">
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Robotics</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Arduino</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Automation</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Embedded Systems</span>
-                </div>
-                <!-- Assuming this project might not have a public GitHub repo link provided, leaving as is -->
-            </div>
-
-            <!-- Project Card 5: MyPortfolio Website (formerly Web Development Learning Project) -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-4">MyPortfolio Website</h3>
-                <p class="card-text leading-relaxed mb-4">
-                    This personal portfolio website showcases my skills and projects in AI, software, and web development. It is built with modern web technologies for a responsive and engaging user experience.
-                </p>
-                <ul class="list-disc list-inside text-gray-400 mb-4">
-                    <li>Designed and developed responsive UI using HTML and Tailwind CSS.</li>
-                    <li>Implemented EmailJS for the contact form functionality.</li>
-                    <li>Features a Chatbase AI assistant for interactive inquiries.</li>
-                </ul>
-                <div class="flex flex-wrap gap-3 mt-4">
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Web Development</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">HTML/CSS</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">JavaScript</span>
-                    <span class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full">Tailwind CSS</span>
-                </div>
-                <a href="https://github.com/Rohaanrz05/MyPortfolio" target="_blank" class="inline-block mt-6 text-cyan-400 hover:text-cyan-300 font-semibold transition duration-300">View Repository &rarr;</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="section-container">
-        <h2 class="section-heading">Education</h2>
-        <div class="space-y-8">
-            <!-- Sir Syed Case University -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-2">Sir Syed Case University</h3>
-                <p class="text-xl card-text mb-3">Ongoing</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-2">
-                    <li>**1st Semester:**
-                        <ul class="list-circle list-inside ml-4">
-                            <li>Learning web development</li>
-                            <li>Advancing programming with C++ and basics of Python</li>
-                        </ul>
-                    </li>
-                    <li>**2nd Semester:**
-                        <ul class="list-circle list-inside ml-4">
-                            <li>Learning database working using phpMyAdmin.</li>
-                            <li>Advancing my skills in C++ and C#.</li>
-                        </ul>
-                    </li>
-                    <li>**3rd Semester (Ongoing):**
-                        <ul class="list-circle list-inside ml-4">
-                            <li>Currently engaged in advanced topics and projects.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- Punjab College -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-2">Punjab College</h3>
-                <p class="text-xl card-text mb-3">HSSC 1 & 2 (2022 - 2024)</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-2">
-                    <li>Obtained 689 marks (62% out of 1100 total marks).</li>
-                    <li>Opted for ICS (Intermediate in Computer Science) with Physics and Maths.</li>
-                </ul>
-            </div>
-            <!-- SLS High School -->
-            <div class="card-background p-6">
-                <h3 class="card-heading mb-2">SLS High School</h3>
-                <p class="text-xl card-text mb-3">Matriculation (FY 2022)</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-2">
-                    <li>Matriculation Degree awarded in FY 2022.</li>
-                    <li>Obtained 844 marks (79% out of 1100 total marks) in Computer Science field.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section-container">
-        <h2 class="section-heading">Get in Touch</h2>
-        <div class="card-background p-8 max-w-2xl mx-auto">
-            <p class="text-lg card-text leading-relaxed mb-8">
-                I'm always open to new opportunities, collaborations, and discussions. Feel free to reach out to me via the form below.
-            </p>
-            <!-- Formspree form integration -->
-            <form id="contactForm" action="https://formspree.io/f/mblyeqol" method="POST">
-                <input type="text" id="name" name="name" placeholder="Your Name" class="input-field" required>
-                <input type="email" id="email" name="email" placeholder="Your Email" class="input-field" required>
-                <textarea id="message" name="message" placeholder="Your Message" class="input-field h-32 resize-y" required></textarea>
-                <button type="submit" class="primary-button">Send Message</button>
-                <p class="text-red-400 text-center mt-4 hidden" id="formError">Please fill in all fields.</p>
-            </form>
-            <div class="space-y-6 mt-10">
-                <div class="flex items-center justify-center">
-                    <svg class="w-8 h-8 text-cyan-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7m3 4l4 4 4-4"></path></svg>
-                    <a href="mailto:rohaanzahid.04@gmail.com" class="text-xl text-white hover:text-cyan-400 transition duration-300 font-semibold">rohaanzahid.04@gmail.com</a>
-                </div>
-                <div class="flex items-center justify-center">
-                    <svg class="w-8 h-8 text-cyan-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path></svg>
-                    <p class="text-xl text-white font-semibold">03338705793</p>
-                </div>
-            </div>
-            <!-- Optional: Social Media Links -->
-            <div class="mt-10 flex justify-center space-x-6">
-                <!-- Placeholder for LinkedIn -->
-                <a href="#" class="text-gray-400 hover:text-cyan-400 transition duration-300">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path></svg>
-                </a>
-                <!-- Placeholder for GitHub -->
-                <a href="#" class="text-gray-400 hover:text-cyan-400 transition duration-300">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.799 8.207 11.387.6.111.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.043-1.61-4.043-1.61-.546-1.387-1.334-1.756-1.334-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.775.42-1.305.762-1.605-2.665-.3-5.466-1.33-5.466-5.93 0-1.31.465-2.382 1.235-3.22-.12-.3-.535-1.52.117-3.176 0 0 1-.322 3.3.998.94-.26 1.94-.39 2.94-.39.996 0 1.996.13 2.936.39 2.29-1.32 3.28-1 3.28-1 .653 1.656.239 2.876.12 3.176.77.838 1.235 1.91 1.235 3.22 0 4.61-2.805 5.62-5.475 5.92.43.37.82 1.1.82 2.22 0 1.606-.015 2.895-.015 3.287 0 .32.21.69.825.577C20.565 21.795 24 17.3 24 12c0-6.627-5.373-12-12-12z" clip-rule="evenodd"></path></svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black py-8 text-center text-gray-400 border-t border-gray-800" style="background-color: rgba(0, 0, 0, 0.7);">
-        <div class="container mx-auto px-4">
-            <p>&copy; 2024 M. Rohaan Zahid. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Custom Message Modal -->
-    <div id="messageModal" class="modal">
-        <div class="modal-content">
-            <h3 id="modalTitle"></h3>
-            <p id="modalMessage"></p>
-            <button class="modal-close-button" onclick="closeModal()">OK</button>
-        </div>
+      <button onclick="toggleMobileMenu()" class="rounded-xl border border-slate-700 px-4 py-3 font-black lg:hidden">
+        ☰
+      </button>
     </div>
 
-    <!-- Chatbase Chatbot -->
-    <script>
-        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="I2lpeEpaZZmNHHrOBoDaD";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-    </script>
+    <div id="mobileMenu" class="mobile-menu border-t border-slate-700/40 bg-slate-950/95 px-5 py-4 lg:hidden">
+      <div class="grid gap-2">
+        <button class="nav-tab active" onclick="openTab('home'); toggleMobileMenu()">Home</button>
+        <button class="nav-tab" onclick="openTab('about'); toggleMobileMenu()">About</button>
+        <button class="nav-tab" onclick="openTab('skills'); toggleMobileMenu()">Skills</button>
+        <button class="nav-tab" onclick="openTab('projects'); toggleMobileMenu()">Projects</button>
+        <button class="nav-tab" onclick="openTab('education'); toggleMobileMenu()">Education</button>
+        <button class="nav-tab" onclick="openTab('cv'); toggleMobileMenu()">CV</button>
+        <button class="nav-tab" onclick="openTab('ai-guide'); toggleMobileMenu()">AI Guide</button>
+        <button class="nav-tab" onclick="openTab('contact'); toggleMobileMenu()">Contact</button>
+      </div>
+    </div>
+  </header>
 
-    <script>
-        // Function to show custom modal
-        function showModal(title, message) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalMessage').innerText = message;
-            document.getElementById('messageModal').style.display = 'flex';
-        }
+  <main class="mx-auto max-w-7xl px-5 pb-16 pt-28">
 
-        // Function to close custom modal
-        function closeModal() {
-            document.getElementById('messageModal').style.display = 'none';
-        }
+    <!-- Home -->
+    <section id="home" class="tab-panel active">
+      <div class="glass rounded-[2rem] p-8 md:p-12">
+        <div class="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+          <div>
+            <p class="font-black uppercase tracking-[0.45em] text-cyan-200">Portfolio</p>
+            <h2 class="mt-5 text-5xl font-black leading-tight md:text-7xl">
+              M. Rohaan Zahid
+              <span class="block bg-gradient-to-r from-cyan-300 to-violet-400 bg-clip-text text-transparent">
+                AI Programmer
+              </span>
+            </h2>
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+              Passionate BS Artificial Intelligence student focused on AI, software development,
+              machine learning, cybersecurity concepts, and modern web-based projects.
+            </p>
 
-        // Handle Formspree contact form submission
-        document.getElementById('contactForm').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent default form submission
+            <div class="mt-8 flex flex-wrap gap-4">
+              <button onclick="openTab('projects')" class="btn-primary">View Projects</button>
+              <button onclick="openTab('cv')" class="btn-secondary">View CV</button>
+              <button onclick="openTab('contact')" class="btn-secondary">Contact Me</button>
+            </div>
 
-            const form = event.target;
-            const formData = new FormData(form);
-            const formError = document.getElementById('formError');
+            <div class="mt-10 grid gap-4 sm:grid-cols-3">
+              <div class="card p-5">
+                <h3 class="text-3xl font-black text-cyan-200">5+</h3>
+                <p class="mt-1 text-sm text-slate-300">Projects</p>
+              </div>
+              <div class="card p-5">
+                <h3 class="text-3xl font-black text-cyan-200">AI</h3>
+                <p class="mt-1 text-sm text-slate-300">BS Artificial Intelligence</p>
+              </div>
+              <div class="card p-5">
+                <h3 class="text-3xl font-black text-cyan-200">ML</h3>
+                <p class="mt-1 text-sm text-slate-300">Streamlit Prediction App</p>
+              </div>
+            </div>
+          </div>
 
-            // Basic validation
-            if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
-                formError.classList.remove('hidden');
-                return;
-            }
-            formError.classList.add('hidden'); // Hide error if all fields are filled
+          <div class="card p-7 text-center">
+            <img
+              src="https://i.postimg.cc/P5FzQ0S9/mypic.jpg"
+              alt="M. Rohaan Zahid"
+              class="mx-auto h-56 w-56 rounded-full border-4 border-cyan-300 object-cover shadow-2xl"
+              onerror="this.style.display='none'; document.getElementById('profileFallback').style.display='flex';"
+            />
+            <div id="profileFallback" class="mx-auto hidden h-56 w-56 items-center justify-center rounded-full border-4 border-cyan-300 bg-slate-800 text-5xl font-black">
+              RZ
+            </div>
+            <h3 class="mt-6 text-3xl font-black">AI Programmer & Developer</h3>
+            <p class="mt-3 leading-7 text-slate-300">
+              Building intelligent, useful, and secure digital solutions through code.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
+    <!-- About -->
+    <section id="about" class="tab-panel">
+      <div class="glass rounded-[2rem] p-8 md:p-12">
+        <p class="font-black uppercase tracking-[0.45em] text-cyan-200">About Me</p>
+        <h2 class="mt-4 text-4xl font-black md:text-6xl">Who I Am</h2>
 
-                if (response.ok) {
-                    showModal('Success!', 'Your message has been sent successfully!');
-                    form.reset(); // Clear the form
-                } else {
-                    const data = await response.json();
-                    if (data.errors) {
-                        // Formspree might return specific errors
-                        showModal('Error!', 'Failed to send message: ' + data.errors.map(e => e.message).join(', '));
-                    } else {
-                        showModal('Error!', 'Failed to send message. Please try again later.');
-                    }
-                }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                showModal('Error!', 'An error occurred while sending your message. Please try again later.');
-            }
-        });
+        <div class="mt-8 grid gap-6 lg:grid-cols-2">
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">Professional Summary</h3>
+            <p class="mt-4 leading-8 text-slate-300">
+              I am a passionate and dedicated AI Programmer currently pursuing a BS in Artificial Intelligence
+              at Sir Syed CASE Institute of Technology. I am interested in Artificial Intelligence,
+              Software Development, Cyber Security, and building intelligent systems.
+            </p>
+          </div>
 
-        // Mobile menu toggle functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuButton = document.querySelector('header button');
-            const mobileMenu = document.getElementById('mobile-menu');
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">My Focus</h3>
+            <p class="mt-4 leading-8 text-slate-300">
+              I have practical experience with C/C++, C#, Python basics, HTML, CSS, database tools,
+              and web development. I enjoy creating academic and personal projects that improve my
+              problem-solving and real-world development skills.
+            </p>
+          </div>
+        </div>
 
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
+        <div class="card mt-6 p-7">
+          <h3 class="text-2xl font-black text-cyan-200">Career Goal</h3>
+          <p class="mt-4 leading-8 text-slate-300">
+            My goal is to become a strong AI and software developer who can build useful applications,
+            apply machine learning models, and contribute to smarter, safer, and more connected digital systems.
+          </p>
+        </div>
+      </div>
+    </section>
 
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
-            }
-        });
+    <!-- Skills -->
+    <section id="skills" class="tab-panel">
+      <div class="glass rounded-[2rem] p-8 md:p-12">
+        <p class="font-black uppercase tracking-[0.45em] text-cyan-200">Skills</p>
+        <h2 class="mt-4 text-4xl font-black md:text-6xl">Technical Skill Set</h2>
 
-        // Quantum Particle System
-        class QuantumParticle {
-            constructor(canvas) {
-                this.canvas = canvas;
-                this.ctx = canvas.getContext('2d');
-                this.particles = [];
-                this.entangledPairs = [];
-                this.quantumStates = []; // Not directly used in this version but kept for concept
-                this.resize();
-                window.addEventListener('resize', () => this.resize());
-            }
+        <div class="mt-8 grid gap-6 lg:grid-cols-3">
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">Programming</h3>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-pill">C/C++</span>
+              <span class="skill-pill">C#</span>
+              <span class="skill-pill">Python Basics</span>
+              <span class="skill-pill">HTML</span>
+              <span class="skill-pill">CSS</span>
+              <span class="skill-pill">JavaScript Basics</span>
+            </div>
+          </div>
 
-            resize() {
-                this.width = this.canvas.width = window.innerWidth;
-                this.height = this.canvas.height = window.innerHeight;
-            }
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">Tools</h3>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-pill">VS Code</span>
+              <span class="skill-pill">Visual Studio</span>
+              <span class="skill-pill">phpMyAdmin</span>
+              <span class="skill-pill">MS Word</span>
+              <span class="skill-pill">MS Excel</span>
+              <span class="skill-pill">PowerPoint</span>
+            </div>
+          </div>
 
-            init(count = 100) {
-                // Create particles with quantum spin states
-                for (let i = 0; i < count; i++) {
-                    const spin = Math.random() > 0.5 ? 1 : -1; // Spin up or spin down
-                    this.particles.push({
-                        x: Math.random() * this.width,
-                        y: Math.random() * this.height,
-                        vx: (Math.random() - 0.5) * 1.5, // Slower movement
-                        vy: (Math.random() - 0.5) * 1.5,
-                        size: 1.5 + Math.random() * 2, // Smaller particles
-                        color: spin === 1 ?
-                            `hsl(${200 + Math.random() * 40}, 100%, 60%)` : // Blueish-cyan for spin up
-                            `hsl(${300 + Math.random() * 40}, 100%, 60%)`, // Purplish-pink for spin down
-                        spin: spin,
-                        entangledWith: null,
-                        phase: Math.random() * Math.PI * 2 // Initial quantum phase
-                    });
-                }
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">Core Strengths</h3>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-pill">Problem Solving</span>
+              <span class="skill-pill">Critical Thinking</span>
+              <span class="skill-pill">Communication</span>
+              <span class="skill-pill">Teamwork</span>
+              <span class="skill-pill">Detail-Oriented</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                // Create quantum entanglement between particles
-                this.createEntanglements();
-                this.animate(); // Start the animation loop
-            }
+    <!-- Projects -->
+    <section id="projects" class="tab-panel">
+      <div class="glass rounded-[2rem] p-8 md:p-12">
+        <p class="font-black uppercase tracking-[0.45em] text-cyan-200">Projects</p>
+        <h2 class="mt-4 text-4xl font-black md:text-6xl">My Work</h2>
 
-            createEntanglements() {
-                // Entangle particles in pairs (EPR pairs)
-                const available = [...this.particles];
+        <div class="mt-8 grid gap-6 lg:grid-cols-2">
 
-                while (available.length >= 2) {
-                    const a = Math.floor(Math.random() * available.length);
-                    const p1 = available.splice(a, 1)[0];
-                    const b = Math.floor(Math.random() * available.length);
-                    const p2 = available.splice(b, 1)[0];
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">AI Impact on Society</h3>
+            <p class="mt-4 leading-7 text-slate-300">
+              A machine learning based project deployed on Streamlit. The frontend runs live on Streamlit
+              and the ML model is applied for prediction.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">Machine Learning</span>
+              <span class="skill-pill">Streamlit</span>
+              <span class="skill-pill">Prediction Model</span>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="https://github.com/Rohaanrz05/AI-Impact-on-society" target="_blank" class="btn-secondary">GitHub Repo</a>
+              <a href="https://ai-impact-on-society-npqryrdneff4cwqp9nipas.streamlit.app/" target="_blank" class="btn-primary">Live Streamlit App</a>
+            </div>
+          </div>
 
-                    p1.entangledWith = p2;
-                    p2.entangledWith = p1;
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">Airline Reservation System</h3>
+            <p class="mt-4 leading-7 text-slate-300">
+              Console-based C++ project for ticket booking, cancellation, and airline reservation management.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-pill">C++</span>
+              <span class="skill-pill">Console App</span>
+              <span class="skill-pill">Data Handling</span>
+            </div>
+            <div class="mt-6">
+              <a href="https://github.com/Rohaanrz05/airline-reservation-system-" target="_blank" class="btn-secondary">View Project</a>
+            </div>
+          </div>
 
-                    // Ensure opposite spins (like quantum entangled particles)
-                    p2.spin = -p1.spin;
-                    // Assign color based on the *new* spin state of p2
-                    p2.color = p2.spin === 1 ?
-                        `hsl(${200 + Math.random() * 40}, 100%, 60%)` :
-                        `hsl(${300 + Math.random() * 40}, 100%, 60%)`;
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">JF-17 Aeroplane Shooting Game</h3>
+            <p class="mt-4 leading-7 text-slate-300">
+              A C# based interactive shooting game with player controls, game logic, and enemy AI.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-pill">C#</span>
+              <span class="skill-pill">Game Development</span>
+              <span class="skill-pill">OOP</span>
+            </div>
+            <div class="mt-6">
+              <a href="https://github.com/Rohaanrz05/jf-17-shooting-game-" target="_blank" class="btn-secondary">View Project</a>
+            </div>
+          </div>
 
-                    this.entangledPairs.push([p1, p2]);
-                }
-            }
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">One Dollar Shop</h3>
+            <p class="mt-4 leading-7 text-slate-300">
+              E-commerce concept project with product display, basic shopping cart features, and product management.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-pill">HTML</span>
+              <span class="skill-pill">CSS</span>
+              <span class="skill-pill">MySQL</span>
+              <span class="skill-pill">phpMyAdmin</span>
+            </div>
+          </div>
 
-            animate() {
-                this.ctx.clearRect(0, 0, this.width, this.height); // Clear canvas each frame
+          <div class="card p-7 lg:col-span-2">
+            <h3 class="text-2xl font-black text-cyan-200">My Portfolio Website</h3>
+            <p class="mt-4 leading-7 text-slate-300">
+              Personal portfolio website with working tabs, CV download, contact form, project showcase,
+              animated background, and smart AI guide.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <span class="skill-pill">HTML</span>
+              <span class="skill-pill">Tailwind CSS</span>
+              <span class="skill-pill">JavaScript</span>
+              <span class="skill-pill">Formspree</span>
+              <span class="skill-pill">Chatbot</span>
+            </div>
+            <div class="mt-6">
+              <a href="https://github.com/Rohaanrz05/MyPortfolio" target="_blank" class="btn-secondary">View Repository</a>
+            </div>
+          </div>
 
-                // Update and draw particles
-                this.particles.forEach(p => {
-                    // Quantum tunneling effect (random position jumps) - less frequent
-                    if (Math.random() < 0.0005) {
-                        p.x = Math.random() * this.width;
-                        p.y = Math.random() * this.height;
-                    }
+        </div>
+      </div>
+    </section>
 
-                    // Normal movement with boundary checking (wrap around)
-                    p.x += p.vx;
-                    p.y += p.vy;
+    <!-- Education -->
+    <section id="education" class="tab-panel">
+      <div class="glass rounded-[2rem] p-8 md:p-12">
+        <p class="font-black uppercase tracking-[0.45em] text-cyan-200">Education</p>
+        <h2 class="mt-4 text-4xl font-black md:text-6xl">Academic Journey</h2>
 
-                    // Wrap particles around the screen edges
-                    if (p.x < 0) p.x = this.width;
-                    if (p.x > this.width) p.x = 0;
-                    if (p.y < 0) p.y = this.height;
-                    if (p.y > this.height) p.y = 0;
+        <div class="mt-8 grid gap-6">
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">Sir Syed CASE Institute of Technology</h3>
+            <p class="mt-2 text-lg font-bold text-white">BS Artificial Intelligence — Ongoing</p>
+            <ul class="mt-4 list-disc space-y-2 pl-6 text-slate-300">
+              <li>1st Semester: Web development, C++, and Python basics.</li>
+              <li>2nd Semester: Database using phpMyAdmin, C++, and C#.</li>
+              <li>3rd Semester: Advanced topics and academic projects.</li>
+            </ul>
+          </div>
 
-                    // Quantum phase evolution
-                    p.phase += 0.02; // Faster phase evolution for more dynamic wave
-                    p.phase = p.phase % (Math.PI * 2); // Keep phase within 0 to 2PI
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">Punjab College</h3>
+            <p class="mt-2 text-lg font-bold text-white">HSSC 1 & 2 — 2022 to 2024</p>
+            <p class="mt-4 text-slate-300">
+              ICS with Physics and Mathematics. Obtained 689 marks, 62% out of 1100.
+            </p>
+          </div>
 
-                    // Draw particle with wave function visualization
-                    this.drawParticle(p);
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">SLS High School</h3>
+            <p class="mt-2 text-lg font-bold text-white">Matriculation — 2022</p>
+            <p class="mt-4 text-slate-300">
+              Computer Science field. Obtained 844 marks, 79% out of 1100.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                    // Draw entanglement connection if exists
-                    if (p.entangledWith) {
-                        this.drawEntanglement(p, p.entangledWith);
-                    }
-                });
+    <!-- CV -->
+    <section id="cv" class="tab-panel">
+      <div class="glass rounded-[2rem] p-8 md:p-12">
+        <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div>
+            <p class="font-black uppercase tracking-[0.45em] text-cyan-200">CV</p>
+            <h2 class="mt-4 text-4xl font-black md:text-6xl">Download or Preview My CV</h2>
+            <p class="mt-6 leading-8 text-slate-300">
+              This CV is built directly inside the website. No separate CV image or PDF file is required.
+              Click the button below and the PDF will be generated automatically.
+            </p>
 
-                // Quantum measurement effect (random collapse) - less frequent
-                if (Math.random() < 0.002) {
-                    this.quantumCollapse();
-                }
+            <div class="mt-8 flex flex-wrap gap-3">
+              <button onclick="downloadCVPDF()" class="btn-primary">Download CV PDF</button>
+              <button onclick="printCV()" class="btn-secondary">Print / Save CV</button>
+              <button onclick="openTab('contact')" class="btn-secondary">Contact Me</button>
+            </div>
 
-                requestAnimationFrame(() => this.animate()); // Loop animation
-            }
+            <div class="card mt-8 p-6">
+              <h3 class="text-xl font-black text-white">Quick Contact</h3>
+              <p class="mt-3 text-slate-300">Email: <span class="text-cyan-200">rohaanzahid.04@gmail.com</span></p>
+              <p class="text-slate-300">Phone: <span class="text-cyan-200">+92 333 8705793</span></p>
+              <p class="text-slate-300">GitHub: <span class="text-cyan-200">github.com/Rohaanrz05</span></p>
+              <p class="text-slate-300">Portfolio: <span class="text-cyan-200">rohaanrz05.github.io/MyPortfolio</span></p>
+            </div>
+          </div>
 
-            drawParticle(p) {
-                // Draw probability cloud (fuzzy halo)
-                const gradient = this.ctx.createRadialGradient(
-                    p.x, p.y, 0,
-                    p.x, p.y, p.size * 5
-                );
-                gradient.addColorStop(0, p.color);
-                gradient.addColorStop(1, 'rgba(0,0,0,0)'); // Fade to transparent
+          <div id="cvPreview" class="rounded-[2rem] bg-white p-5 text-slate-900 shadow-2xl">
+            <div class="grid gap-5 md:grid-cols-[0.9fr_1.1fr]">
+              <div class="rounded-3xl bg-[#3f423d] p-5 text-white">
+                <div class="text-center">
+                  <div class="mx-auto flex h-24 w-24 items-center justify-center rounded-full border-4 border-[#7890bd] bg-slate-800 text-3xl font-black">
+                    RZ
+                  </div>
+                  <h1 class="mt-4 text-3xl font-black tracking-wide">M. ROHAAN ZAHID</h1>
+                  <p class="mt-2 text-lg font-bold tracking-[0.3em] text-[#b7c8ef]">AI PROGRAMMER</p>
+                </div>
 
-                this.ctx.beginPath();
-                this.ctx.fillStyle = gradient;
-                this.ctx.arc(p.x, p.y, p.size * 5, 0, Math.PI * 2);
-                this.ctx.fill();
+                <div class="mt-7">
+                  <h2 class="rounded-r-full bg-[#7890bd] px-4 py-2 text-2xl font-black tracking-[0.25em]">ABOUT ME</h2>
+                  <p class="mt-4 text-sm leading-7 text-slate-100">
+                    I am a passionate and dedicated AI Programmer currently pursuing a BS in Artificial Intelligence
+                    at Sir Syed CASE Institute of Technology. I have interest in AI, Software Development,
+                    Cyber Security, and intelligent systems.
+                  </p>
+                </div>
 
-                // Draw particle core with spin indication
-                this.ctx.beginPath();
-                this.ctx.fillStyle = p.color;
-                this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                this.ctx.fill();
+                <div class="mt-7">
+                  <h2 class="rounded-r-full bg-[#7890bd] px-4 py-2 text-2xl font-black tracking-[0.25em]">SKILLS</h2>
 
-                // Draw spin direction indicator (a small line rotating with phase)
-                this.ctx.beginPath();
-                this.ctx.strokeStyle = 'white';
-                this.ctx.lineWidth = 1;
-                const lineLength = p.size * 2;
-                this.ctx.moveTo(p.x + Math.cos(p.phase) * lineLength, p.y + Math.sin(p.phase) * lineLength);
-                this.ctx.lineTo(p.x - Math.cos(p.phase) * lineLength, p.y - Math.sin(p.phase) * lineLength);
-                this.ctx.stroke();
-            }
+                  <h3 class="mt-5 text-lg font-black">Technical</h3>
+                  <ul class="mt-2 space-y-1 text-sm">
+                    <li>✓ C/C++ Programming</li>
+                    <li>✓ Python Basics</li>
+                    <li>✓ HTML Basics</li>
+                    <li>✓ C# Basics</li>
+                  </ul>
 
-            drawEntanglement(p1, p2) {
-                // Draw quantum connection with subtle interference pattern
-                const dx = p2.x - p1.x;
-                const dy = p2.y - p1.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
+                  <h3 class="mt-5 text-lg font-black">Software & Tools</h3>
+                  <ul class="mt-2 space-y-1 text-sm">
+                    <li>✓ MS Word</li>
+                    <li>✓ MS Excel</li>
+                    <li>✓ PowerPoint</li>
+                    <li>✓ AI/ML Frameworks Basic</li>
+                  </ul>
 
-                if (dist < 250) { // Only draw connections for relatively nearby particles
-                    const alpha = 0.5 * (1 - dist / 250); // Fade out with distance
+                  <h3 class="mt-5 text-lg font-black">Core</h3>
+                  <ul class="mt-2 space-y-1 text-sm">
+                    <li>✓ Problem Solving</li>
+                    <li>✓ Critical Thinking</li>
+                    <li>✓ Communication Skills</li>
+                    <li>✓ Detail-Oriented</li>
+                  </ul>
+                </div>
+              </div>
 
-                    this.ctx.beginPath();
-                    this.ctx.strokeStyle = `hsla(${p1.spin === 1 ? 220 : 320}, 100%, 70%, ${alpha})`; // Color based on spin
-                    this.ctx.lineWidth = 0.8; // Slightly thicker lines for visibility
-                    this.ctx.moveTo(p1.x, p1.y);
+              <div class="p-2">
+                <section>
+                  <h2 class="border-b-4 border-black pb-2 text-3xl font-black tracking-widest">EDUCATION</h2>
+                  <div class="mt-4 space-y-4 text-sm leading-6">
+                    <div>
+                      <h3 class="font-black">Sir Syed CASE University</h3>
+                      <p><b>BS Artificial Intelligence:</b> Ongoing.</p>
+                      <p><b>1st Semester:</b> Web development, C++, Python basics.</p>
+                      <p><b>2nd Semester:</b> Database using phpMyAdmin, C++, C#.</p>
+                      <p><b>3rd Semester:</b> Advanced topics and projects.</p>
+                    </div>
 
-                    // Create wave-like path for entanglement, influenced by phase
-                    const steps = 8; // Fewer steps for smoother waves
-                    for (let i = 1; i <= steps; i++) {
-                        const t = i / steps;
-                        const x = p1.x + dx * t;
-                        const y = p1.y + dy * t;
-                        const offset = Math.sin(t * Math.PI * 3 + p1.phase) * 8; // Wave amplitude and frequency
-                        const perpX = -dy / dist * offset;
-                        const perpY = dx / dist * offset;
-                        this.ctx.lineTo(x + perpX, y + perpY);
-                    }
+                    <div>
+                      <h3 class="font-black">Punjab College</h3>
+                      <p>HSSC 2022 - 2024. ICS with Physics and Maths. 689 marks, 62%.</p>
+                    </div>
 
-                    this.ctx.stroke();
+                    <div>
+                      <h3 class="font-black">SLS High School</h3>
+                      <p>Matriculation 2022. Computer Science. 844 marks, 79%.</p>
+                    </div>
+                  </div>
+                </section>
 
-                    // Draw a subtle "quantum bridge" effect for very close particles
-                    if (dist < 100) {
-                        const gradient = this.ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
-                        gradient.addColorStop(0, p1.color);
-                        gradient.addColorStop(1, p2.color);
+                <section class="mt-6">
+                  <h2 class="border-b-4 border-black pb-2 text-3xl font-black tracking-widest">PROJECTS</h2>
 
-                        this.ctx.beginPath();
-                        this.ctx.strokeStyle = gradient;
-                        this.ctx.lineWidth = 0.2; // Very thin line
-                        this.ctx.moveTo(p1.x, p1.y);
-                        this.ctx.lineTo(p2.x, p2.y);
-                        this.ctx.stroke();
-                    }
-                }
-            }
+                  <div class="mt-4 space-y-4 text-sm leading-6">
+                    <div>
+                      <h3 class="font-black">AIRLINE RESERVATION SYSTEM</h3>
+                      <ul class="ml-5 list-disc">
+                        <li>Console-based C++ ticket booking and cancellation system.</li>
+                        <li>Focused on data handling and user experience.</li>
+                      </ul>
+                    </div>
 
-            quantumCollapse() {
-                // Randomly "measure" a particle causing its entangled pair to react
-                if (this.entangledPairs.length > 0) {
-                    const randomPairIndex = Math.floor(Math.random() * this.entangledPairs.length);
-                    const [p1, p2] = this.entangledPairs[randomPairIndex];
+                    <div>
+                      <h3 class="font-black">JF-17 AEROPLANE SHOOTING GAME</h3>
+                      <ul class="ml-5 list-disc">
+                        <li>C# game with player controls, mechanics, and enemy AI.</li>
+                        <li>Applied object-oriented programming principles.</li>
+                      </ul>
+                    </div>
 
-                    // Randomly choose which particle to "measure"
-                    const measured = Math.random() > 0.5 ? p1 : p2;
-                    const other = measured === p1 ? p2 : p1;
+                    <div>
+                      <h3 class="font-black">AI IMPACT ON SOCIETY</h3>
+                      <ul class="ml-5 list-disc">
+                        <li>Machine learning project deployed on Streamlit.</li>
+                        <li>Frontend is live and ML model is used for prediction.</li>
+                        <li>GitHub: github.com/Rohaanrz05/AI-Impact-on-society</li>
+                      </ul>
+                    </div>
 
-                    // Visual effect of measurement (brief glow/pulse)
-                    const originalSize = measured.size;
-                    measured.size *= 3; // Temporarily make it larger
-                    measured.color = 'rgba(255, 255, 255, 0.8)'; // Briefly white flash
-                    setTimeout(() => {
-                        measured.size = originalSize; // Revert size
-                        measured.color = measured.spin === 1 ?
-                            `hsl(${200 + Math.random() * 40}, 100%, 60%)` :
-                            `hsl(${300 + Math.random() * 40}, 100%, 60%)`;
-                    }, 150); // Short duration
+                    <div>
+                      <h3 class="font-black">MY PORTFOLIO WEBSITE</h3>
+                      <ul class="ml-5 list-disc">
+                        <li>Responsive UI using HTML, Tailwind CSS, and JavaScript.</li>
+                        <li>Includes contact form, chatbot, and CV download.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
 
-                    // Entanglement effect - change the other particle's state instantly
-                    // Teleport 'other' particle close to 'measured' particle, with opposite spin
-                    other.x = measured.x + (Math.random() - 0.5) * 30; // Slightly offset
-                    other.y = measured.y + (Math.random() - 0.5) * 30;
-                    other.spin = -measured.spin; // Instant spin correlation
-                    other.color = other.spin === 1 ?
-                        `hsl(${200 + Math.random() * 40}, 100%, 60%)` :
-                        `hsl(${300 + Math.random() * 40}, 100%, 60%)`;
+                <section class="mt-6">
+                  <h2 class="border-b-4 border-black pb-2 text-3xl font-black tracking-widest">CONTACT</h2>
+                  <div class="mt-4 space-y-1 text-sm font-bold">
+                    <p>Phone: +92 333 8705793</p>
+                    <p>Email: rohaanzahid.04@gmail.com</p>
+                    <p>Portfolio: https://rohaanrz05.github.io/MyPortfolio</p>
+                    <p>GitHub: https://github.com/Rohaanrz05</p>
+                    <p>Address: House 420 Street 08 Block A FMC Islamabad</p>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
 
-                    // Add a subtle "quantum ripple" effect around the measured particle
-                    this.drawRipple(measured.x, measured.y, measured.color);
-                }
-            }
+        </div>
+      </div>
+    </section>
 
-            drawRipple(x, y, color) {
-                const maxRadius = 50;
-                let radius = 0;
-                const animateRipple = () => {
-                    if (radius < maxRadius) {
-                        this.ctx.beginPath();
-                        this.ctx.arc(x, y, radius, 0, Math.PI * 2);
-                        this.ctx.strokeStyle = `rgba(255, 255, 255, ${1 - (radius / maxRadius)})`; // Fading white ripple
-                        this.ctx.lineWidth = 2;
-                        this.ctx.stroke();
-                        radius += 2; // Expand ripple
-                        requestAnimationFrame(animateRipple);
-                    }
-                };
-                animateRipple();
-            }
-        }
+    <!-- AI Guide -->
+    <section id="ai-guide" class="tab-panel">
+      <div class="glass rounded-[2rem] p-8 md:p-12">
+        <p class="font-black uppercase tracking-[0.45em] text-cyan-200">AI Guide</p>
+        <h2 class="mt-4 text-4xl font-black md:text-6xl">Ask About Me</h2>
+        <p class="mt-5 max-w-3xl leading-8 text-slate-300">
+          This built-in guide can answer common questions about my skills, projects, education, CV, and contact details.
+        </p>
 
-        // Initialize the quantum particle system
-        // Ensure this runs after the DOM is ready
-        window.onload = function () {
-            const canvas = document.getElementById('quantum-canvas'); // Get the canvas element
-            const quantumParticles = new QuantumParticle(canvas);
-            quantumParticles.init(80); // Initialize with 80 particles
+        <div class="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <div class="card p-6">
+            <h3 class="text-xl font-black text-cyan-200">Try asking:</h3>
+            <div class="mt-4 grid gap-3">
+              <button onclick="askGuide('Tell me about Rohaan')" class="btn-secondary">Tell me about Rohaan</button>
+              <button onclick="askGuide('What are his projects?')" class="btn-secondary">What are his projects?</button>
+              <button onclick="askGuide('What is AI Impact on Society?')" class="btn-secondary">AI Impact on Society</button>
+              <button onclick="askGuide('What are his skills?')" class="btn-secondary">His skills</button>
+              <button onclick="askGuide('How can I contact him?')" class="btn-secondary">Contact details</button>
+            </div>
+          </div>
+
+          <div class="card p-6">
+            <div id="chatBox" class="min-h-[300px] rounded-3xl border border-slate-700 bg-slate-950/70 p-5">
+              <div class="rounded-2xl bg-cyan-400/10 p-4 text-slate-200">
+                Hi! I am Rohaan's portfolio guide. Ask me about his projects, CV, skills, education, or contact.
+              </div>
+            </div>
+
+            <div class="mt-4 flex gap-3">
+              <input id="guideInput" type="text" placeholder="Type your question..." class="input-field" onkeydown="if(event.key==='Enter') askGuide(this.value)">
+              <button onclick="askGuide(document.getElementById('guideInput').value)" class="btn-primary">Ask</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="tab-panel">
+      <div class="glass rounded-[2rem] p-8 md:p-12">
+        <p class="font-black uppercase tracking-[0.45em] text-cyan-200">Contact</p>
+        <h2 class="mt-4 text-4xl font-black md:text-6xl">Get In Touch</h2>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-[1fr_0.8fr]">
+          <div class="card p-7">
+            <form id="contactForm" action="https://formspree.io/f/mblyeqol" method="POST" class="grid gap-4">
+              <input type="text" name="name" placeholder="Your Name" class="input-field" required>
+              <input type="email" name="email" placeholder="Your Email" class="input-field" required>
+              <textarea name="message" placeholder="Your Message" class="input-field min-h-36 resize-y" required></textarea>
+              <button type="submit" class="btn-primary">Send Message</button>
+            </form>
+            <p id="formStatus" class="mt-4 hidden rounded-2xl p-4 font-bold"></p>
+          </div>
+
+          <div class="card p-7">
+            <h3 class="text-2xl font-black text-cyan-200">Contact Info</h3>
+            <div class="mt-5 space-y-4 text-slate-300">
+              <p><b class="text-white">Email:</b> <a class="text-cyan-200" href="mailto:rohaanzahid.04@gmail.com">rohaanzahid.04@gmail.com</a></p>
+              <p><b class="text-white">Phone:</b> +92 333 8705793</p>
+              <p><b class="text-white">GitHub:</b> <a class="text-cyan-200" target="_blank" href="https://github.com/Rohaanrz05">github.com/Rohaanrz05</a></p>
+              <p><b class="text-white">Portfolio:</b> <a class="text-cyan-200" target="_blank" href="https://rohaanrz05.github.io/MyPortfolio">rohaanrz05.github.io/MyPortfolio</a></p>
+              <p><b class="text-white">Address:</b> House 420 Street 08 Block A FMC Islamabad</p>
+            </div>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="https://github.com/Rohaanrz05" target="_blank" class="btn-secondary">GitHub</a>
+              <a href="mailto:rohaanzahid.04@gmail.com" class="btn-primary">Email Me</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-950/80 py-8 text-center text-slate-400">
+    <p>&copy; 2026 M. Rohaan Zahid. All rights reserved.</p>
+  </footer>
+
+  <!-- Chatbase Chatbot -->
+  <script>
+    (function(){
+      if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+        window.chatbase = (...arguments) => {
+          if(!window.chatbase.q){ window.chatbase.q = [] }
+          window.chatbase.q.push(arguments)
         };
-    </script>
+        window.chatbase = new Proxy(window.chatbase, {
+          get(target, prop){
+            if(prop === "q"){ return target.q }
+            return (...args) => target(prop, ...args)
+          }
+        })
+      }
+      const onLoad = function(){
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "I2lpeEpaZZmNHHrOBoDaD";
+        script.domain = "www.chatbase.co";
+        document.body.appendChild(script)
+      };
+      if(document.readyState === "complete"){ onLoad() }
+      else { window.addEventListener("load", onLoad) }
+    })();
+  </script>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll(".tab-panel").forEach(panel => {
+        panel.classList.remove("active");
+      });
+
+      document.querySelectorAll(".nav-tab").forEach(tab => {
+        tab.classList.remove("active");
+      });
+
+      const selectedPanel = document.getElementById(tabId);
+      if (selectedPanel) {
+        selectedPanel.classList.add("active");
+      }
+
+      document.querySelectorAll(".nav-tab").forEach(tab => {
+        if (tab.textContent.trim().toLowerCase().replace(" ", "-") === tabId) {
+          tab.classList.add("active");
+        }
+      });
+
+      if (tabId === "home") {
+        document.querySelectorAll(".nav-tab").forEach(tab => {
+          if (tab.textContent.trim().toLowerCase() === "home") {
+            tab.classList.add("active");
+          }
+        });
+      }
+
+      window.location.hash = tabId;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById("mobileMenu").classList.toggle("show");
+    }
+
+    window.addEventListener("load", () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash && document.getElementById(hash)) {
+        openTab(hash);
+      }
+    });
+
+    function downloadCVPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF("p", "mm", "a4");
+
+      doc.setFillColor(63, 66, 61);
+      doc.rect(0, 0, 75, 297, "F");
+
+      doc.setTextColor(255, 255, 255);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(22);
+      doc.text("M. ROHAAN ZAHID", 10, 20);
+
+      doc.setFontSize(12);
+      doc.setTextColor(183, 200, 239);
+      doc.text("AI PROGRAMMER", 10, 30);
+
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(13);
+      doc.text("ABOUT ME", 10, 48);
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.text([
+        "Passionate AI Programmer currently pursuing BS Artificial Intelligence",
+        "at Sir Syed CASE Institute of Technology. Interested in AI,",
+        "Software Development, Cyber Security, and intelligent systems.",
+        "Experienced with C/C++, C#, Python basics, HTML, and CSS."
+      ], 10, 56);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(13);
+      doc.text("SKILLS", 10, 88);
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9);
+      doc.text([
+        "• C/C++ Programming",
+        "• Python Basics",
+        "• HTML Basics",
+        "• C# Basics",
+        "• MS Word, Excel, PowerPoint",
+        "• AI/ML Frameworks Basic",
+        "• Problem Solving",
+        "• Critical Thinking",
+        "• Communication Skills"
+      ], 10, 97);
+
+      doc.setTextColor(0, 0, 0);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text("EDUCATION", 82, 20);
+
+      doc.setFontSize(10);
+      doc.text("Sir Syed CASE University", 82, 32);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.text([
+        "BS Artificial Intelligence - Ongoing",
+        "1st Semester: Web development, C++ and Python basics.",
+        "2nd Semester: Database using phpMyAdmin, C++ and C#.",
+        "3rd Semester: Advanced topics and projects."
+      ], 82, 39);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.text("Punjab College", 82, 63);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.text("HSSC 2022 - 2024 | ICS with Physics and Maths | 689 marks, 62%.", 82, 70);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.text("SLS High School", 82, 82);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.text("Matriculation 2022 | Computer Science | 844 marks, 79%.", 82, 89);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text("PROJECTS", 82, 108);
+
+      doc.setFontSize(10);
+      doc.text("Airline Reservation System", 82, 120);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.text("Console-based C++ system for ticket booking and cancellation.", 82, 127);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.text("JF-17 Aeroplane Shooting Game", 82, 139);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.text("Interactive C# game with player controls and enemy AI.", 82, 146);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.text("One Dollar Shop", 82, 158);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.text("E-commerce concept website with product display and cart features.", 82, 165);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.text("AI Impact on Society", 82, 177);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.text([
+        "Machine learning based Streamlit project for prediction.",
+        "GitHub: github.com/Rohaanrz05/AI-Impact-on-society",
+        "Live: ai-impact-on-society-npqryrdneff4cwqp9nipas.streamlit.app"
+      ], 82, 184);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(10);
+      doc.text("My Portfolio Website", 82, 206);
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(8.5);
+      doc.text("Responsive portfolio website using HTML, Tailwind CSS and JavaScript.", 82, 213);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text("CONTACT", 82, 235);
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(9);
+      doc.text([
+        "Phone: +92 333 8705793",
+        "Email: rohaanzahid.04@gmail.com",
+        "Portfolio: rohaanrz05.github.io/MyPortfolio",
+        "GitHub: github.com/Rohaanrz05",
+        "Address: House 420 Street 08 Block A FMC Islamabad"
+      ], 82, 246);
+
+      doc.save("M_Rohaan_Zahid_CV.pdf");
+    }
+
+    function printCV() {
+      window.print();
+    }
+
+    function askGuide(question) {
+      const input = document.getElementById("guideInput");
+      const chatBox = document.getElementById("chatBox");
+
+      question = question.trim();
+      if (!question) return;
+
+      chatBox.innerHTML += `
+        <div class="mt-4 rounded-2xl bg-violet-500/15 p-4 text-right text-slate-100">
+          ${question}
+        </div>
+      `;
+
+      const q = question.toLowerCase();
+      let answer = "";
+
+      if (q.includes("project") || q.includes("work")) {
+        answer = "Rohaan has worked on projects including AI Impact on Society, Airline Reservation System, JF-17 Aeroplane Shooting Game, One Dollar Shop, and his personal portfolio website.";
+      } else if (q.includes("ai impact") || q.includes("streamlit")) {
+        answer = "AI Impact on Society is Rohaan's machine learning project. It is live on Streamlit and uses an ML model for prediction. GitHub: github.com/Rohaanrz05/AI-Impact-on-society";
+      } else if (q.includes("skill")) {
+        answer = "Rohaan's skills include C/C++, C#, Python basics, HTML, CSS, database basics using phpMyAdmin, MS Office, problem solving, critical thinking, and communication skills.";
+      } else if (q.includes("education") || q.includes("study") || q.includes("university")) {
+        answer = "Rohaan is pursuing BS Artificial Intelligence at Sir Syed CASE Institute of Technology. He completed ICS from Punjab College and matriculation from SLS High School.";
+      } else if (q.includes("contact") || q.includes("email") || q.includes("phone")) {
+        answer = "You can contact Rohaan at rohaanzahid.04@gmail.com or phone number +92 333 8705793. His GitHub is github.com/Rohaanrz05.";
+      } else if (q.includes("cv") || q.includes("resume")) {
+        answer = "Rohaan's CV is available in the CV tab. You can preview it, print it, or download it as a PDF directly from the website.";
+      } else {
+        answer = "Rohaan Zahid is an AI Programmer and BS Artificial Intelligence student interested in AI, software development, machine learning, cybersecurity concepts, and web projects.";
+      }
+
+      setTimeout(() => {
+        chatBox.innerHTML += `
+          <div class="mt-4 rounded-2xl bg-cyan-400/10 p-4 text-slate-200">
+            ${answer}
+          </div>
+        `;
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 300);
+
+      input.value = "";
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const form = event.target;
+      const status = document.getElementById("formStatus");
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        status.classList.remove("hidden");
+
+        if (response.ok) {
+          status.textContent = "Message sent successfully!";
+          status.className = "mt-4 rounded-2xl bg-emerald-500/15 p-4 font-bold text-emerald-200";
+          form.reset();
+        } else {
+          status.textContent = "Message could not be sent. Please try again.";
+          status.className = "mt-4 rounded-2xl bg-red-500/15 p-4 font-bold text-red-200";
+        }
+      } catch (error) {
+        status.classList.remove("hidden");
+        status.textContent = "Internet or form service error. Please try again.";
+        status.className = "mt-4 rounded-2xl bg-red-500/15 p-4 font-bold text-red-200";
+      }
+    });
+
+    class ParticleSystem {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext("2d");
+        this.particles = [];
+        this.resize();
+        window.addEventListener("resize", () => this.resize());
+        this.init();
+        this.animate();
+      }
+
+      resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+      }
+
+      init() {
+        this.particles = [];
+        for (let i = 0; i < 90; i++) {
+          this.particles.push({
+            x: Math.random() * this.canvas.width,
+            y: Math.random() * this.canvas.height,
+            vx: (Math.random() - 0.5) * 0.7,
+            vy: (Math.random() - 0.5) * 0.7,
+            r: Math.random() * 2.5 + 1,
+            color: Math.random() > 0.5 ? "rgba(103,232,249,0.85)" : "rgba(167,139,250,0.85)"
+          });
+        }
+      }
+
+      animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        for (let p of this.particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+          if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
+
+          this.ctx.beginPath();
+          this.ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          this.ctx.fillStyle = p.color;
+          this.ctx.shadowBlur = 16;
+          this.ctx.shadowColor = p.color;
+          this.ctx.fill();
+        }
+
+        for (let i = 0; i < this.particles.length; i++) {
+          for (let j = i + 1; j < this.particles.length; j++) {
+            const a = this.particles[i];
+            const b = this.particles[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 130) {
+              this.ctx.beginPath();
+              this.ctx.moveTo(a.x, a.y);
+              this.ctx.lineTo(b.x, b.y);
+              this.ctx.strokeStyle = `rgba(148,163,184,${0.14 * (1 - dist / 130)})`;
+              this.ctx.lineWidth = 1;
+              this.ctx.shadowBlur = 0;
+              this.ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(() => this.animate());
+      }
+    }
+
+    window.addEventListener("load", () => {
+      new ParticleSystem(document.getElementById("quantum-canvas"));
+    });
+  </script>
 </body>
 </html>
