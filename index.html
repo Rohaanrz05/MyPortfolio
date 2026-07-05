@@ -342,8 +342,8 @@
     <!-- Section: Projects -->
     <section id="projects" class="tab-panel">
       <div class="glass rounded-[2rem] p-8 md:p-12">
-        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Portfolio Hub</p>
-        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-8">Projects Engineering</h2>
+        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Built Work</p>
+        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-8">Projects Showcase</h2>
 
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <!-- Project 1 -->
@@ -641,21 +641,11 @@
 
   </main>
 
-  <!-- Extensible Assistant AI Chatbot Trigger Interface -->
+  <!-- Floating Custom Trained AI Assistant Widget (Gibrio Integration) -->
   <div class="fixed bottom-5 right-5 z-50">
-    <button onclick="toggleFloatingChat()" class="bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 p-4 rounded-full font-black shadow-xl hover:scale-105 transition-transform flex items-center gap-2">
-      🤖 <span class="text-xs font-bold uppercase tracking-wider">Ask Rohaan AI</span>
-    </button>
-    <div id="floatingChat" class="hidden fixed bottom-20 right-5 w-80 h-96 card border border-cyan-500/20 shadow-2xl flex flex-col justify-between overflow-hidden p-4 bg-slate-950/95">
-      <div class="border-b border-slate-800 pb-2 text-xs font-bold text-cyan-400 uppercase tracking-wider">AI Assistant Sandbox</div>
-      <div id="chatBox" class="flex-1 overflow-y-auto my-3 p-2 bg-slate-900/40 rounded-xl space-y-2 text-[11px] leading-4 text-slate-300">
-        <div>Welcome. Query about keywords like: 'projects', 'contact', 'resume', 'certifications', 'github', or 'linkedin'. <br><br><i>Note: API triggers (OpenAI/Gemini/HuggingFace tokens) can be directly integrated into the evaluateChatSequence handler block.</i></div>
-      </div>
-      <div class="flex gap-1.5">
-        <input id="chatInput" type="text" placeholder="Type data keyword..." class="w-full p-2 bg-slate-900 rounded-lg text-xs outline-none text-white border border-slate-800" onkeydown="if(event.key==='Enter') evaluateChatSequence(this.value)">
-        <button onclick="evaluateChatSequence(document.getElementById('chatInput').value)" class="bg-cyan-400 text-slate-950 px-3 py-1.5 rounded-lg text-xs font-bold">Send</button>
-      </div>
-    </div>
+    <a href="https://gibrio.com/bot/chat/rohaan-s-ai-assistant" target="_blank" class="bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 p-4 rounded-full font-black shadow-xl hover:scale-105 transition-transform flex items-center gap-2 decoration-none">
+      <span>🤖</span> <span class="text-xs font-bold uppercase tracking-wider">Ask Rohaan AI</span>
+    </a>
   </div>
 
   <!-- Professional Structural Link Anchored Footer -->
@@ -732,38 +722,6 @@
     }
 
     function toggleMobileMenu() { document.getElementById("mobileMenu").classList.toggle("show"); }
-    function toggleFloatingChat() { document.getElementById("floatingChat").classList.toggle("hidden"); }
-
-    // Keyword validation parser sequence logic engine
-    function evaluateChatSequence(val) {
-      const chatBox = document.getElementById("chatBox");
-      const input = document.getElementById("chatInput");
-      val = val.trim(); if (!val) return;
-
-      chatBox.innerHTML += `<div class="text-right text-cyan-400 font-bold">&gt; ${val}</div>`;
-      let reply = "Term not mapped. Try query phrases like: 'projects', 'contact', 'resume', 'certifications', 'github', or 'linkedin'.";
-      const q = val.toLowerCase();
-
-      if (q.includes("project")) {
-        reply = "Rohaan has deployed: AI Shortest Route Optimization panels, C++ Airline Reservation managers, Hospital management systems, and 2D C# vector simulation game runs.";
-      } else if (q.includes("contact")) {
-        reply = "Reach out via email links at rohaanzahid.04@gmail.com, or check out system logs via mobile nodes +92 333 8705793.";
-      } else if (q.includes("resume") || q.includes("cv")) {
-        reply = "Navigate into the Resume Hub section block view link to compile and download a standardized professional PDF file instantly.";
-      } else if (q.includes("cert") || q.includes("credential")) {
-        reply = "Valid internship performance certificates are available from FlyRank.AI, Decodes Lab corporate hubs, and CodeAlpha.";
-      } else if (q.includes("github")) {
-        reply = "Explore active codebase files and modular systems directly at: https://github.com/Rohaanrz05";
-      } else if (q.includes("linkedin")) {
-        reply = "Review career history timelines and validation networks at: https://www.linkedin.com/in/rohaan-zahid-510850400/";
-      }
-
-      setTimeout(() => {
-        chatBox.innerHTML += `<div class="text-slate-200 font-semibold">${reply}</div>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 200);
-      input.value = "";
-    }
 
     // Toggle Dark / Light Theme switching metrics
     function toggleTheme() {
@@ -882,7 +840,7 @@
 
     function printCV() { window.print(); }
 
-    // Form submission processing interface
+    // Form submission processor simulation
     document.getElementById("contactForm").addEventListener("submit", async function(e) {
       e.preventDefault();
       const form = e.target, status = document.getElementById("formStatus"), data = new FormData(form);
@@ -890,7 +848,7 @@
         const response = await fetch(form.action, { method: form.method, body: data, headers: { "Accept": "application/json" } });
         status.classList.remove("hidden");
         if (response.ok) {
-          status.textContent = "Data packet delivered safely onto candidate node connection.";
+          status.textContent = "Data payload transmitted cleanly onto destination node.";
           status.className = "mt-3 text-xs font-bold text-emerald-400";
           form.reset();
         } else {
@@ -903,7 +861,7 @@
       }
     });
 
-    // Particle background handler
+    // Background Canvas Particle System Execution Pipeline Layer
     class ParticleSystem {
       constructor(canvas) {
         this.canvas = canvas; this.ctx = canvas.getContext("2d"); this.particles = [];
