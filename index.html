@@ -721,19 +721,25 @@
     }
 
     // Clean active pane routing tabs interface shifts controller
+// ... find your existing openTab function ...
     function openTab(tabId) {
       document.querySelectorAll(".tab-panel").forEach(panel => panel.classList.remove("active"));
       document.querySelectorAll(".nav-tab").forEach(tab => tab.classList.remove("active"));
-
+    
       const targetSection = document.getElementById(tabId);
       if (targetSection) targetSection.classList.add("active");
-
+    
       document.querySelectorAll(`[data-tab="${tabId}"]`).forEach(tab => tab.classList.add("active"));
       window.location.hash = tabId;
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    } // <--- Make sure it is completely outside of this closing bracket!
 
-    function toggleMobileMenu() { document.getElementById("mobileMenu").classList.toggle("show"); }
+    function toggleFloatingChat() {
+      const chatWindow = document.getElementById("floatingChat");
+      if (chatWindow) {
+        chatWindow.classList.toggle("hidden");
+      }
+    }
 
     // Toggle Dark / Light Theme switching metrics
     function toggleTheme() {
