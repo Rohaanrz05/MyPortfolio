@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> Python, C++,
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <meta name="description" content="Official Portfolio of M. Rohaan Zahid, AI Programmer, Machine Learning Enthusiast, Software Developer and BS Artificial Intelligence Student." />
-  <meta name="keywords" content="Rohaan Zahid, AI Developer, Machine Learning, Artificial Intelligence, Portfolio" />
+  <meta name="keywords" content="Rohaan Zahid, AI Developer, Machine Learning, Artificial Intelligence, Portfolio, Author" />
   <meta name="author" content="M. Rohaan Zahid" />
   
-  <title>M. Rohaan Zahid | AI Programmer Portfolio</title>
+  <title>M. Rohaan Zahid | AI Programmer & Software Developer</title>
 
   <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/616/616430.png">
 
@@ -20,14 +20,17 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'] }
+          fontFamily: { 
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif']
+          }
         }
       }
     }
@@ -37,575 +40,820 @@
     html { scroll-behavior: smooth; }
     body { font-family: "Inter", sans-serif; transition: background-color 0.3s, color 0.3s; }
     
-    /* Global Hover & Pointer Enhancements */
     .nav-tab, button, a, [onclick] { 
       cursor: pointer !important; 
     }
 
     /* Dark Theme Base (Default) */
     body.dark { background-color: #020617; color: #f8fafc; }
-    body.dark #quantum-canvas { background: linear-gradient(to bottom, #020617, #0f172a); }
-    body.dark .glass { background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.75)); border: 1px solid rgba(34, 211, 238, 0.15); }
-    body.dark .card { background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.15); }
+    body.dark #quantum-canvas { background: radial-gradient(circle at 50% 20%, #0d1527 0%, #020617 80%); }
+    body.dark .glass { background: linear-gradient(135deg, rgba(15, 23, 42, 0.82) 0%, rgba(2, 6, 23, 0.75) 100%); border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45); }
+    body.dark .card { background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(148, 163, 184, 0.14); }
     body.dark .text-muted { color: #94a3b8; }
     body.dark .nav-tab { color: #94a3b8; }
 
     /* Light Theme Base */
     body.light { background-color: #f8fafc; color: #0f172a; }
-    body.light #quantum-canvas { background: linear-gradient(to bottom, #f1f5f9, #e2e8f0); }
-    body.light .glass { background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(241, 245, 249, 0.8)); border: 1px solid rgba(15, 23, 42, 0.1); box-shadow: 0 24px 80px rgba(0, 0, 0, 0.05); }
-    body.light .card { background: rgba(255, 255, 255, 0.8); border: 1px solid rgba(15, 23, 42, 0.1); color: #0f172a; }
+    body.light #quantum-canvas { background: radial-gradient(circle at 50% 20%, #e0f2fe 0%, #f8fafc 85%); }
+    body.light .glass { background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(241, 245, 249, 0.85) 100%); border: 1px solid rgba(14, 165, 233, 0.18); box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08); }
+    body.light .card { background: rgba(255, 255, 255, 0.88); border: 1px solid rgba(15, 23, 42, 0.1); color: #0f172a; }
     body.light .text-muted { color: #475569; }
     body.light .text-white { color: #0f172a; }
     body.light .nav-tab { color: #475569; }
 
-    #quantum-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; }
+    #quantum-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; pointer-events: auto; }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* Core Navigation Highlights Fixed */
-    .nav-tab { padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 14px; transition: all 0.25s ease-in-out; }
-    .nav-tab:hover { color: #22d3ee !important; background: rgba(34, 211, 238, 0.08) !important; }
-    .nav-tab.active { color: #020617 !important; background: linear-gradient(135deg, #67e8f9, #a78bfa) !important; box-shadow: 0 0 20px rgba(34, 211, 238, 0.35); }
+    /* Navigation styling */
+    .nav-tab { padding: 9px 15px; border-radius: 999px; font-weight: 600; font-size: 13px; transition: all 0.25s ease-in-out; white-space: nowrap; }
+    .nav-tab:hover { color: #38bdf8 !important; background: rgba(56, 189, 248, 0.09) !important; }
+    .nav-tab.active { color: #020617 !important; background: linear-gradient(135deg, #38bdf8, #818cf8) !important; box-shadow: 0 0 25px rgba(56, 189, 248, 0.4); }
 
-    /* Interactive Buttons Fixed */
-    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; background: linear-gradient(135deg, #67e8f9, #a78bfa); color: #020617; font-weight: 700; transition: all 0.25s ease-in-out; border: none; }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(34, 211, 238, 0.3); }
+    /* Interactive Buttons */
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 22px; border-radius: 999px; background: linear-gradient(135deg, #38bdf8, #818cf8); color: #020617; font-weight: 700; transition: all 0.25s ease-in-out; border: none; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(56, 189, 248, 0.35); }
     
-    .btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 999px; border: 1px solid rgba(148, 163, 184, 0.3); font-weight: 700; transition: all 0.25s ease-in-out; text-decoration: none; }
-    body.dark .btn-secondary { background: rgba(15, 23, 42, 0.6); color: #f1f5f9; }
-    body.light .btn-secondary { background: rgba(255, 255, 255, 0.8); color: #0f172a; border-color: rgba(15, 23, 42, 0.15); }
-    .btn-secondary:hover { border-color: #22d3ee; color: #22d3ee !important; transform: translateY(-3px); background: rgba(34, 211, 238, 0.05); }
+    .btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 22px; border-radius: 999px; border: 1px solid rgba(148, 163, 184, 0.3); font-weight: 700; transition: all 0.25s ease-in-out; text-decoration: none; }
+    body.dark .btn-secondary { background: rgba(15, 23, 42, 0.65); color: #f1f5f9; }
+    body.light .btn-secondary { background: rgba(255, 255, 255, 0.85); color: #0f172a; border-color: rgba(15, 23, 42, 0.15); }
+    .btn-secondary:hover { border-color: #38bdf8; color: #38bdf8 !important; transform: translateY(-2px); background: rgba(56, 189, 248, 0.08); }
 
-    .skill-pill { display: inline-flex; align-items: center; padding: 6px 12px; border-radius: 999px; background: rgba(34, 211, 238, 0.08); border: 1px solid rgba(34, 211, 238, 0.2); color: #06b6d4; font-weight: 600; font-size: 13px; }
+    .skill-pill { display: inline-flex; align-items: center; padding: 5px 11px; border-radius: 999px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); color: #0284c7; font-weight: 600; font-size: 12px; transition: transform 0.2s; }
+    body.dark .skill-pill { color: #38bdf8; }
+    .skill-pill:hover { transform: translateY(-2px); }
+
     .mobile-menu { display: none; }
     .mobile-menu.show { display: block; }
+
+    /* Modal Styling */
+    .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1rem; }
+    .modal.show { display: flex; }
   </style>
 </head>
 
 <body class="dark">
   <canvas id="quantum-canvas"></canvas>
 
-  <header class="fixed top-0 left-0 right-0 z-50 border-b bg-opacity-80 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/80 border-slate-200/60 bg-white/80">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-      <button onclick="openTab('home')" class="flex items-center gap-3">
-        <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 text-lg font-black text-cyan-500">RZ</div>
-        <div class="text-left">
-          <h1 class="text-lg font-black tracking-tight">M. Rohaan Zahid</h1>
-          <p class="text-[10px] font-bold tracking-[0.3em] text-cyan-500">AI ENGINEER</p>
+  <!-- Navigation Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b bg-opacity-80 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/85 border-slate-200/70 bg-white/85">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
+      <button onclick="openTab('profile')" class="flex items-center gap-3 text-left">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-sky-400/40 bg-sky-400/10 text-lg font-black text-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.2)]">RZ</div>
+        <div>
+          <h1 class="text-base font-black tracking-tight font-heading">M. Rohaan Zahid</h1>
+          <p class="text-[9px] font-bold tracking-[0.25em] text-sky-400 uppercase">AI Programmer & Developer</p>
         </div>
       </button>
 
-      <nav class="hidden items-center gap-1 lg:flex">
-        <button class="nav-tab active" data-tab="home" onclick="openTab('home')">Home</button>
-        <button class="nav-tab" data-tab="about" onclick="openTab('about')">About</button>
+      <!-- Desktop Nav -->
+      <nav class="hidden items-center gap-1 xl:flex">
+        <button class="nav-tab active" data-tab="profile" onclick="openTab('profile')">Profile</button>
         <button class="nav-tab" data-tab="experience" onclick="openTab('experience')">Experience</button>
-        <button class="nav-tab" data-tab="skills" onclick="openTab('skills')">Skills</button>
+        <button class="nav-tab" data-tab="skills" onclick="openTab('skills')">Skills Matrix</button>
         <button class="nav-tab" data-tab="projects" onclick="openTab('projects')">Projects</button>
-        <button class="nav-tab" data-tab="certifications" onclick="openTab('certifications')">Certifications</button>
-        <button class="nav-tab" data-tab="achievements" onclick="openTab('achievements')">Achievements</button>
+        <button class="nav-tab" data-tab="credentials" onclick="openTab('credentials')">Honors & Credentials</button>
         <button class="nav-tab" data-tab="education" onclick="openTab('education')">Education</button>
-        <button class="nav-tab" data-tab="cv" onclick="openTab('cv')">Resume Hub</button>
+        <button class="nav-tab" data-tab="cv" onclick="openTab('cv')">Career Vault</button>
         <button class="nav-tab" data-tab="contact" onclick="openTab('contact')">Contact</button>
+        <a href="https://books.rohaanzahid.space" target="_blank" class="nav-tab border border-amber-400/40 text-amber-400 hover:!text-amber-300 hover:!bg-amber-400/10 flex items-center gap-1.5 ml-1" title="Visit Author Website">
+          <span>📚</span> Author Portal ↗
+        </a>
       </nav>
 
-      <div class="flex items-center gap-3">
-        <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:text-cyan-400 transition-colors">🌙</button>
+      <div class="flex items-center gap-2.5">
+        <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-800 hover:text-sky-400 transition-colors" title="Toggle Theme">🌙</button>
         <div class="hidden lg:block">
-          <button onclick="openTab('cv'); triggerCVPDFDownload();" class="btn-secondary py-2.5 text-sm">Download CV</button>
+          <button onclick="triggerCVPDFDownload()" class="btn-primary py-2 text-xs">Download CV</button>
         </div>
-        <button onclick="toggleMobileMenu()" class="rounded-xl border p-2.5 font-bold lg:hidden text-cyan-500 border-slate-300 dark:border-slate-700">☰</button>
+        <button onclick="toggleMobileMenu()" class="rounded-xl border p-2.5 font-bold xl:hidden text-sky-400 border-slate-300 dark:border-slate-800">☰</button>
       </div>
     </div>
 
-    <div id="mobileMenu" class="mobile-menu border-t px-5 py-4 lg:hidden dark:border-slate-800/60 dark:bg-slate-950/95 border-slate-200/60 bg-white/95">
-      <div class="grid gap-1.5">
-        <button class="nav-tab text-left active" data-tab="home" onclick="openTab('home'); toggleMobileMenu()">Home</button>
-        <button class="nav-tab text-left" data-tab="about" onclick="openTab('about'); toggleMobileMenu()">About</button>
+    <!-- Mobile Nav Dropdown -->
+    <div id="mobileMenu" class="mobile-menu border-t px-5 py-4 xl:hidden dark:border-slate-800/60 dark:bg-slate-950/95 border-slate-200/70 bg-white/95 max-h-[80vh] overflow-y-auto">
+      <div class="grid gap-1">
+        <button class="nav-tab text-left active" data-tab="profile" onclick="openTab('profile'); toggleMobileMenu()">Profile (Home & About)</button>
         <button class="nav-tab text-left" data-tab="experience" onclick="openTab('experience'); toggleMobileMenu()">Experience</button>
-        <button class="nav-tab text-left" data-tab="skills" onclick="openTab('skills'); toggleMobileMenu()">Skills</button>
+        <button class="nav-tab text-left" data-tab="skills" onclick="openTab('skills'); toggleMobileMenu()">Skills Matrix</button>
         <button class="nav-tab text-left" data-tab="projects" onclick="openTab('projects'); toggleMobileMenu()">Projects</button>
-        <button class="nav-tab text-left" data-tab="certifications" onclick="openTab('certifications'); toggleMobileMenu()">Certifications</button>
-        <button class="nav-tab text-left" data-tab="achievements" onclick="openTab('achievements'); toggleMobileMenu()">Achievements</button>
+        <button class="nav-tab text-left" data-tab="credentials" onclick="openTab('credentials'); toggleMobileMenu()">Honors & Credentials</button>
         <button class="nav-tab text-left" data-tab="education" onclick="openTab('education'); toggleMobileMenu()">Education</button>
-        <button class="nav-tab text-left" data-tab="cv" onclick="openTab('cv'); toggleMobileMenu()">Resume Hub</button>
+        <button class="nav-tab text-left" data-tab="cv" onclick="openTab('cv'); toggleMobileMenu()">Career Vault (Resume)</button>
         <button class="nav-tab text-left" data-tab="contact" onclick="openTab('contact'); toggleMobileMenu()">Contact</button>
+        <a href="https://books.rohaanzahid.space" target="_blank" class="nav-tab text-left text-amber-400 font-bold flex items-center justify-between border-t border-slate-800/40 pt-2 mt-1">
+          <span>📚 Author Portal (books.rohaanzahid.space)</span> <span>↗</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <main class="mx-auto max-w-7xl px-5 pb-16 pt-28">
+  <main class="mx-auto max-w-7xl px-4 sm:px-6 pb-20 pt-24">
 
-    <section id="home" class="tab-panel active">
-      <div class="glass rounded-[2rem] p-8 md:p-12">
-        <div class="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
-          <div data-aos="fade-right">
-            <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Artificial Intelligence Portfolio</p>
-            <h2 class="mt-4 text-4xl font-black leading-tight md:text-6xl tracking-tight text-white">
-              M. Rohaan Zahid <br>
-              <span class="inline-block bg-gradient-to-r from-cyan-400 via-sky-400 to-violet-400 bg-clip-text text-transparent">
-                <span id="typing"></span>
-              </span>
-            </h2>
-            <p class="mt-6 max-w-2xl text-base leading-7 text-muted font-medium">
-              Artificial Intelligence undergraduate student at Sir Syed CASE Institute of Technology with experience in Machine Learning, Python Development, Database Systems, and Web Technologies. Passionate about building AI-powered solutions and software applications that solve real-world problems.
-            </p>
+    <!-- 1. MERGED PROFILE SECTION (Home + About) -->
+    <section id="profile" class="tab-panel active">
+      <div class="space-y-8">
+        <!-- Hero Card -->
+        <div class="glass rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
+          <div class="absolute -right-20 -top-20 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div class="mt-8 flex flex-wrap gap-4 items-center">
-              <button onclick="triggerCVPDFDownload()" class="btn-primary" title="Download Resume">
-                <span class="text-lg">📄</span> Download Resume
-              </button>
-              <button onclick="openTab('contact')" class="btn-secondary" title="Hire Me">
-                Hire Me
-              </button>
-              <div class="flex gap-3 ml-2">
-                <a href="https://www.linkedin.com/in/rohaan-zahid-510850400/" target="_blank" class="p-3 bg-slate-900/60 rounded-full border border-slate-700/50 text-white hover:text-cyan-400 hover:border-cyan-400 transition-all shadow-md" title="LinkedIn Profile">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center relative z-10">
+            <div data-aos="fade-right">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-400/10 border border-sky-400/25 text-sky-400 text-xs font-bold uppercase tracking-wider mb-5">
+                <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span> Artificial Intelligence & Systems
+              </div>
+              <h2 class="text-3xl sm:text-4xl md:text-6xl font-black leading-tight tracking-tight font-heading text-white">
+                M. Rohaan Zahid <br>
+                <span class="inline-block bg-gradient-to-r from-sky-400 via-indigo-400 to-cyan-300 bg-clip-text text-transparent">
+                  <span id="typing"></span>
+                </span>
+              </h2>
+              
+              <p class="mt-5 text-base sm:text-lg leading-relaxed text-muted font-normal[cite: 3]">
+                Artificial Intelligence undergraduate at <strong>Sir Syed CASE Institute of Technology</strong>[cite: 3]. Passionate about turning complex predictive models into production-ready software solutions spanning Machine Learning, Data Preprocessing, and Full-Stack Engineering[cite: 3].
+              </p>
+
+              <div class="mt-8 flex flex-wrap gap-3.5 items-center">
+                <button onclick="triggerCVPDFDownload()" class="btn-primary">
+                  <span>📄</span> Download Resume
+                </button>
+                <button onclick="openTab('contact')" class="btn-secondary">
+                  Contact Me
+                </button>
+                <a href="https://books.rohaanzahid.space" target="_blank" class="btn-secondary !border-amber-500/40 text-amber-400 hover:!bg-amber-400/10" title="Visit Author Website">
+                  <span>📖</span> Author Portal ↗
                 </a>
-                <a href="https://github.com/Rohaanrz05" target="_blank" class="p-3 bg-slate-900/60 rounded-full border border-slate-700/50 text-white hover:text-cyan-400 hover:border-cyan-400 transition-all shadow-md" title="GitHub Profile">
-                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              </div>
+
+              <!-- Quick Links -->
+              <div class="mt-6 flex items-center gap-3">
+                <a href="https://www.linkedin.com/in/rohaan-zahid-510850400/" target="_blank" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="LinkedIn Profile"[cite: 3]>
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                 </a>
-                <a href="mailto:rohaanzahid.04@gmail.com" class="p-3 bg-slate-900/60 rounded-full border border-slate-700/50 text-white hover:text-cyan-400 hover:border-cyan-400 transition-all shadow-md" title="Send Email">
+                <a href="https://github.com/Rohaanrz05" target="_blank" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="GitHub Profile"[cite: 3]>
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                </a>
+                <a href="mailto:rohaanzahid.04@gmail.com" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="Email"[cite: 3]>
                   <span class="text-sm">✉️</span>
                 </a>
+                <span class="text-xs text-muted font-medium ml-2">📍 Islamabad, Pakistan[cite: 3]</span>
               </div>
             </div>
 
-            <div class="mt-10 grid gap-4 grid-cols-2 sm:grid-cols-4">
-              <div class="card p-4 border-cyan-500/10 text-center">
-                <h3 id="gitRepos" class="text-2xl font-black text-cyan-400">15+</h3>
-                <p class="mt-1 text-[11px] text-muted font-semibold uppercase tracking-wider">Projects</p>
+            <!-- Profile Showcase Card -->
+            <div class="card p-7 text-center border-sky-400/20 bg-slate-900/40 relative group" data-aos="fade-left">
+              <div class="relative mx-auto h-48 w-48 mb-4">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-500 blur-lg opacity-40 group-hover:opacity-75 transition-opacity"></div>
+                <img src="https://i.postimg.cc/P5FzQ0S9/mypic.jpg" alt="M. Rohaan Zahid" class="relative mx-auto h-48 w-48 rounded-full border-4 border-sky-400/80 object-cover shadow-2xl" />
               </div>
-              <div class="card p-4 border-cyan-500/10 text-center">
-                <h3 class="text-2xl font-black text-cyan-400">3</h3>
-                <p class="mt-1 text-[11px] text-muted font-semibold uppercase tracking-wider">Internships</p>
-              </div>
-              <div class="card p-4 border-cyan-500/10 text-center">
-                <h3 class="text-2xl font-black text-cyan-400">5+</h3>
-                <p class="mt-1 text-[11px] text-muted font-semibold uppercase tracking-wider">Certifications</p>
-              </div>
-              <div class="card p-4 border-cyan-500/10 text-center">
-                <h3 class="text-2xl font-black text-cyan-400">BS-AI</h3>
-                <p class="mt-1 text-[11px] text-muted font-semibold uppercase tracking-wider">5th Semester</p>
+              <h3 class="text-2xl font-black text-white font-heading">M. Rohaan Zahid</h3>
+              <p class="mt-1 text-xs text-sky-400 font-bold tracking-widest uppercase">AI Programmer & Software Engineer</p>
+              
+              <div class="mt-5 grid grid-cols-2 gap-2 text-left text-xs bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
+                <div><span class="text-muted block text-[10px] uppercase">Affiliation</span> <span class="font-bold text-white">Sir Syed CASE[cite: 3]</span></div>
+                <div><span class="text-muted block text-[10px] uppercase">Specialization</span> <span class="font-bold text-white">Machine Learning[cite: 3]</span></div>
+                <div class="mt-2"><span class="text-muted block text-[10px] uppercase">Published</span> <span class="font-bold text-amber-300">Author & Researcher</span></div>
+                <div class="mt-2"><span class="text-muted block text-[10px] uppercase">Resume Loads</span> <span id="downloadCount" class="font-bold text-sky-400">0</span></div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="card p-8 text-center border-cyan-500/20 bg-slate-900/10" data-aos="fade-left">
-            <img src="https://i.postimg.cc/P5FzQ0S9/mypic.jpg" alt="M. Rohaan Zahid" class="mx-auto h-52 w-52 rounded-full border-4 border-cyan-400 object-cover shadow-2xl" />
-            <h3 class="mt-5 text-2xl font-black text-white">M. Rohaan Zahid</h3>
-            <p class="mt-2 text-sm text-cyan-500 font-bold tracking-wider">AI PROGRAMMER & SOFTWARE DEVELOPER</p>
-            <div class="mt-4 pt-4 border-t border-slate-700/30 text-xs text-muted">
-              Resume Downloads: <span id="downloadCount" class="font-bold text-cyan-400">0</span>
+        <!-- Integrated About & Executive Bio -->
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="glass rounded-3xl p-7 md:col-span-2" data-aos="fade-up">
+            <h3 class="text-xs font-bold uppercase tracking-[0.3em] text-sky-400 mb-3">Executive Summary</h3>
+            <h4 class="text-2xl font-black text-white font-heading mb-4">Bridging Theoretical AI with Real-World Systems</h4>
+            <div class="space-y-4 text-sm leading-relaxed text-muted font-normal">
+              <p[cite: 3]>
+                I am an Artificial Intelligence undergraduate student at <strong>Sir Syed CASE Institute of Technology</strong> in Islamabad, with deep hands-on experience in Machine Learning, Python, C++, and database architectures[cite: 3].
+              </p>
+              <p[cite: 3]>
+                Throughout my academic and professional tenure at industry leaders like <strong>FlyRank.AI</strong> and <strong>Decodes Lab</strong>, I have built and evaluated end-to-end predictive models, designed heuristic optimization platforms, and created modular software architectures[cite: 3].
+              </p>
+              <p>
+                Beyond code, I am also an active writer and independent author—managing historical and tech publications through my dedicated publishing platform at <a href="https://books.rohaanzahid.space" target="_blank" class="text-amber-400 underline font-semibold hover:text-amber-300">books.rohaanzahid.space</a>.
+              </p>
+            </div>
+          </div>
+
+          <!-- Quick Metrics Column -->
+          <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-1">
+            <div class="card p-5 border-l-4 border-sky-400" data-aos="fade-up" data-aos-delay="100">
+              <span class="text-2xl font-black text-sky-400 font-heading" id="gitRepos">15+</span>
+              <p class="text-xs font-bold text-white mt-0.5">Software & AI Projects</p>
+              <p class="text-[11px] text-muted mt-1">From heuristic routing dashboards to high-performance C++ suites.</p>
+            </div>
+
+            <div class="card p-5 border-l-4 border-indigo-400" data-aos="fade-up" data-aos-delay="200">
+              <span class="text-2xl font-black text-indigo-400 font-heading">3 Track Records</span>
+              <p class="text-xs font-bold text-white mt-0.5">Industry Internships[cite: 3]</p>
+              <p class="text-[11px] text-muted mt-1">Experience at FlyRank.AI, Decodes Lab, and CodeAlpha[cite: 3].</p>
+            </div>
+
+            <div class="card p-5 border-l-4 border-amber-400" data-aos="fade-up" data-aos-delay="300">
+              <span class="text-2xl font-black text-amber-400 font-heading">Author & Creator</span>
+              <p class="text-xs font-bold text-white mt-0.5">Author Portal Online</p>
+              <p class="text-[11px] text-muted mt-1">Live web platform hosted at books.rohaanzahid.space.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="tab-panel">
-      <div class="glass rounded-[2rem] p-8 md:p-12" data-aos="fade-up">
-        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">About Me</p>
-        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-6">Executive Profile</h2>
-        
-        <div class="space-y-6 text-base leading-7 text-muted font-medium">
-          <p>
-            I am currently pursuing a Bachelor of Science in Artificial Intelligence at <strong>Sir Syed CASE Institute of Technology</strong> in Islamabad. I have a strong foundation in machine learning, programming, and database operations, and I enjoy writing code that translates theoretical models into tools.
-          </p>
-          <p>
-            My technical focus covers core Artificial Intelligence workflows, data preprocessing pipelines, and relational database layouts using Python, C++, and SQL. Through hands-on experience across multiple technical internships, I have refined my ability to clean data, train models, and develop production-ready backend code.
-          </p>
-          <p>
-            My professional goal is to leverage my skills in Artificial Intelligence and software engineering to deploy robust technology products that optimize data processes, solve complex problems, and deliver measurable value.
-          </p>
-        </div>
-      </div>
-    </section>
-
+    <!-- 2. WORK EXPERIENCE SECTION -->
     <section id="experience" class="tab-panel">
-      <div class="glass rounded-[2rem] p-8 md:p-12">
-        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Professional History</p>
-        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-8">Work Experience</h2>
+      <div class="glass rounded-[2.5rem] p-8 md:p-12">
+        <div class="flex flex-wrap justify-between items-end gap-4 mb-8">
+          <div>
+            <p class="font-bold uppercase tracking-[0.45em] text-sky-400 text-xs">Professional History</p>
+            <h2 class="mt-1 text-3xl font-black md:text-5xl tracking-tight text-white font-heading">Work Experience</h2>
+          </div>
+          <button onclick="openModal('recommendationModal')" class="btn-secondary text-xs !border-sky-400/40 text-sky-400">
+            <span>📜</span> View Decodes Lab Recommendation Letter[cite: 2]
+          </button>
+        </div>
         
         <div class="space-y-6">
-          <div class="card p-6 border-l-4 border-cyan-400" data-aos="fade-up">
+          <!-- FlyRank.AI -->
+          <div class="card p-6 border-l-4 border-sky-400 relative overflow-hidden" data-aos="fade-up">
             <div class="flex flex-wrap justify-between items-start gap-2">
               <div>
-                <h3 class="text-xl font-bold text-white">Machine Learning Intern</h3>
-                <p class="text-sm font-semibold text-cyan-400 mt-0.5">FlyRank.AI</p>
+                <h3 class="text-xl font-bold text-white font-heading">Machine Learning Intern[cite: 3]</h3>
+                <p class="text-sm font-semibold text-sky-400 mt-0.5">FlyRank.AI[cite: 3]</p>
               </div>
-              <span class="text-xs font-bold text-muted bg-slate-900/40 px-3 py-1 rounded-full uppercase">July 2026 - Present</span>
+              <span class="text-xs font-bold text-sky-400 bg-sky-950/60 border border-sky-800/60 px-3 py-1 rounded-full uppercase">July 2026 - Present[cite: 3]</span>
             </div>
             <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-muted">
-              <li>Assisted in developing and testing Machine Learning models for real-world applications.</li>
-              <li>Built and tested 3 machine learning models using Python and Scikit-learn to handle predictive tasks.</li>
-              <li>Performed extensive data collection, source data cleaning, data preprocessing, and systematic feature engineering.</li>
-              <li>Worked with mainstream data arrays via NumPy, Pandas, Scikit-learn, and Matplotlib libraries.</li>
-              <li>Collaborated effectively using Git and GitHub source managers for project version tracking.</li>
+              <li[cite: 3]>Assisted in developing and testing Machine Learning models for real-world applications[cite: 3].</li>
+              <li[cite: 3]>Performed extensive data collection, source data cleaning, data preprocessing, and systematic feature engineering for model training[cite: 3].</li>
+              <li[cite: 3]>Worked with mainstream scientific arrays via NumPy, Pandas, Scikit-learn, and Matplotlib libraries[cite: 3].</li>
+              <li[cite: 3]>Analyzed datasets and generated insights to support AI-driven solutions while conducting model evaluation and optimization[cite: 3].</li>
+              <li[cite: 3]>Collaborated effectively with team members using Git and GitHub for project version management and workflow tracking[cite: 3].</li>
             </ul>
           </div>
 
-          <div class="card p-6 border-l-4 border-violet-400" data-aos="fade-up">
+          <!-- Decodes Lab -->
+          <div class="card p-6 border-l-4 border-indigo-400 relative" data-aos="fade-up">
             <div class="flex flex-wrap justify-between items-start gap-2">
               <div>
-                <h3 class="text-xl font-bold text-white">Artificial Intelligence Intern</h3>
-                <p class="text-sm font-semibold text-violet-400 mt-0.5">Decodes Lab</p>
+                <h3 class="text-xl font-bold text-white font-heading">Artificial Intelligence Intern[cite: 3, 4]</h3>
+                <p class="text-sm font-semibold text-indigo-400 mt-0.5">Decode Labs (Govt. Registered Enterprise)[cite: 2]</p>
               </div>
-              <span class="text-xs font-bold text-muted bg-slate-900/40 px-3 py-1 rounded-full uppercase">July 2026 - August 2026</span>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-indigo-400 bg-indigo-950/60 border border-indigo-800/60 px-3 py-1 rounded-full uppercase">June 2026 - August 2026[cite: 2, 4]</span>
+              </div>
             </div>
+
             <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-muted">
-              <li>Developed AI and Machine Learning projects using Python and modern AI tools.</li>
-              <li>Built and tested intelligent automation tools, conversational chatbots, and scripting models.</li>
-              <li>Conducted model training checks, database indexing, and exploratory analysis to maximize speed performance.</li>
+              <li[cite: 3]>Developed AI and Machine Learning projects using Python and modern AI tools to build intelligent chatbots and workflow automations[cite: 3].</li>
+              <li[cite: 3]>Conducted preprocessing, dataset exploration, and model evaluations to optimize inference speed and accuracy[cite: 3].</li>
+              <li[cite: 2]>Commended by company leadership for outstanding commitment to excellence, analytical problem solving, and translating theoretical concepts into production-ready software[cite: 2].</li>
             </ul>
+
+            <!-- Proof badges & triggers -->
+            <div class="mt-5 pt-4 border-t border-slate-800/60 flex flex-wrap gap-3">
+              <button onclick="openModal('recommendationModal')" class="text-xs bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 px-3.5 py-1.5 rounded-lg hover:bg-indigo-500/20 font-semibold flex items-center gap-1.5">
+                <span>📄</span> View Letter of Recommendation (Decode Labs)[cite: 2]
+              </button>
+              <button onclick="openModal('decodesCertModal')" class="text-xs bg-sky-500/10 border border-sky-500/30 text-sky-300 px-3.5 py-1.5 rounded-lg hover:bg-sky-500/20 font-semibold flex items-center gap-1.5">
+                <span>🎓</span> View Internship Certificate (Decodelabs AIA074381)[cite: 4]
+              </button>
+            </div>
           </div>
 
+          <!-- CodeAlpha -->
           <div class="card p-6 border-l-4 border-slate-400" data-aos="fade-up">
             <div class="flex flex-wrap justify-between items-start gap-2">
               <div>
-                <h3 class="text-xl font-bold text-white">Python Development Intern</h3>
-                <p class="text-sm font-semibold text-slate-400 mt-0.5">CodeAlpha</p>
+                <h3 class="text-xl font-bold text-white font-heading">Python Programming Intern[cite: 3]</h3>
+                <p class="text-sm font-semibold text-slate-300 mt-0.5">CodeAlpha[cite: 3]</p>
               </div>
-              <span class="text-xs font-bold text-muted bg-slate-900/40 px-3 py-1 rounded-full uppercase">May 2026 - June 2026</span>
+              <span class="text-xs font-bold text-slate-400 bg-slate-900/60 border border-slate-800 px-3 py-1 rounded-full uppercase">May 2026 - June 2026[cite: 3]</span>
             </div>
             <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-muted">
-              <li>Developed custom automated scripts and modular solutions applying core Object-Oriented Programming (OOP) concepts.</li>
-              <li>Tested, isolated errors, debugged code files, and optimized script execution flow to improve performance.</li>
+              <li[cite: 3]>Developed Python-based modular applications and automated solutions applying core Object-Oriented Programming (OOP) concepts[cite: 3].</li>
+              <li[cite: 3]>Tested, debugged, and optimized script execution pipelines for maximum performance and stability[cite: 3].</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- 3. ENHANCED SKILLS MATRIX SECTION -->
     <section id="skills" class="tab-panel">
-      <div class="glass rounded-[2rem] p-8 md:p-12">
-        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Capabilities</p>
-        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-8">Technical Skills Matrix</h2>
+      <div class="glass rounded-[2.5rem] p-8 md:p-12">
+        <p class="font-bold uppercase tracking-[0.45em] text-sky-400 text-xs">Competencies</p>
+        <h2 class="mt-1 text-3xl font-black md:text-5xl tracking-tight text-white font-heading mb-8">Technical & Core Skills Matrix</h2>
 
-        <div class="grid gap-6 md:grid-cols-2">
-          <div class="card p-6 space-y-4" data-aos="zoom-in">
-            <h3 class="text-lg font-bold text-cyan-400 border-b border-slate-700/40 pb-2">Core Programming & Databases</h3>
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Python Development</span><span>Advanced</span></div>
-              <div class="w-100 bg-slate-700/30 h-2 rounded-full overflow-hidden"><div class="bg-cyan-400 h-2 rounded-full" style="width: 90%"></div></div>
+        <div class="grid gap-6 md:grid-cols-3">
+          
+          <!-- AI & ML Engineering -->
+          <div class="card p-6 space-y-4" data-aos="fade-up">
+            <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+              <span class="text-xl">🧠</span>
+              <h3 class="text-base font-bold text-sky-400 font-heading">AI & Machine Learning[cite: 3]</h3>
             </div>
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>C++ Architecture</span><span>Advanced</span></div>
-              <div class="w-100 bg-slate-700/30 h-2 rounded-full overflow-hidden"><div class="bg-cyan-400 h-2 rounded-full" style="width: 80%"></div></div>
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Supervised & Predictive ML[cite: 3]</span><span>Advanced</span></div>
+                <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-2 rounded-full" style="width: 90%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Data Cleaning & Feature Engineering[cite: 3]</span><span>Advanced</span></div>
+                <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-2 rounded-full" style="width: 88%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Model Evaluation & Optimization[cite: 3]</span><span>Intermediate</span></div>
+                <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-2 rounded-full" style="width: 82%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Data Visualization (Matplotlib)[cite: 3]</span><span>Advanced</span></div>
+                <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-2 rounded-full" style="width: 85%"></div></div>
+              </div>
             </div>
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>SQL & Relational Databases (MySQL / phpMyAdmin)</span><span>Intermediate</span></div>
-              <div class="w-100 bg-slate-700/30 h-2 rounded-full overflow-hidden"><div class="bg-cyan-400 h-2 rounded-full" style="width: 75%"></div></div>
+            <div class="pt-2 flex flex-wrap gap-1.5">
+              <span class="skill-pill">Scikit-learn[cite: 3]</span><span class="skill-pill">Pandas[cite: 3]</span><span class="skill-pill">NumPy[cite: 3]</span><span class="skill-pill">Streamlit[cite: 3]</span>
             </div>
           </div>
 
-          <div class="card p-6 space-y-4" data-aos="zoom-in">
-            <h3 class="text-lg font-bold text-cyan-400 border-b border-slate-700/40 pb-2">Artificial Intelligence & ML Tools</h3>
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Machine Learning (Scikit-learn, Model Training)</span><span>Advanced</span></div>
-              <div class="w-100 bg-slate-700/30 h-2 rounded-full overflow-hidden"><div class="bg-violet-400 h-2 rounded-full" style="width: 85%"></div></div>
+          <!-- Core Languages & Systems -->
+          <div class="card p-6 space-y-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+              <span class="text-xl">💻</span>
+              <h3 class="text-base font-bold text-sky-400 font-heading">Languages & Systems[cite: 3]</h3>
             </div>
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Data Preprocessing & Analysis (Pandas, NumPy)</span><span>Advanced</span></div>
-              <div class="w-100 bg-slate-700/30 h-2 rounded-full overflow-hidden"><div class="bg-violet-400 h-2 rounded-full" style="width: 85%"></div></div>
+            <div class="space-y-3">
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Python Development[cite: 3]</span><span>Advanced</span></div>
+                <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-cyan-400 h-2 rounded-full" style="width: 92%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>C++ Core & Data Structures[cite: 3]</span><span>Advanced</span></div>
+                <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-cyan-400 h-2 rounded-full" style="width: 85%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>C# Programming[cite: 3]</span><span>Intermediate</span></div>
+                <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-cyan-400 h-2 rounded-full" style="width: 78%"></div></div>
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Relational DB (MySQL, phpMyAdmin)[cite: 3]</span><span>Intermediate</span></div>
+                <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-cyan-400 h-2 rounded-full" style="width: 80%"></div></div>
+              </div>
             </div>
-            <div>
-              <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Web UI Prototyping (Streamlit Apps)</span><span>Intermediate</span></div>
-              <div class="w-100 bg-slate-700/30 h-2 rounded-full overflow-hidden"><div class="bg-violet-400 h-2 rounded-full" style="width: 80%"></div></div>
+            <div class="pt-2 flex flex-wrap gap-1.5">
+              <span class="skill-pill">OOP[cite: 3]</span><span class="skill-pill">Docker[cite: 3]</span><span class="skill-pill">HTML5/CSS[cite: 3]</span><span class="skill-pill">Git / GitHub[cite: 3]</span>
             </div>
           </div>
+
+          <!-- Soft Skills & Methodologies -->
+          <div class="card p-6 space-y-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+              <span class="text-xl">🌟</span>
+              <h3 class="text-base font-bold text-sky-400 font-heading">Professional & Soft Skills[cite: 3]</h3>
+            </div>
+            <div class="space-y-2.5 text-xs text-muted">
+              <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Problem Solving & Critical Thinking[cite: 3]</span>
+              </div>
+              <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Cross-Functional Team Collaboration[cite: 3]</span>
+              </div>
+              <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Technical Presentation & Communication[cite: 3]</span>
+              </div>
+              <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Analytical Research & Documentation[cite: 3]</span>
+              </div>
+              <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Agile Workflow & Version Control[cite: 3]</span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <div class="card mt-6 p-5 flex flex-wrap gap-2 justify-center border-cyan-500/10">
-          <span class="skill-pill">C++</span><span class="skill-pill">Python</span><span class="skill-pill">C#</span>
-          <span class="skill-pill">MySQL</span><span class="skill-pill">Docker</span><span class="skill-pill">phpMyAdmin</span>
-          <span class="skill-pill">HTML5 / CSS3</span><span class="skill-pill">Git</span><span class="skill-pill">GitHub</span>
-          <span class="skill-pill">NumPy</span><span class="skill-pill">Pandas</span><span class="skill-pill">Scikit-learn</span>
-          <span class="skill-pill">Matplotlib</span><span class="skill-pill">Streamlit</span>
+        <!-- Comprehensive Tech Tags Badge Grid -->
+        <div class="card mt-8 p-6 border-sky-500/20 text-center">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Complete Tooling & Technology Stack</h4>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <span class="skill-pill font-bold">Python[cite: 3]</span>
+            <span class="skill-pill font-bold">C++[cite: 3]</span>
+            <span class="skill-pill font-bold">C#[cite: 3]</span>
+            <span class="skill-pill font-bold">Scikit-learn[cite: 3]</span>
+            <span class="skill-pill font-bold">NumPy[cite: 3]</span>
+            <span class="skill-pill font-bold">Pandas[cite: 3]</span>
+            <span class="skill-pill font-bold">Matplotlib[cite: 3]</span>
+            <span class="skill-pill font-bold">Streamlit[cite: 3]</span>
+            <span class="skill-pill font-bold">MySQL[cite: 3]</span>
+            <span class="skill-pill font-bold">Docker[cite: 3]</span>
+            <span class="skill-pill font-bold">phpMyAdmin[cite: 3]</span>
+            <span class="skill-pill font-bold">HTML5 / CSS3[cite: 3]</span>
+            <span class="skill-pill font-bold">Git & GitHub[cite: 3]</span>
+            <span class="skill-pill font-bold">Data Preprocessing[cite: 3]</span>
+            <span class="skill-pill font-bold">Model Optimization[cite: 3]</span>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- 4. PROJECTS SECTION -->
     <section id="projects" class="tab-panel">
-      <div class="glass rounded-[2rem] p-8 md:p-12">
-        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Built Work</p>
-        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-8">Projects Showcase</h2>
+      <div class="glass rounded-[2.5rem] p-8 md:p-12">
+        <p class="font-bold uppercase tracking-[0.45em] text-sky-400 text-xs">Portfolio Showcase</p>
+        <h2 class="mt-1 text-3xl font-black md:text-5xl tracking-tight text-white font-heading mb-8">Featured Projects</h2>
 
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          
+          <!-- Route Optimization -->
           <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
             <div>
               <img src="assets/projects/route.png" class="w-full h-40 object-cover rounded-xl mb-4 border border-slate-700/40" alt="AI Smart Route Optimization Visual Screenshot" onerror="this.src='https://images.unsplash.com/photo-1524661135-423995f22d0b?w=500&auto=format&fit=crop&q=60';">
-              <h3 class="text-lg font-bold text-white">AI Smart Route Optimization System</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed">Developed an AI-powered path optimization routing module to map travel coordinates and compute efficient travel paths using machine learning techniques.</p>
+              <h3 class="text-lg font-bold text-white font-heading">AI Smart Route Optimization System[cite: 3]</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed"[cite: 3]>Developed an AI-powered route optimization system to determine efficient travel paths using machine learning and data analysis techniques with an interactive Streamlit UI[cite: 3].</p>
             </div>
             <div class="mt-4 flex flex-col gap-2">
-              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">Python</span><span class="skill-pill text-[11px]">Streamlit</span></div>
-              <a href="https://github.com/Rohaanrz05/Smart-Route-detection-system" target="_blank" class="text-xs text-cyan-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
+              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">Python[cite: 3]</span><span class="skill-pill text-[11px]">Streamlit</span><span class="skill-pill text-[11px]">ML</span></div>
+              <a href="https://github.com/Rohaanrz05/Smart-Route-detection-system" target="_blank" class="text-xs text-sky-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
             </div>
           </div>
 
+          <!-- Airline Reservation -->
           <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
             <div>
               <img src="assets/projects/airline.png" class="w-full h-40 object-cover rounded-xl mb-4 border border-slate-700/40" alt="Airline System Screenshot" onerror="this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&auto=format&fit=crop&q=60';">
-              <h3 class="text-lg font-bold text-white">Airline Reservation Management System</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed">Designed and developed a flight management platform that implements booking, ticket generation, passenger tracking, and record handling using C++.</p>
+              <h3 class="text-lg font-bold text-white font-heading">Airline Reservation Management System[cite: 3]</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed"[cite: 3]>Designed and developed a reservation management system implementing flight booking, cancellation, passenger handling, and automated ticket generation in C++[cite: 3].</p>
             </div>
             <div class="mt-4 flex flex-col gap-2">
-              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">C++ Core</span><span class="skill-pill text-[11px]">File Handling</span></div>
-              <a href="https://github.com/Rohaanrz05/airline-reservation-system-" target="_blank" class="text-xs text-cyan-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
+              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">C++ Core[cite: 3]</span><span class="skill-pill text-[11px]">Databases[cite: 3]</span><span class="skill-pill text-[11px]">File I/O</span></div>
+              <a href="https://github.com/Rohaanrz05/airline-reservation-system-" target="_blank" class="text-xs text-sky-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
             </div>
           </div>
 
+          <!-- AI Impact on Society -->
+          <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
+            <div>
+              <div class="w-full h-40 rounded-xl mb-4 bg-gradient-to-tr from-slate-900 to-indigo-950 border border-slate-700/50 flex items-center justify-center text-4xl">
+                🌐
+              </div>
+              <h3 class="text-lg font-bold text-white font-heading">AI Impact on Society Research[cite: 3]</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed"[cite: 3]>Conducted a comprehensive research study analyzing the influence, ethical considerations, cybersecurity dynamics, and societal implications of AI across industries[cite: 3].</p>
+            </div>
+            <div class="mt-4 flex flex-col gap-2">
+              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">Data Analysis[cite: 3]</span><span class="skill-pill text-[11px]">Research[cite: 3]</span><span class="skill-pill text-[11px]">Ethics[cite: 3]</span></div>
+              <a href="https://github.com/Rohaanrz05/AI-Impact-on-society" target="_blank" class="text-xs text-sky-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Research Repository &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Hospital Management -->
           <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
             <div>
               <img src="assets/projects/hospital.png" class="w-full h-40 object-cover rounded-xl mb-4 border border-slate-700/40" alt="Hospital Management System" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500&auto=format&fit=crop&q=60';">
-              <h3 class="text-lg font-bold text-white">Hospital Management System</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed">Developed a hospital management system to handle patient records, clinical medical schedules, medical appointments, and database search operations safely.</p>
+              <h3 class="text-lg font-bold text-white font-heading">Hospital Database Management System</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed">Engineered a clinical data management system handling patient records, appointments, doctor allocations, and indexed database queries safely.</p>
             </div>
             <div class="mt-4 flex flex-col gap-2">
-              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">OOP Logic</span><span class="skill-pill text-[11px]">Databases</span></div>
-              <a href="https://github.com/Rohaanrz05" target="_blank" class="text-xs text-cyan-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
+              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">OOP Logic</span><span class="skill-pill text-[11px]">MySQL</span></div>
+              <a href="https://github.com/Rohaanrz05" target="_blank" class="text-xs text-sky-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
             </div>
           </div>
 
-          <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
+          <!-- Author Platform -->
+          <div class="card p-5 flex flex-col justify-between border-amber-500/20" data-aos="fade-up">
             <div>
-              <img src="assets/projects/portfolio.png" class="w-full h-40 object-cover rounded-xl mb-4 border border-slate-700/40" alt="Portfolio Website" onerror="this.src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60';">
-              <h3 class="text-lg font-bold text-white">Interactive Portfolio Website</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed">Built this responsive developer portfolio featuring light/dark mode triggers, dynamic resume PDF exports, and an integrated rule chatbot companion.</p>
+              <div class="w-full h-40 rounded-xl mb-4 bg-gradient-to-tr from-amber-950/40 to-slate-900 border border-amber-500/30 flex items-center justify-center text-4xl">
+                📖
+              </div>
+              <h3 class="text-lg font-bold text-white font-heading">books.rohaanzahid.space</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed">Official author and publication portal designed and maintained to present historical manuscripts, book landing pages, and interactive reviews.</p>
             </div>
             <div class="mt-4 flex flex-col gap-2">
-              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">Tailwind</span><span class="skill-pill text-[11px]">JavaScript</span></div>
-              <a href="https://github.com/Rohaanrz05/MyPortfolio" target="_blank" class="text-xs text-cyan-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
+              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px] !text-amber-400 !border-amber-500/30">Live Platform</span><span class="skill-pill text-[11px]">Web Architecture</span></div>
+              <a href="https://books.rohaanzahid.space" target="_blank" class="text-xs text-amber-400 hover:underline font-semibold flex items-center gap-1 mt-2">Visit Author Portal ↗</a>
             </div>
           </div>
 
+          <!-- JF-17 Shooter Game -->
           <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
             <div>
               <img src="assets/projects/game.png" class="w-full h-40 object-cover rounded-xl mb-4 border border-slate-700/40" alt="JF-17 Fighter Simulation Game" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500&auto=format&fit=crop&q=60';">
-              <h3 class="text-lg font-bold text-white">JF-17 Fighter Simulation Game</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed">Programmed a 2D arcade shooter simulation game tracking keyboard inputs, bounding checks, and linear object movement paths within a C# runtime environment.</p>
+              <h3 class="text-lg font-bold text-white font-heading">JF-17 Fighter Simulation Game</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed">Programmed a 2D arcade shooter simulation game tracking keyboard inputs, bounding checks, and linear object movement paths within C#.</p>
             </div>
             <div class="mt-4 flex flex-col gap-2">
               <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">C# Core</span><span class="skill-pill text-[11px]">Game Loop</span></div>
-              <a href="https://github.com/Rohaanrz05/jf-17-shooting-game-" target="_blank" class="text-xs text-cyan-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
+              <a href="https://github.com/Rohaanrz05/jf-17-shooting-game-" target="_blank" class="text-xs text-sky-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
             </div>
           </div>
 
-          <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
-            <div>
-              <img src="assets/projects/shop.png" class="w-full h-40 object-cover rounded-xl mb-4 border border-slate-700/40" alt="One Dollar Store Platform" onerror="this.src='https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&auto=format&fit=crop&q=60';">
-              <h3 class="text-lg font-bold text-white">One Dollar Shop Platform</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed">Designed a prototype web catalog structure mapping product lists onto clean relational database tables using MySQL schemas.</p>
-            </div>
-            <div class="mt-4 flex flex-col gap-2">
-              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">HTML5 / CSS3</span><span class="skill-pill text-[11px]">MySQL</span></div>
-              <a href="https://github.com/Rohaanrz05" target="_blank" class="text-xs text-cyan-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="grid gap-6 md:grid-cols-2 mt-6">
-          <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
-            <div>
-              <h3 class="text-lg font-bold text-white">Robotic Parking Automation System</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed">Simulated micro-architectural grid cell spatial allocation algorithms to manage automated parking space assignments safely.</p>
-            </div>
-            <div class="mt-3"><a href="https://github.com/Rohaanrz05" target="_blank" class="text-xs text-cyan-400 hover:underline font-semibold flex items-center gap-1">View Source Code &rarr;</a></div>
-          </div>
-
-          <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
-            <div>
-              <h3 class="text-lg font-bold text-white">AI Impact on Society Metrics Tracker</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed">Conducted statistical modeling research and parsed public reception matrices tracking tech expansion data loops using optimized machine learning metrics.</p>
-            </div>
-            <div class="mt-3"><a href="https://github.com/Rohaanrz05/AI-Impact-on-society" target="_blank" class="text-xs text-cyan-400 hover:underline font-semibold flex items-center gap-1">View Source Code &rarr;</a></div>
-          </div>
         </div>
       </div>
     </section>
 
-    <section id="certifications" class="tab-panel">
-      <div class="glass rounded-[2rem] p-8 md:p-12">
-        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Credentials</p>
-        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-8">Certifications Gallery</h2>
+    <!-- 5. MERGED HONORS & CREDENTIALS SECTION (Certifications + Achievements) -->
+    <section id="credentials" class="tab-panel">
+      <div class="glass rounded-[2.5rem] p-8 md:p-12">
+        <p class="font-bold uppercase tracking-[0.45em] text-sky-400 text-xs">Milestones & Certifications</p>
+        <h2 class="mt-1 text-3xl font-black md:text-5xl tracking-tight text-white font-heading mb-8">Honors & Credentials</h2>
+
+        <!-- Key Achievements Badges -->
+        <h3 class="text-base font-bold text-white font-heading mb-4 flex items-center gap-2">
+          <span>🏆</span> Key Milestones & Recognitions
+        </h3>
+        <div class="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3 mb-10">
+          <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up">
+            <span class="text-emerald-400 font-black text-lg">✓</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">BS AI Student at Sir Syed CASE[cite: 3]</h4>
+              <p class="text-xs text-muted mt-0.5">Top-tier academic tracking in machine learning and system architectures[cite: 3].</p>
+            </div>
+          </div>
+
+          <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up" data-aos-delay="100">
+            <span class="text-emerald-400 font-black text-lg">✓</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Letter of Recommendation Recipient[cite: 2]</h4>
+              <p class="text-xs text-muted mt-0.5">Awarded by Decode Labs for excellence in Artificial Intelligence workflows[cite: 2].</p>
+            </div>
+          </div>
+
+          <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up" data-aos-delay="200">
+            <span class="text-emerald-400 font-black text-lg">✓</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Anthropic Claude 101 Certified[cite: 1]</h4>
+              <p class="text-xs text-muted mt-0.5">Validated competency in Anthropic Claude ecosystem and prompt modeling[cite: 1].</p>
+            </div>
+          </div>
+
+          <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up">
+            <span class="text-emerald-400 font-black text-lg">✓</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Triple Industry Internship Completion[cite: 3]</h4>
+              <p class="text-xs text-muted mt-0.5">Successfully served at FlyRank.AI, Decode Labs, and CodeAlpha[cite: 2, 3].</p>
+            </div>
+          </div>
+
+          <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up" data-aos-delay="100">
+            <span class="text-emerald-400 font-black text-lg">✓</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Deployed AI Smart Route System[cite: 3]</h4>
+              <p class="text-xs text-muted mt-0.5">Integrated predictive heuristic models with dynamic visual interfaces[cite: 3].</p>
+            </div>
+          </div>
+
+          <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up" data-aos-delay="200">
+            <span class="text-emerald-400 font-black text-lg">✓</span>
+            <div>
+              <h4 class="text-sm font-bold text-white">Published Author & Researcher</h4>
+              <p class="text-xs text-muted mt-0.5">Maintains active research portfolio and publishing portal online.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verified Certificates & Documents Gallery -->
+        <h3 class="text-base font-bold text-white font-heading mb-4 flex items-center gap-2">
+          <span>📜</span> Verified Credentials & Diplomas
+        </h3>
         
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="card p-4 flex flex-col items-center text-center" data-aos="zoom-in">
-            <img src="assets/certificates/flyrank.jpg" class="w-full h-32 object-cover rounded-xl mb-3 bg-slate-800" alt="FlyRank ML Internship Certificate Thumbnail" onerror="this.src='https://images.unsplash.com/photo-1568667256549-094345857637?w=300&auto=format&fit=crop&q=60';">
-            <h4 class="font-bold text-white text-sm">Machine Learning Certificate</h4>
-            <p class="text-xs text-cyan-400 mt-1">FlyRank.AI Intern Track</p>
+          
+          <!-- Decodes Lab Certificate -->
+          <div class="card p-4 flex flex-col justify-between text-center group cursor-pointer hover:border-indigo-400 transition-all" onclick="openModal('decodesCertModal')" data-aos="zoom-in">
+            <div>
+              <div class="w-full h-32 rounded-xl mb-3 bg-slate-900 border border-indigo-500/30 flex flex-col items-center justify-center p-2">
+                <span class="text-2xl mb-1">🎓</span>
+                <span class="text-[10px] font-bold text-indigo-300 uppercase">DECODELABS VIRTUAL INTERNSHIP[cite: 4]</span>
+                <span class="text-[9px] text-slate-400 mt-1">ID: AIA074381[cite: 4]</span>
+              </div>
+              <h4 class="font-bold text-white text-sm">Decodes Lab AI Internship[cite: 4]</h4>
+              <p class="text-xs text-indigo-400 mt-1">Virtual Internship AI Completion[cite: 4]</p>
+            </div>
+            <button class="mt-3 text-xs text-indigo-300 hover:text-indigo-200 font-bold underline">Click to View Certificate &rarr;</button>
           </div>
-          <div class="card p-4 flex flex-col items-center text-center" data-aos="zoom-in">
-            <img src="assets/certificates/decodes.jpg" class="w-full h-32 object-cover rounded-xl mb-3 bg-slate-800" alt="Decodes Lab AI Internship Certificate Thumbnail" onerror="this.src='https://images.unsplash.com/photo-1568667256549-094345857637?w=300&auto=format&fit=crop&q=60';">
-            <h4 class="font-bold text-white text-sm">Artificial Intelligence Training</h4>
-            <p class="text-xs text-violet-400 mt-1">Decodes Lab Validation</p>
+
+          <!-- Anthropic Claude 101 -->
+          <div class="card p-4 flex flex-col justify-between text-center group cursor-pointer hover:border-sky-400 transition-all" onclick="openModal('claudeModal')" data-aos="zoom-in">
+            <div>
+              <div class="w-full h-32 rounded-xl mb-3 bg-slate-900 border border-sky-500/30 flex flex-col items-center justify-center p-2">
+                <span class="text-2xl mb-1">🤖</span>
+                <span class="text-[10px] font-bold text-sky-300 uppercase">ANTHROPIC[cite: 1]</span>
+                <span class="text-[11px] font-bold text-white mt-1">Claude 101 Certified[cite: 1]</span>
+              </div>
+              <h4 class="font-bold text-white text-sm">Claude 101 Certificate[cite: 1]</h4>
+              <p class="text-xs text-sky-400 mt-1">Anthropic Official Credential[cite: 1]</p>
+            </div>
+            <button class="mt-3 text-xs text-sky-300 hover:text-sky-200 font-bold underline">Click to View Certificate &rarr;</button>
           </div>
-          <div class="card p-4 flex flex-col items-center text-center" data-aos="zoom-in">
-            <img src="assets/certificates/codealpha.jpg" class="w-full h-32 object-cover rounded-xl mb-3 bg-slate-800" alt="CodeAlpha Certificate Thumbnail" onerror="this.src='https://images.unsplash.com/photo-1568667256549-094345857637?w=300&auto=format&fit=crop&q=60';">
-            <h4 class="font-bold text-white text-sm">Python Programming Token</h4>
-            <p class="text-xs text-slate-400 mt-1">CodeAlpha Internship Validation</p>
+
+          <!-- FlyRank ML Intern -->
+          <div class="card p-4 flex flex-col justify-between text-center group" data-aos="zoom-in">
+            <div>
+              <div class="w-full h-32 rounded-xl mb-3 bg-slate-900 border border-sky-500/20 flex flex-col items-center justify-center p-2">
+                <span class="text-2xl mb-1">📈</span>
+                <span class="text-[10px] font-bold text-sky-300 uppercase">FlyRank.AI[cite: 3]</span>
+                <span class="text-[9px] text-slate-400 mt-1">ML Engineering Track[cite: 3]</span>
+              </div>
+              <h4 class="font-bold text-white text-sm">Machine Learning Track[cite: 3]</h4>
+              <p class="text-xs text-sky-400 mt-1">FlyRank.AI Practical Validation[cite: 3]</p>
+            </div>
+            <span class="mt-3 text-[11px] text-slate-400 font-semibold">Active In-Progress Track[cite: 3]</span>
           </div>
-          <div class="card p-4 flex flex-col items-center text-center" data-aos="zoom-in">
-            <img src="assets/certificates/academic.jpg" class="w-full h-32 object-cover rounded-xl mb-3 bg-slate-800" alt="Academic Performance Thumbnail" onerror="this.src='https://images.unsplash.com/photo-1568667256549-094345857637?w=300&auto=format&fit=crop&q=60';">
-            <h4 class="font-bold text-white text-sm">Systems & Data Credentials</h4>
-            <p class="text-xs text-blue-400 mt-1">Sir Syed CASE Institute Validation</p>
+
+          <!-- CodeAlpha Python -->
+          <div class="card p-4 flex flex-col justify-between text-center group" data-aos="zoom-in">
+            <div>
+              <div class="w-full h-32 rounded-xl mb-3 bg-slate-900 border border-slate-700 flex flex-col items-center justify-center p-2">
+                <span class="text-2xl mb-1">🐍</span>
+                <span class="text-[10px] font-bold text-slate-300 uppercase">CodeAlpha[cite: 3]</span>
+                <span class="text-[9px] text-slate-400 mt-1">Python Development Track[cite: 3]</span>
+              </div>
+              <h4 class="font-bold text-white text-sm">Python Programming Token[cite: 3]</h4>
+              <p class="text-xs text-slate-400 mt-1">CodeAlpha Internship[cite: 3]</p>
+            </div>
+            <span class="mt-3 text-[11px] text-slate-400 font-semibold">Verified Credential</span>
           </div>
+
         </div>
       </div>
     </section>
 
-    <section id="achievements" class="tab-panel">
-      <div class="glass rounded-[2rem] p-8 md:p-12">
-        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Milestones</p>
-        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-8">Achievements</h2>
-        
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div class="card p-5 border-l-4 border-emerald-400" data-aos="fade-up">
-            <div class="text-xl mb-2">✓</div>
-            <p class="text-sm font-semibold text-white">BS Artificial Intelligence Student at Sir Syed CASE Institute</p>
-          </div>
-          <div class="card p-5 border-l-4 border-emerald-400" data-aos="fade-up">
-            <div class="text-xl mb-2">✓</div>
-            <p class="text-sm font-semibold text-white">Completed Multiple Specialized AI & Python Internships</p>
-          </div>
-          <div class="card p-5 border-l-4 border-emerald-400" data-aos="fade-up">
-            <div class="text-xl mb-2">✓</div>
-            <p class="text-sm font-semibold text-white">Built and Deployed AI Smart Route Optimization Dashboard</p>
-          </div>
-          <div class="card p-5 border-l-4 border-emerald-400" data-aos="fade-up">
-            <div class="text-xl mb-2">✓</div>
-            <p class="text-sm font-semibold text-white">Developed Functional High-Performance C++ Reservation Software</p>
-          </div>
-          <div class="card p-5 border-l-4 border-emerald-400" data-aos="fade-up">
-            <div class="text-xl mb-2">✓</div>
-            <p class="text-sm font-semibold text-white">Designed and Maintained Hospital Management Databases</p>
-          </div>
-          <div class="card p-5 border-l-4 border-emerald-400" data-aos="fade-up">
-            <div class="text-xl mb-2">✓</div>
-            <p class="text-sm font-semibold text-white">Strong Practical Expertise in Machine Learning Frameworks</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- 6. EDUCATION SECTION -->
     <section id="education" class="tab-panel">
-      <div class="glass rounded-[2rem] p-8 md:p-12">
-        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Timeline</p>
-        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-8">Academic History</h2>
+      <div class="glass rounded-[2.5rem] p-8 md:p-12">
+        <p class="font-bold uppercase tracking-[0.45em] text-sky-400 text-xs">Academic Foundation</p>
+        <h2 class="mt-1 text-3xl font-black md:text-5xl tracking-tight text-white font-heading mb-8">Academic Timeline</h2>
         
         <div class="space-y-6">
-          <div class="card p-6 border-l-4 border-cyan-500" data-aos="fade-up">
+          <div class="card p-6 border-l-4 border-sky-400" data-aos="fade-up">
             <div class="flex flex-wrap justify-between items-baseline gap-2">
-              <h3 class="text-xl font-bold text-white">Sir Syed CASE Institute of Technology</h3>
-              <span class="text-xs font-bold text-cyan-400 bg-cyan-950/60 px-3 py-1 rounded-full border border-cyan-900">2024 - Present | 5th Semester</span>
+              <h3 class="text-xl font-bold text-white font-heading">Sir Syed CASE Institute of Technology, Islamabad[cite: 3]</h3>
+              <span class="text-xs font-bold text-sky-400 bg-sky-950/60 px-3 py-1 rounded-full border border-sky-900">2024 - Present | 5th Semester[cite: 3]</span>
             </div>
-            <p class="text-sm text-cyan-400 font-semibold mt-1">Bachelor of Science in Artificial Intelligence (BS-AI)</p>
+            <p class="text-sm text-sky-400 font-semibold mt-1">Bachelor of Science in Artificial Intelligence (BS-AI)[cite: 3]</p>
             <p class="text-xs text-slate-400 font-bold mt-1">Expected Graduation: 2028</p>
             
-            <div class="mt-4 pt-4 border-t border-slate-700/30">
-              <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Relevant Coursework:</h4>
+            <div class="mt-4 pt-4 border-t border-slate-700/40">
+              <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Core Studied Disciplines:</h4>
               <div class="flex flex-wrap gap-2">
-                <span class="bg-slate-900/40 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Machine Learning</span>
-                <span class="bg-slate-900/40 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Database Systems</span>
-                <span class="bg-slate-900/40 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Data Structures</span>
-                <span class="bg-slate-900/40 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Object-Oriented Programming (OOP)</span>
-                <span class="bg-slate-900/40 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Calculus</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Artificial Intelligence[cite: 3]</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Machine Learning[cite: 3]</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Database Systems[cite: 3]</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Data Structures[cite: 3]</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Software Engineering[cite: 3]</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Calculus[cite: 3]</span>
               </div>
             </div>
           </div>
 
           <div class="grid gap-4 sm:grid-cols-2">
             <div class="card p-5" data-aos="fade-up">
-              <h4 class="font-bold text-white">Punjab College Blue Area Campus</h4>
-              <p class="text-xs text-cyan-400 font-semibold mt-0.5">Intermediate in Computer Science (ICS)</p>
-              <p class="text-[11px] text-muted mt-2">Built a strong foundation in core programming concepts, physics, and mathematical analysis.</p>
+              <h4 class="font-bold text-white font-heading">Punjab College Blue Area Campus, Islamabad[cite: 3]</h4>
+              <p class="text-xs text-sky-400 font-semibold mt-0.5">Intermediate in Computer Science (ICS) | 2022 - 2024[cite: 3]</p>
+              <p class="text-[11px] text-muted mt-2"[cite: 3]>Built a strong foundation in programming, analytical thinking, logic design, and mathematical problem-solving[cite: 3].</p>
             </div>
             <div class="card p-5" data-aos="fade-up">
-              <h4 class="font-bold text-white">SLS Montessori & High School</h4>
-              <p class="text-xs text-cyan-400 font-semibold mt-0.5">Matriculation (Computer Science)</p>
-              <p class="text-[11px] text-muted mt-2">Acquired fundamental knowledge of basic computing systems, logic design, and basic mathematics.</p>
+              <h4 class="font-bold text-white font-heading">SLS Montessori & High School, Islamabad[cite: 3]</h4>
+              <p class="text-xs text-sky-400 font-semibold mt-0.5">Matriculation (Computer Science) | 2020 - 2022[cite: 3]</p>
+              <p class="text-[11px] text-muted mt-2"[cite: 3]>Acquired fundamental knowledge in computing, information technology concepts, and mathematics[cite: 3].</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- 7. UPDATED CAREER VAULT (Resume Hub) -->
     <section id="cv" class="tab-panel">
-      <div class="glass rounded-[2rem] p-8 md:p-12">
+      <div class="glass rounded-[2.5rem] p-8 md:p-12">
         <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Workspace</p>
-            <h2 class="mt-2 text-3xl font-black text-white">Resume Dashboard</h2>
-            <p class="mt-4 text-sm text-muted font-medium">Generate your official A4 engineering resume file using our background client generators instantly.</p>
-            <div class="mt-6 flex flex-wrap gap-2">
-              <button onclick="triggerCVPDFDownload()" class="btn-primary text-sm">Download PDF Document</button>
-              <button onclick="printCV()" class="btn-secondary text-sm">Print Page</button>
+            <p class="font-bold uppercase tracking-[0.45em] text-sky-400 text-xs">Official Documents</p>
+            <h2 class="mt-1 text-3xl font-black text-white font-heading">Career Vault</h2>
+            <p class="mt-4 text-sm text-muted leading-relaxed font-medium">
+              Access and export my official ATS-optimized developer resume with updated coursework, internship verification, and verified skill matrix.
+            </p>
+            
+            <div class="mt-6 flex flex-wrap gap-3">
+              <button onclick="triggerCVPDFDownload()" class="btn-primary text-sm">
+                <span>⬇️</span> Download Official PDF
+              </button>
+              <button onclick="printCV()" class="btn-secondary text-sm">
+                <span>🖨️</span> Print Resume
+              </button>
+            </div>
+
+            <div class="mt-8 p-4 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2">
+              <div class="text-xs font-bold text-sky-400 uppercase tracking-wider">Document Summary</div>
+              <div class="text-xs text-muted">Format: Standard Clean A4 PDF</div>
+              <div class="text-xs text-muted">Author: M. Rohaan Zahid[cite: 3]</div>
+              <div class="text-xs text-muted">Status: Open for Internships & AI Engineering Roles</div>
             </div>
           </div>
 
-          <div id="cvPreview" class="rounded-xl bg-white p-6 text-slate-900 border border-slate-200 text-[10px] leading-relaxed shadow-xl space-y-4">
-            <div class="border-b-2 border-slate-800 pb-3 text-center">
-              <h1 class="text-xl font-black tracking-wide text-slate-900 uppercase">ROHAAN ZAHID</h1>
-              <p class="text-[9px] font-bold text-cyan-700 tracking-[0.2em] mt-0.5">AI PROGRAMMER & SOFTWARE DEVELOPER</p>
-              <p class="text-[8px] text-slate-500 mt-1">Rawalpindi / Islamabad, PK | rohaanzahid.04@gmail.com | +92 333 8705793 | github.com/Rohaanrz05</p>
+          <!-- Printable / Visual Resume Preview -->
+          <div id="cvPreview" class="rounded-xl bg-white p-7 text-slate-900 border border-slate-300 text-[10px] leading-relaxed shadow-2xl space-y-4 font-sans">
+            <!-- Header -->
+            <div class="border-b-2 border-slate-900 pb-3 text-center">
+              <h1 class="text-xl font-black tracking-wide text-slate-900 uppercase"[cite: 3]>ROHAAN ZAHID</h1>
+              <p class="text-[9.5px] font-bold text-sky-800 tracking-[0.2em] mt-0.5"[cite: 3]>AI PROGRAMMER & SOFTWARE DEVELOPER | MACHINE LEARNING ENTHUSIAST</p>
+              <p class="text-[8.5px] text-slate-600 mt-1"[cite: 3]>Islamabad, PK | rohaanzahid.04@gmail.com | 03338705793 | github.com/Rohaanrz05[cite: 3]</p>
             </div>
 
+            <!-- Summary -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-200 text-[10px] tracking-wider">Summary</h3>
-              <p class="text-[9px] text-slate-700 mt-1">Artificial Intelligence undergraduate student at Sir Syed CASE Institute of Technology specializing in ML models, data cleaning scripts, and backend web applications.</p>
+              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Summary</h3>
+              <p class="text-[9px] text-slate-700 mt-1 leading-normal"[cite: 3]>
+                Artificial Intelligence undergraduate at Sir Syed CASE Institute of Technology with hands-on experience in C++, Python, database management, web development, and machine learning projects[cite: 3]. Proven track record across multiple technical internships and passionate about building AI-powered real-world tools[cite: 3].
+              </p>
             </div>
 
+            <!-- Technical Skills -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-200 text-[10px] tracking-wider">Technical Skills</h3>
-              <p class="text-[9px] text-slate-700 mt-1"><b>Languages & DB:</b> Python, C++, C#, MySQL, phpMyAdmin, HTML5, CSS3, Docker Basics.<br><b>AI Tools:</b> Machine Learning models, Pandas, NumPy, Scikit-learn, Streamlit apps.</p>
+              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Key Skills</h3>
+              <p class="text-[9px] text-slate-700 mt-1 leading-normal">
+                <b[cite: 3]>Technical:</b> Python, C++, C# Programming, HTML5, CSS, MySQL, Docker, phpMyAdmin, Git, GitHub[cite: 3].<br>
+                <b[cite: 3]>AI & Data Science:</b> Machine Learning, Supervised Learning, Model Training & Evaluation, Data Cleaning/Preprocessing, NumPy, Pandas, Scikit-learn, Matplotlib, Streamlit[cite: 3].<br>
+                <b[cite: 3]>Soft Skills:</b> Problem Solving, Critical Thinking, Team Collaboration, Communication, Time Management, Research Skills, Presentation Skills[cite: 3].
+              </p>
             </div>
 
+            <!-- Experience -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-200 text-[10px] tracking-wider">Experience</h3>
-              <div class="mt-1.5 space-y-1">
-                <p><b>FlyRank.AI — Machine Learning Intern</b> <span class="float-right text-slate-500">July 2026 - Present</span><br>Cleaning real-world data rows, maintaining features, and structuring Scikit-learn models.</p>
-                <p><b>Decodes Lab — AI Intern</b> <span class="float-right text-slate-500">July 2026 - Aug 2026</span><br>Built automation workflows, custom chatbot scripts, and performed exploratory database analysis.</p>
-                <p><b>CodeAlpha — Python Intern</b> <span class="float-right text-slate-500">May 2026 - June 2026</span><br>Developed automated modular script programs applying Object Oriented Programming mechanics.</p>
+              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Work Experience</h3>
+              <div class="mt-1 space-y-1.5">
+                <div>
+                  <div class="flex justify-between font-bold text-[9px]">
+                    <span[cite: 3]>FlyRank.AI — Machine Learning Intern</span>
+                    <span class="text-slate-500 font-normal"[cite: 3]>July 2026 - Present</span>
+                  </div>
+                  <p class="text-[8.5px] text-slate-600"[cite: 3]>Collected and cleaned datasets, engineered features, built Scikit-learn models, evaluated metrics, and managed code via Git/GitHub[cite: 3].</p>
+                </div>
+                <div>
+                  <div class="flex justify-between font-bold text-[9px]">
+                    <span[cite: 3]>Decode Labs — Artificial Intelligence Intern</span>
+                    <span class="text-slate-500 font-normal"[cite: 3]>July 2026 - August 2026</span>
+                  </div>
+                  <p class="text-[8.5px] text-slate-600"[cite: 3]>Built AI automation solutions, chatbot scripts, executed data preprocessing, and earned official Letter of Recommendation[cite: 2, 3].</p>
+                </div>
+                <div>
+                  <div class="flex justify-between font-bold text-[9px]">
+                    <span[cite: 3]>CodeAlpha — Python Programming Intern</span>
+                    <span class="text-slate-500 font-normal"[cite: 3]>May 2026 - June 2026</span>
+                  </div>
+                  <p class="text-[8.5px] text-slate-600"[cite: 3]>Developed Python applications applying OOP concepts, tested and debugged code files to optimize execution speed[cite: 3].</p>
+                </div>
               </div>
             </div>
 
+            <!-- Projects -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-200 text-[10px] tracking-wider">Projects</h3>
-              <p class="text-[9px] text-slate-700 mt-1"><b>AI Smart Route Optimization:</b> Heuristic routing dashboard built via Python/Streamlit systems.<br><b>Airline Reservation System:</b> Terminal utility for ticket allocation built through clean C++ files.</p>
+              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Key Projects</h3>
+              <p class="text-[9px] text-slate-700 mt-1 leading-normal">
+                <b[cite: 3]>AI Smart Route Optimization:</b> Heuristic route selection module built using Machine Learning and interactive Streamlit UI[cite: 3].<br>
+                <b[cite: 3]>Airline Reservation System:</b> Modular flight management platform in C++ with passenger records and booking logic[cite: 3].<br>
+                <b[cite: 3]>AI Impact on Society:</b> Detailed research analysis detailing ethical, economic, and technological AI implications[cite: 3].
+              </p>
             </div>
 
+            <!-- Education -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-200 text-[10px] tracking-wider">Education</h3>
-              <p class="text-[9px] text-slate-700 mt-1"><b>Sir Syed CASE Institute:</b> BS-AI — 5th Semester track, Expected Graduation: 2028.<br>Coursework: Machine Learning, Database Systems, Data Structures, OOP, Calculus.</p>
+              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Education</h3>
+              <div class="mt-1 flex justify-between font-bold text-[9px]">
+                <span[cite: 3]>Sir Syed CASE Institute of Technology — BS Artificial Intelligence</span>
+                <span class="text-slate-500 font-normal"[cite: 3]>2024 - Present (5th Semester)</span>
+              </div>
+              <p class="text-[8.5px] text-slate-600"[cite: 3]>Coursework: Machine Learning, Database Systems, Data Structures, Software Engineering, OOP, Calculus[cite: 3].</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- 8. CONTACT SECTION -->
     <section id="contact" class="tab-panel">
-      <div class="glass rounded-[2rem] p-8 md:p-12">
-        <p class="font-bold uppercase tracking-[0.45em] text-cyan-500 text-sm">Contact Me</p>
-        <h2 class="mt-2 text-3xl font-black md:text-5xl tracking-tight text-white mb-8">Get In Touch</h2>
+      <div class="glass rounded-[2.5rem] p-8 md:p-12">
+        <p class="font-bold uppercase tracking-[0.45em] text-sky-400 text-xs">Reach Out</p>
+        <h2 class="mt-1 text-3xl font-black md:text-5xl tracking-tight text-white font-heading mb-8">Get In Touch</h2>
 
         <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div class="card p-6" data-aos="fade-right">
             <form id="contactForm" action="https://formspree.io/f/mblyeqol" method="POST" class="grid gap-4">
-              <input type="text" name="name" placeholder="Full Name" class="p-3.5 bg-slate-900/60 rounded-xl border border-slate-300 dark:border-slate-800 text-sm text-white outline-none" required />
-              <input type="email" name="email" placeholder="Email Address" class="p-3.5 bg-slate-900/60 rounded-xl border border-slate-300 dark:border-slate-800 text-sm text-white outline-none" required />
-              <textarea name="message" placeholder="Message Content Details..." class="p-3.5 bg-slate-900/60 rounded-xl border border-slate-300 dark:border-slate-800 text-sm text-white min-h-24 outline-none" required></textarea>
-              <button type="submit" class="btn-primary text-sm py-3.5">Send Message</button>
+              <input type="text" name="name" placeholder="Your Name" class="p-3.5 bg-slate-900/70 rounded-xl border border-slate-300 dark:border-slate-800 text-sm text-white outline-none focus:border-sky-400 transition-colors" required />
+              <input type="email" name="email" placeholder="Your Email Address" class="p-3.5 bg-slate-900/70 rounded-xl border border-slate-300 dark:border-slate-800 text-sm text-white outline-none focus:border-sky-400 transition-colors" required />
+              <textarea name="message" placeholder="Message Details..." class="p-3.5 bg-slate-900/70 rounded-xl border border-slate-300 dark:border-slate-800 text-sm text-white min-h-28 outline-none focus:border-sky-400 transition-colors" required></textarea>
+              <button type="submit" class="btn-primary text-sm py-3.5">Send Message Directly</button>
             </form>
             <p id="formStatus" class="mt-3 hidden rounded-xl p-3 text-xs font-bold"></p>
           </div>
 
           <div class="card p-6 text-xs space-y-4 text-muted font-medium" data-aos="fade-left">
-            <h3 class="text-base font-bold text-cyan-400 border-b border-slate-800/60 pb-2">Direct Contact Links</h3>
-            <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">✉️ Email Address:</span> rohaanzahid.04@gmail.com</p>
-            <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">📞 Mobile Connection:</span> +92 333 8705793</p>
-            <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">📍 Location Base:</span> Rawalpindi / Islamabad, Pakistan</p>
-            <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">🌐 GitHub Profile:</span> github.com/Rohaanrz05</p>
+            <h3 class="text-base font-bold text-sky-400 font-heading border-b border-slate-800 pb-2">Direct Contact Channels</h3>
+            <p[cite: 3]><span class="font-black text-white text-[10px] block uppercase tracking-wide">✉️ Email Address:</span> rohaanzahid.04@gmail.com[cite: 3]</p>
+            <p[cite: 3]><span class="font-black text-white text-[10px] block uppercase tracking-wide">📞 Phone Number:</span> 03338705793[cite: 3]</p>
+            <p[cite: 3]><span class="font-black text-white text-[10px] block uppercase tracking-wide">📍 Location:</span> Islamabad, Pakistan[cite: 3]</p>
+            <p[cite: 3]><span class="font-black text-white text-[10px] block uppercase tracking-wide">🌐 GitHub:</span> github.com/Rohaanrz05[cite: 3]</p>
+            <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">📖 Author Platform:</span> <a href="https://books.rohaanzahid.space" target="_blank" class="text-amber-400 underline">books.rohaanzahid.space ↗</a></p>
           </div>
         </div>
       </div>
@@ -613,17 +861,87 @@
 
   </main>
 
+  <!-- Interactive Modals for Credentials & Letter of Recommendation -->
+  
+  <!-- Decodes Lab Recommendation Modal -->
+  <div id="recommendationModal" class="modal" onclick="closeModalOnBackdrop(event, 'recommendationModal')">
+    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-sky-400/30 relative">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+        <div>
+          <h3 class="text-lg font-bold text-white font-heading"[cite: 2]>Letter of Recommendation — Decode Labs</h3>
+          <p class="text-xs text-sky-400"[cite: 2]>Govt. Registered Enterprise | 2 August 2026</p>
+        </div>
+        <button onclick="closeModal('recommendationModal')" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+      </div>
+      <div class="space-y-3 text-xs leading-relaxed text-slate-300 font-normal">
+        <blockquote class="border-l-2 border-indigo-400 pl-3 py-1 italic bg-indigo-950/20 text-slate-200"[cite: 2]>
+          "Throughout his tenure, he consistently demonstrated an outstanding commitment to excellence, seamlessly integrating into our fast-paced virtual work environment and consistently exceeding performance expectations... Operating specifically within the Artificial Intelligence (AI) vertical, Rohaan Zahid showcased a remarkable ability to translate abstract theoretical concepts into robust, production-ready solutions."[cite: 2]
+        </blockquote>
+        <p[cite: 2]>
+          <strong>Contact Info:</strong> Decode Labs (+91 92360 11887 / 94739 35188) | www.decodelabs.tech | hr@decodelabs.tech[cite: 2]
+        </p>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button onclick="closeModal('recommendationModal')" class="btn-secondary text-xs py-2">Close Window</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decodes Lab Certificate Modal -->
+  <div id="decodesCertModal" class="modal" onclick="closeModalOnBackdrop(event, 'decodesCertModal')">
+    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-lg w-full text-center border border-indigo-500/40 relative">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+        <h3 class="text-base font-bold text-white font-heading"[cite: 4]>Decode Labs Certificate of Completion</h3>
+        <button onclick="closeModal('decodesCertModal')" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+      </div>
+      <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-3">
+        <div class="text-2xl">🎓</div>
+        <div class="text-xs font-bold text-indigo-400 uppercase tracking-widest"[cite: 4]>Global Internship Credential</div>
+        <div class="text-lg font-black text-white font-heading"[cite: 4]>Rohaan Zahid</div>
+        <div class="text-xs text-slate-300"[cite: 4]>Virtual Internship Artificial Intelligence (AI)</div>
+        <div class="text-[11px] text-slate-400 pt-2 border-t border-slate-800"[cite: 4]>
+          <strong>Student ID:</strong> AIA074381<br[cite: 4]>
+          <strong>Duration:</strong> June 30, 2026 – July 30, 2026<br[cite: 4]>
+          <strong>Issue Date:</strong> July 31, 2026[cite: 4]
+        </div>
+      </div>
+      <div class="mt-5 flex justify-center">
+        <button onclick="closeModal('decodesCertModal')" class="btn-secondary text-xs py-2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Anthropic Claude 101 Modal -->
+  <div id="claudeModal" class="modal" onclick="closeModalOnBackdrop(event, 'claudeModal')">
+    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-md w-full text-center border border-sky-400/40 relative">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+        <h3 class="text-base font-bold text-white font-heading"[cite: 1]>Anthropic Credential</h3>
+        <button onclick="closeModal('claudeModal')" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+      </div>
+      <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-3">
+        <div class="text-2xl">🤖</div>
+        <div class="text-xs font-bold text-sky-400 uppercase tracking-widest"[cite: 1]>Certificate of Completion</div>
+        <div class="text-xl font-black text-white font-heading"[cite: 1]>Rohaan Zahid</div>
+        <div class="text-sm font-semibold text-slate-200"[cite: 1]>Claude 101</div>
+        <div class="text-xs text-slate-400 uppercase tracking-widest font-bold pt-2 border-t border-slate-800"[cite: 1]>Anthropic</div>
+      </div>
+      <div class="mt-5 flex justify-center">
+        <button onclick="closeModal('claudeModal')" class="btn-secondary text-xs py-2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Assistant Widget -->
   <div class="fixed bottom-5 right-5 z-50">
-    <button onclick="toggleFloatingChat()" class="bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 p-4 rounded-full font-black shadow-xl hover:scale-110 active:scale-95 hover:shadow-cyan-500/20 transition-all duration-300 transform flex items-center gap-2">
-      <span>🤖</span> <span class="text-xs font-bold uppercase tracking-wider">Ask Rohaan AI</span>
+    <button onclick="toggleFloatingChat()" class="bg-gradient-to-r from-sky-400 to-indigo-500 text-slate-950 p-3.5 rounded-full font-black shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2">
+      <span class="text-base">🤖</span> <span class="text-xs font-bold uppercase tracking-wider hidden sm:inline">Ask Rohaan AI</span>
     </button>
     
-    <div id="floatingChat" class="hidden fixed bottom-20 right-5 w-85 h-[450px] sm:w-96 rounded-2xl card border border-cyan-500/20 shadow-2xl overflow-hidden bg-slate-950">
+    <div id="floatingChat" class="hidden fixed bottom-20 right-5 w-80 h-[430px] sm:w-96 rounded-2xl card border border-sky-400/30 shadow-2xl overflow-hidden bg-slate-950">
       <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex justify-between items-center">
-        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">AI Assistant Sandbox</span>
+        <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Rohaan AI Assistant</span>
         <button onclick="toggleFloatingChat()" class="text-slate-400 hover:text-white font-bold">&times;</button>
       </div>
-      
       <iframe 
         src="https://gibrio.com/bot/chat/rohaan-s-ai-assistant" 
         class="w-full h-[calc(100%-40px)] border-none"
@@ -632,55 +950,64 @@
     </div>
   </div>
 
-  <footer class="border-t py-10 dark:border-slate-900/80 bg-slate-950/20 text-xs font-medium text-slate-500">
+  <!-- Footer -->
+  <footer class="border-t py-10 dark:border-slate-900/80 bg-slate-950/40 text-xs font-medium text-slate-400">
     <div class="mx-auto max-w-7xl px-5 grid gap-6 sm:grid-cols-3 items-start text-center sm:text-left">
       <div>
-        <h4 class="text-sm font-bold text-cyan-400 mb-2">M. Rohaan Zahid</h4>
-        <p class="text-[11px] text-muted leading-relaxed">AI Programmer | Machine Learning Enthusiast<br>Developing robust functional web products and system engineering tools.</p>
+        <h4 class="text-sm font-bold text-sky-400 font-heading mb-1.5">M. Rohaan Zahid</h4>
+        <p class="text-[11px] text-muted leading-relaxed"[cite: 3]>AI Programmer & Software Developer[cite: 3]. Crafting intelligent machine learning applications and scalable web systems[cite: 3].</p>
       </div>
       <div>
-        <h4 class="text-sm font-bold text-white mb-2">Links Menu</h4>
+        <h4 class="text-sm font-bold text-white font-heading mb-2">Navigation Links</h4>
         <div class="flex flex-wrap justify-center sm:justify-start gap-3 text-[11px] text-muted">
-          <button onclick="openTab('projects')" class="hover:text-cyan-400">Projects</button>
-          <button onclick="openTab('skills')" class="hover:text-cyan-400">Skills</button>
-          <button onclick="openTab('experience')" class="hover:text-cyan-400">Experience</button>
-          <button onclick="openTab('contact')" class="hover:text-cyan-400">Contact</button>
+          <button onclick="openTab('profile')" class="hover:text-sky-400">Profile</button>
+          <button onclick="openTab('experience')" class="hover:text-sky-400">Experience</button>
+          <button onclick="openTab('skills')" class="hover:text-sky-400">Skills</button>
+          <button onclick="openTab('projects')" class="hover:text-sky-400">Projects</button>
+          <button onclick="openTab('credentials')" class="hover:text-sky-400">Credentials</button>
+          <button onclick="openTab('cv')" class="hover:text-sky-400">Career Vault</button>
+          <a href="https://books.rohaanzahid.space" target="_blank" class="text-amber-400 hover:underline">Author Portal ↗</a>
         </div>
       </div>
       <div>
-        <h4 class="text-sm font-bold text-white mb-2">External Connections</h4>
+        <h4 class="text-sm font-bold text-white font-heading mb-2">Connect Directly</h4>
         <div class="flex justify-center sm:justify-start gap-4 text-muted font-bold text-[11px]">
-          <a href="https://github.com/Rohaanrz05" target="_blank" class="hover:text-cyan-400">GitHub</a>
-          <a href="https://www.linkedin.com/in/rohaan-zahid-510850400/" target="_blank" class="hover:text-cyan-400">LinkedIn</a>
-          <a href="mailto:rohaanzahid.04@gmail.com" class="hover:text-cyan-400">Email</a>
+          <a href="https://github.com/Rohaanrz05" target="_blank" class="hover:text-sky-400"[cite: 3]>GitHub</a>
+          <a href="https://www.linkedin.com/in/rohaan-zahid-510850400/" target="_blank" class="hover:text-sky-400"[cite: 3]>LinkedIn</a>
+          <a href="mailto:rohaanzahid.04@gmail.com" class="hover:text-sky-400"[cite: 3]>Email</a>
+          <a href="https://books.rohaanzahid.space" target="_blank" class="text-amber-400 hover:underline">books.rohaanzahid.space</a>
         </div>
       </div>
     </div>
-    <div class="text-center border-t border-slate-800/40 mt-8 pt-4 text-[10px] text-muted">
-      &copy; 2026 M. Rohaan Zahid. All rights reserved.
+    <div class="text-center border-t border-slate-900 mt-8 pt-4 text-[10px] text-muted">
+      &copy; 2026 M. Rohaan Zahid. Built with precision and intelligence. All rights reserved.
     </div>
   </footer>
 
   <script>
-    // Activate AOS frameworks
-    AOS.init({ duration: 800, once: true });
+    // Initialize AOS
+    AOS.init({ duration: 750, once: true });
 
-    // Activate Typed strings processing matrix
+    // Animated Typing strings
     new Typed("#typing", {
-      strings: ["AI Programmer", "ML Engineer", "Software Developer", "Python Developer"],
-      typeSpeed: 60,
-      backSpeed: 40,
+      strings: [
+        "AI Programmer & Developer", 
+        "Machine Learning Enthusiast", 
+        "Python & C++ Engineer", 
+        "Published Author & Researcher"
+      ],
+      typeSpeed: 55,
+      backSpeed: 35,
       loop: true
     });
 
-    // Check LocalStorage download metrics tracking parameters
+    // LocalStorage Download Counter
     window.addEventListener("load", () => {
       const storedCount = localStorage.getItem("resumeDownloads") || 0;
       document.getElementById("downloadCount").textContent = storedCount;
       fetchGitHubLiveMetadata();
     });
 
-    // Async Request public repository metric endpoints via user link APIs
     async function fetchGitHubLiveMetadata() {
       try {
         const res = await fetch("https://api.github.com/users/Rohaanrz05");
@@ -688,17 +1015,32 @@
           const data = await res.json();
           if(data.public_repos) document.getElementById("gitRepos").textContent = `${data.public_repos}+`;
         }
-      } catch(e) { console.log("Network status bypassed."); }
+      } catch(e) { console.log("GitHub API fetch fallback active."); }
     }
 
-    // Clean active pane routing tabs interface shifts controller
+    // Modal Control Functions
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.add("show");
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.remove("show");
+    }
+
+    function closeModalOnBackdrop(event, id) {
+      if (event.target.id === id) closeModal(id);
+    }
+
+    // Tab switcher
     function openTab(tabId) {
       document.querySelectorAll(".tab-panel").forEach(panel => panel.classList.remove("active"));
       document.querySelectorAll(".nav-tab").forEach(tab => tab.classList.remove("active"));
-    
+      
       const targetSection = document.getElementById(tabId);
       if (targetSection) targetSection.classList.add("active");
-    
+      
       document.querySelectorAll(`[data-tab="${tabId}"]`).forEach(tab => tab.classList.add("active"));
       window.location.hash = tabId;
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -706,18 +1048,14 @@
 
     function toggleFloatingChat() {
       const chatWindow = document.getElementById("floatingChat");
-      if (chatWindow) {
-        chatWindow.classList.toggle("hidden");
-      }
+      if (chatWindow) chatWindow.classList.toggle("hidden");
     }
-    // Missing function added back:
+
     function toggleMobileMenu() {
       const mobileMenu = document.getElementById("mobileMenu");
-      if (mobileMenu) {
-        mobileMenu.classList.toggle("show");
-      }
+      if (mobileMenu) mobileMenu.classList.toggle("show");
     }
-    // Toggle Dark / Light Theme switching metrics
+
     function toggleTheme() {
       const body = document.body;
       const btn = document.getElementById("themeToggle");
@@ -730,7 +1068,7 @@
       }
     }
 
-    // Standardized Recruiter Compliant Clean A4 Resume PDF Compilation Builder Engine Script
+    // Recruiter-grade Clean A4 PDF Resume Generator
     function triggerCVPDFDownload() {
       let dlCounter = parseInt(localStorage.getItem("resumeDownloads") || 0);
       dlCounter++;
@@ -741,100 +1079,126 @@
       const doc = new jsPDF("p", "mm", "a4");
 
       doc.setFillColor(15, 23, 42);
-      doc.rect(0, 0, 210, 38, "F");
+      doc.rect(0, 0, 210, 36, "F");
 
       doc.setTextColor(255, 255, 255);
-      doc.setFont("helvetica", "bold"); doc.setFontSize(22);
-      doc.text("ROHAAN ZAHID", 12, 14);
+      doc.setFont("helvetica", "bold"); 
+      doc.setFontSize(20);
+      doc.text("ROHAAN ZAHID", 12, 13);
 
-      doc.setFontSize(10); doc.setTextColor(34, 211, 238);
-      doc.text("AI PROGRAMMER & SOFTWARE DEVELOPER", 12, 21);
+      doc.setFontSize(9.5); 
+      doc.setTextColor(56, 189, 248);
+      doc.text("AI PROGRAMMER & SOFTWARE DEVELOPER | MACHINE LEARNING ENTHUSIAST", 12, 20);
 
-      doc.setTextColor(203, 213, 225); doc.setFontSize(8.5);
-      doc.text("Email: rohaanzahid.04@gmail.com  |  Phone: +92 333 8705793  |  GitHub: github.com/Rohaanrz05  |  Location: Islamabad, PK", 12, 29);
+      doc.setTextColor(203, 213, 225); 
+      doc.setFontSize(8.5);
+      doc.text("Email: rohaanzahid.04@gmail.com  |  Phone: 03338705793  |  GitHub: github.com/Rohaanrz05  |  Islamabad, PK", 12, 28);
 
-      let yPos = 48;
+      let yPos = 44;
 
-      // 1. Summary
-      doc.setFillColor(240, 244, 248); doc.rect(12, yPos, 186, 6, "F");
-      doc.setTextColor(15, 23, 42); doc.setFont("helvetica", "bold"); doc.setFontSize(10);
-      doc.text("SUMMARY", 14, yPos + 4.5);
-      yPos += 9;
-      doc.setFont("helvetica", "normal"); doc.setFontSize(9);
+      // Summary
+      doc.setFillColor(240, 244, 248); 
+      doc.rect(12, yPos, 186, 6, "F");
+      doc.setTextColor(15, 23, 42); 
+      doc.setFont("helvetica", "bold"); 
+      doc.setFontSize(9.5);
+      doc.text("SUMMARY", 14, yPos + 4.2);
+      yPos += 8.5;
+      doc.setFont("helvetica", "normal"); 
+      doc.setFontSize(8.5);
       doc.text([
-        "Artificial Intelligence undergraduate student at Sir Syed CASE Institute of Technology. Experienced in developing custom",
-        "machine learning models, preprocessing clean datasets, and building multi-tier automation tools. Proven capacity to deliver",
-        "reliable object-oriented software engineering layers spanning core data paradigms."
+        "Artificial Intelligence undergraduate at Sir Syed CASE Institute of Technology with hands-on experience in C++, Python, database",
+        "management, web development, and machine learning projects. Proven capacity in building AI-based route optimization models, airline",
+        "reservation management systems, and modular automation tools."
       ], 12, yPos);
-      yPos += 16;
+      yPos += 14.5;
 
-      // 2. Technical Skills
-      doc.setFillColor(240, 244, 248); doc.rect(12, yPos, 186, 6, "F");
-      doc.setFont("helvetica", "bold"); doc.text("TECHNICAL SKILLS", 14, yPos + 4.5);
-      yPos += 9;
+      // Skills
+      doc.setFillColor(240, 244, 248); 
+      doc.rect(12, yPos, 186, 6, "F");
+      doc.setFont("helvetica", "bold"); 
+      doc.text("KEY SKILLS", 14, yPos + 4.2);
+      yPos += 8.5;
       doc.setFont("helvetica", "normal");
       doc.text([
-        "• Languages & Databases: Python development, C++, C# Architecture, MySQL engines, phpMyAdmin relational platforms.",
-        "• Machine Learning Focus: Model training execution, dataset evaluation, Pandas, NumPy, Scikit-learn, Streamlit apps.",
-        "• Tools: Git source workflows, GitHub code managers, tracking pipelines, core configuration environments."
+        "• Technical: Python, C++, C# Programming, HTML5, CSS, MySQL, Docker, phpMyAdmin, Git, GitHub.",
+        "• AI & Data Science: Supervised Learning, Model Training, Evaluation, Preprocessing, NumPy, Pandas, Scikit-learn, Matplotlib, Streamlit.",
+        "• Soft Skills: Problem Solving, Critical Thinking, Team Collaboration, Communication, Time Management, Research Skills."
       ], 12, yPos);
-      yPos += 16;
+      yPos += 15;
 
-      // 3. Experience
-      doc.setFillColor(240, 244, 248); doc.rect(12, yPos, 186, 6, "F");
-      doc.setFont("helvetica", "bold"); doc.text("EXPERIENCE", 14, yPos + 4.5);
-      yPos += 9;
+      // Work Experience
+      doc.setFillColor(240, 244, 248); 
+      doc.rect(12, yPos, 186, 6, "F");
+      doc.setFont("helvetica", "bold"); 
+      doc.text("WORK EXPERIENCE", 14, yPos + 4.2);
+      yPos += 8.5;
       
-      doc.setFont("helvetica", "bold"); doc.text("● Machine Learning Intern — FlyRank.AI", 12, yPos);
-      doc.setFont("helvetica", "normal"); doc.text("July 2026 - Present", 160, yPos);
+      doc.setFont("helvetica", "bold"); 
+      doc.text("● Machine Learning Intern — FlyRank.AI", 12, yPos);
+      doc.setFont("helvetica", "normal"); 
+      doc.text("July 2026 - Present", 160, yPos);
       yPos += 4.5;
-      doc.text("Preprocessed complex datasets, developed structural features, and trained Scikit-learn predictive model lines.", 14, yPos);
-      yPos += 7;
+      doc.text("Assisted in ML model testing, performed feature engineering, and worked with NumPy, Pandas, Scikit-learn, and Matplotlib.", 14, yPos);
+      yPos += 6.5;
 
-      doc.setFont("helvetica", "bold"); doc.text("● Artificial Intelligence Intern — Decodes Lab", 12, yPos);
-      doc.setFont("helvetica", "normal"); doc.text("July 2026 - August 2026", 160, yPos);
+      doc.setFont("helvetica", "bold"); 
+      doc.text("● Artificial Intelligence Intern — Decode Labs", 12, yPos);
+      doc.setFont("helvetica", "normal"); 
+      doc.text("July 2026 - August 2026", 160, yPos);
       yPos += 4.5;
-      doc.text("Formulated text automation scripts, rule chatbot structures, and performed rigorous data checking logs.", 14, yPos);
-      yPos += 7;
+      doc.text("Built AI applications and chatbots; performed data preprocessing and model evaluation. Awarded formal Letter of Recommendation.", 14, yPos);
+      yPos += 6.5;
 
-      doc.setFont("helvetica", "bold"); doc.text("● Python Intern — CodeAlpha", 12, yPos);
-      doc.setFont("helvetica", "normal"); doc.text("May 2026 - June 2026", 160, yPos);
+      doc.setFont("helvetica", "bold"); 
+      doc.text("● Python Programming Intern — CodeAlpha", 12, yPos);
+      doc.setFont("helvetica", "normal"); 
+      doc.text("May 2026 - June 2026", 160, yPos);
       yPos += 4.5;
-      doc.text("Programmed custom modular scripts applying core Object Oriented Programming (OOP) syntax constraints.", 14, yPos);
-      yPos += 14;
+      doc.text("Developed Python-based applications applying OOP concepts; tested, debugged, and optimized code execution pipelines.", 14, yPos);
+      yPos += 12;
 
-      // 4. Education
-      doc.setFillColor(240, 244, 248); doc.rect(12, yPos, 186, 6, "F");
-      doc.setFont("helvetica", "bold"); doc.text("EDUCATION", 14, yPos + 4.5);
-      yPos += 9;
+      // Education
+      doc.setFillColor(240, 244, 248); 
+      doc.rect(12, yPos, 186, 6, "F");
+      doc.setFont("helvetica", "bold"); 
+      doc.text("EDUCATION", 14, yPos + 4.2);
+      yPos += 8.5;
       doc.text("Sir Syed CASE Institute of Technology — BS Artificial Intelligence", 12, yPos);
-      doc.setFont("helvetica", "normal"); doc.text("Expected Graduation: 2028 | 5th Semester Track", 130, yPos);
-      yPos += 4.5;
-      doc.setFontSize(8.5); doc.setTextColor(80, 80, 80);
-      doc.text("Relevant Coursework: Machine Learning, Database Systems, Data Structures, OOP Architecture, Calculus logic.", 14, yPos);
+      doc.setFont("helvetica", "normal"); 
+      doc.text("2024 - Present | 5th Semester", 145, yPos);
+      yPos += 4.2;
+      doc.setFontSize(8); 
+      doc.setTextColor(80, 80, 80);
+      doc.text("Coursework: Artificial Intelligence, Machine Learning, Database Systems, Data Structures, Software Engineering, Calculus.", 14, yPos);
       
-      yPos += 8;
-      doc.setTextColor(15, 23, 42); doc.setFont("helvetica", "bold"); doc.setFontSize(9);
-      doc.text("Punjab College — Intermediate in Computer Science (ICS)", 12, yPos);
-      doc.setFont("helvetica", "normal"); doc.text("2022 - 2024 Profile", 160, yPos);
-      yPos += 14;
+      yPos += 7;
+      doc.setTextColor(15, 23, 42); 
+      doc.setFont("helvetica", "bold"); 
+      doc.setFontSize(8.5);
+      doc.text("Punjab College Blue Area Campus — Intermediate in Computer Science (ICS)", 12, yPos);
+      doc.setFont("helvetica", "normal"); 
+      doc.text("2022 - 2024", 170, yPos);
+      yPos += 12;
 
-      // 5. Projects
-      doc.setFillColor(240, 244, 248); doc.rect(12, yPos, 186, 6, "F");
-      doc.setFont("helvetica", "bold"); doc.text("PROJECTS", 14, yPos + 4.5);
-      yPos += 9;
-      doc.text("• AI Smart Route Optimization System: Path coordinate system built inside interactive Streamlit apps.", 12, yPos);
-      yPos += 5;
-      doc.text("• Airline Reservation System: Built high-performance structural reservation buffers using C++ paradigms.", 12, yPos);
-      yPos += 5;
-      doc.text("• Robotic Parking Automation System: Grid space automation allocation logic handling structural cell checks.", 12, yPos);
+      // Projects
+      doc.setFillColor(240, 244, 248); 
+      doc.rect(12, yPos, 186, 6, "F");
+      doc.setFont("helvetica", "bold"); 
+      doc.text("PROJECTS", 14, yPos + 4.2);
+      yPos += 8.5;
+      doc.text("• AI Smart Route Optimization System: Path recommendation platform using ML models and Streamlit frontend.", 12, yPos);
+      yPos += 4.5;
+      doc.text("• Airline Reservation System: C++ flight booking platform with passenger tracking and automated ticket generation.", 12, yPos);
+      yPos += 4.5;
+      doc.text("• AI Impact on Society: Research initiative analyzing ethical, social, and economic implications of AI advancements.", 12, yPos);
 
-      doc.save("M_Rohaan_Zahid_Professional_CV.pdf");
+      doc.save("M_Rohaan_Zahid_Official_Resume.pdf");
     }
 
     function printCV() { window.print(); }
 
-    // Form submission processor simulation
+    // Contact Form Handler
     document.getElementById("contactForm").addEventListener("submit", async function(e) {
       e.preventDefault();
       const form = e.target, status = document.getElementById("formStatus"), data = new FormData(form);
@@ -842,50 +1206,114 @@
         const response = await fetch(form.action, { method: form.method, body: data, headers: { "Accept": "application/json" } });
         status.classList.remove("hidden");
         if (response.ok) {
-          status.textContent = "Data payload transmitted cleanly onto destination node.";
-          status.className = "mt-3 text-xs font-bold text-emerald-400";
+          status.textContent = "Message sent successfully! I'll get back to you shortly.";
+          status.className = "mt-3 text-xs font-bold text-emerald-400 bg-emerald-950/50 p-3 rounded-xl border border-emerald-800";
           form.reset();
         } else {
-          status.textContent = "Transmission anomaly detected across route pipelines.";
-          status.className = "mt-3 text-xs font-bold text-red-400";
+          status.textContent = "Transmission issue encountered. Please reach out directly via email.";
+          status.className = "mt-3 text-xs font-bold text-red-400 bg-red-950/50 p-3 rounded-xl border border-red-800";
         }
       } catch {
         status.classList.remove("hidden");
-        status.className = "mt-3 text-xs font-bold text-red-400";
+        status.className = "mt-3 text-xs font-bold text-red-400 bg-red-950/50 p-3 rounded-xl border border-red-800";
       }
     });
 
-    // Background Canvas Particle System Execution Pipeline Layer
-    class ParticleSystem {
+    // Enhanced Interactive Quantum Particle System with Constellation Links & Mouse Attraction
+    class QuantumParticleField {
       constructor(canvas) {
-        this.canvas = canvas; this.ctx = canvas.getContext("2d"); this.particles = [];
-        this.resize(); window.addEventListener("resize", () => this.resize());
-        this.init(); this.animate();
+        this.canvas = canvas;
+        this.ctx = canvas.getContext("2d");
+        this.particles = [];
+        this.mouse = { x: null, y: null, radius: 140 };
+        this.resize();
+        window.addEventListener("resize", () => this.resize());
+        window.addEventListener("mousemove", (e) => {
+          this.mouse.x = e.x;
+          this.mouse.y = e.y;
+        });
+        window.addEventListener("mouseout", () => {
+          this.mouse.x = null;
+          this.mouse.y = null;
+        });
+        this.init();
+        this.animate();
       }
-      resize() { this.canvas.width = window.innerWidth; this.canvas.height = window.innerHeight; }
+
+      resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+      }
+
       init() {
         this.particles = [];
-        for (let i = 0; i < 45; i++) {
+        const count = Math.min(Math.floor((this.canvas.width * this.canvas.height) / 14000), 75);
+        for (let i = 0; i < count; i++) {
           this.particles.push({
-            x: Math.random() * this.canvas.width, y: Math.random() * this.canvas.height,
-            vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, r: Math.random() * 2 + 1,
-            color: "rgba(34,211,238,0.18)"
+            x: Math.random() * this.canvas.width,
+            y: Math.random() * this.canvas.height,
+            vx: (Math.random() - 0.5) * 0.55,
+            vy: (Math.random() - 0.5) * 0.55,
+            r: Math.random() * 2.2 + 1,
+            baseAlpha: Math.random() * 0.4 + 0.2
           });
         }
       }
+
       animate() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        for (let p of this.particles) {
-          p.x += p.vx; p.y += p.vy;
+        const isDark = document.body.classList.contains("dark");
+        const dotColor = isDark ? "56, 189, 248" : "2, 132, 199";
+        const linkColor = isDark ? "99, 102, 241" : "14, 165, 233";
+
+        for (let i = 0; i < this.particles.length; i++) {
+          let p = this.particles[i];
+
+          p.x += p.vx;
+          p.y += p.vy;
+
           if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
           if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
-          this.ctx.beginPath(); this.ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          this.ctx.fillStyle = p.color; this.ctx.fill();
+
+          // Mouse Interaction
+          if (this.mouse.x !== null) {
+            let dx = this.mouse.x - p.x;
+            let dy = this.mouse.y - p.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < this.mouse.radius) {
+              let force = (this.mouse.radius - dist) / this.mouse.radius;
+              p.x -= (dx / dist) * force * 1.8;
+              p.y -= (dy / dist) * 1.8;
+            }
+          }
+
+          // Draw Particle
+          this.ctx.beginPath();
+          this.ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          this.ctx.fillStyle = `rgba(${dotColor}, ${p.baseAlpha})`;
+          this.ctx.fill();
+
+          // Connect nearby particles (constellation effect)
+          for (let j = i + 1; j < this.particles.length; j++) {
+            let p2 = this.particles[j];
+            let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if (dist < 110) {
+              this.ctx.beginPath();
+              this.ctx.moveTo(p.x, p.y);
+              this.ctx.lineTo(p2.x, p2.y);
+              this.ctx.strokeStyle = `rgba(${linkColor}, ${0.18 * (1 - dist / 110)})`;
+              this.ctx.lineWidth = 0.8;
+              this.ctx.stroke();
+            }
+          }
         }
         requestAnimationFrame(() => this.animate());
       }
     }
-    window.addEventListener("load", () => { new ParticleSystem(document.getElementById("quantum-canvas")); });
+
+    window.addEventListener("load", () => {
+      new QuantumParticleField(document.getElementById("quantum-canvas"));
+    });
   </script>
 </body>
 </html>
