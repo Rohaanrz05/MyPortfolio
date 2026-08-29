@@ -47,16 +47,16 @@
     /* Dark Theme Base (Default) */
     body.dark { background-color: #020617; color: #f8fafc; }
     body.dark #quantum-canvas { background: radial-gradient(circle at 50% 20%, #0d1527 0%, #020617 80%); }
-    body.dark .glass { background: linear-gradient(135deg, rgba(15, 23, 42, 0.82) 0%, rgba(2, 6, 23, 0.75) 100%); border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45); }
-    body.dark .card { background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(148, 163, 184, 0.14); }
+    body.dark .glass { background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(2, 6, 23, 0.8) 100%); border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45); }
+    body.dark .card { background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.14); }
     body.dark .text-muted { color: #94a3b8; }
     body.dark .nav-tab { color: #94a3b8; }
 
     /* Light Theme Base */
     body.light { background-color: #f8fafc; color: #0f172a; }
     body.light #quantum-canvas { background: radial-gradient(circle at 50% 20%, #e0f2fe 0%, #f8fafc 85%); }
-    body.light .glass { background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(241, 245, 249, 0.85) 100%); border: 1px solid rgba(14, 165, 233, 0.18); box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08); }
-    body.light .card { background: rgba(255, 255, 255, 0.88); border: 1px solid rgba(15, 23, 42, 0.1); color: #0f172a; }
+    body.light .glass { background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(241, 245, 249, 0.88) 100%); border: 1px solid rgba(14, 165, 233, 0.18); box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08); }
+    body.light .card { background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(15, 23, 42, 0.1); color: #0f172a; }
     body.light .text-muted { color: #475569; }
     body.light .text-white { color: #0f172a; }
     body.light .nav-tab { color: #475569; }
@@ -87,8 +87,17 @@
     .mobile-menu.show { display: block; }
 
     /* Modal Styling */
-    .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1rem; }
+    .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(2, 6, 23, 0.88); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1rem; }
     .modal.show { display: flex; }
+
+    /* Document Frame Container */
+    .doc-viewer-frame {
+      width: 100%;
+      height: 72vh;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background-color: #ffffff;
+    }
   </style>
 </head>
 
@@ -170,8 +179,8 @@
                 </span>
               </h2>
               
-              <p class="mt-5 text-base sm:text-lg leading-relaxed text-muted font-normal[cite: 3]">
-                Artificial Intelligence undergraduate at <strong>Sir Syed CASE Institute of Technology</strong>[cite: 3]. Passionate about turning complex predictive models into production-ready software solutions spanning Machine Learning, Data Preprocessing, and Full-Stack Engineering[cite: 3].
+              <p class="mt-5 text-base sm:text-lg leading-relaxed text-muted font-normal">
+                Artificial Intelligence undergraduate at <strong>Sir Syed CASE Institute of Technology</strong> with a strong focus on AI, software development, and emerging technologies. Hands-on experience in C++, Python, database management, web development, and machine learning pipelines.
               </p>
 
               <div class="mt-8 flex flex-wrap gap-3.5 items-center">
@@ -188,16 +197,16 @@
 
               <!-- Quick Links -->
               <div class="mt-6 flex items-center gap-3">
-                <a href="https://www.linkedin.com/in/rohaan-zahid-510850400/" target="_blank" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="LinkedIn Profile"[cite: 3]>
+                <a href="https://www.linkedin.com/in/rohaan-zahid-510850400/" target="_blank" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="LinkedIn Profile">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                 </a>
-                <a href="https://github.com/Rohaanrz05" target="_blank" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="GitHub Profile"[cite: 3]>
+                <a href="https://github.com/Rohaanrz05" target="_blank" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="GitHub Profile">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
                 </a>
-                <a href="mailto:rohaanzahid.04@gmail.com" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="Email"[cite: 3]>
+                <a href="mailto:rohaanzahid.04@gmail.com" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="Email">
                   <span class="text-sm">✉️</span>
                 </a>
-                <span class="text-xs text-muted font-medium ml-2">📍 Islamabad, Pakistan[cite: 3]</span>
+                <span class="text-xs text-muted font-medium ml-2">📍 Street 08, House 420, FMC A Block, B-17, Islamabad</span>
               </div>
             </div>
 
@@ -211,8 +220,8 @@
               <p class="mt-1 text-xs text-sky-400 font-bold tracking-widest uppercase">AI Programmer & Software Engineer</p>
               
               <div class="mt-5 grid grid-cols-2 gap-2 text-left text-xs bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
-                <div><span class="text-muted block text-[10px] uppercase">Affiliation</span> <span class="font-bold text-white">Sir Syed CASE[cite: 3]</span></div>
-                <div><span class="text-muted block text-[10px] uppercase">Specialization</span> <span class="font-bold text-white">Machine Learning[cite: 3]</span></div>
+                <div><span class="text-muted block text-[10px] uppercase">Affiliation</span> <span class="font-bold text-white">Sir Syed CASE</span></div>
+                <div><span class="text-muted block text-[10px] uppercase">Specialization</span> <span class="font-bold text-white">Machine Learning</span></div>
                 <div class="mt-2"><span class="text-muted block text-[10px] uppercase">Published</span> <span class="font-bold text-amber-300">Author & Researcher</span></div>
                 <div class="mt-2"><span class="text-muted block text-[10px] uppercase">Resume Loads</span> <span id="downloadCount" class="font-bold text-sky-400">0</span></div>
               </div>
@@ -226,14 +235,14 @@
             <h3 class="text-xs font-bold uppercase tracking-[0.3em] text-sky-400 mb-3">Executive Summary</h3>
             <h4 class="text-2xl font-black text-white font-heading mb-4">Bridging Theoretical AI with Real-World Systems</h4>
             <div class="space-y-4 text-sm leading-relaxed text-muted font-normal">
-              <p[cite: 3]>
-                I am an Artificial Intelligence undergraduate student at <strong>Sir Syed CASE Institute of Technology</strong> in Islamabad, with deep hands-on experience in Machine Learning, Python, C++, and database architectures[cite: 3].
-              </p>
-              <p[cite: 3]>
-                Throughout my academic and professional tenure at industry leaders like <strong>FlyRank.AI</strong> and <strong>Decodes Lab</strong>, I have built and evaluated end-to-end predictive models, designed heuristic optimization platforms, and created modular software architectures[cite: 3].
+              <p>
+                I am an Artificial Intelligence undergraduate at <strong>Sir Syed CASE Institute of Technology</strong> with a strong passion for AI, software engineering, and emerging tech stacks. I have hands-on experience developing projects including AI-based route optimization systems, airline reservation platforms, robotic parking automation, and web applications.
               </p>
               <p>
-                Beyond code, I am also an active writer and independent author—managing historical and tech publications through my dedicated publishing platform at <a href="https://books.rohaanzahid.space" target="_blank" class="text-amber-400 underline font-semibold hover:text-amber-300">books.rohaanzahid.space</a>.
+                I am a motivated and detail-oriented learner who enjoys solving complex problems, building innovative solutions, and continuously improving technical skills. My goal is to apply my knowledge of Artificial Intelligence and software engineering to create impactful technologies while growing as a professional in the tech industry.
+              </p>
+              <p>
+                Beyond system development, I am an active writer and independent author—managing historical publications and landing architectures through my dedicated platform at <a href="https://books.rohaanzahid.space" target="_blank" class="text-amber-400 underline font-semibold hover:text-amber-300">books.rohaanzahid.space</a>.
               </p>
             </div>
           </div>
@@ -243,13 +252,13 @@
             <div class="card p-5 border-l-4 border-sky-400" data-aos="fade-up" data-aos-delay="100">
               <span class="text-2xl font-black text-sky-400 font-heading" id="gitRepos">15+</span>
               <p class="text-xs font-bold text-white mt-0.5">Software & AI Projects</p>
-              <p class="text-[11px] text-muted mt-1">From heuristic routing dashboards to high-performance C++ suites.</p>
+              <p class="text-[11px] text-muted mt-1">From heuristic route prediction models to C++ systems.</p>
             </div>
 
             <div class="card p-5 border-l-4 border-indigo-400" data-aos="fade-up" data-aos-delay="200">
               <span class="text-2xl font-black text-indigo-400 font-heading">3 Track Records</span>
-              <p class="text-xs font-bold text-white mt-0.5">Industry Internships[cite: 3]</p>
-              <p class="text-[11px] text-muted mt-1">Experience at FlyRank.AI, Decodes Lab, and CodeAlpha[cite: 3].</p>
+              <p class="text-xs font-bold text-white mt-0.5">Industry Internships</p>
+              <p class="text-[11px] text-muted mt-1">Experience at FlyRank.AI, Decodes Lab, and CodeAlpha.</p>
             </div>
 
             <div class="card p-5 border-l-4 border-amber-400" data-aos="fade-up" data-aos-delay="300">
@@ -271,7 +280,7 @@
             <h2 class="mt-1 text-3xl font-black md:text-5xl tracking-tight text-white font-heading">Work Experience</h2>
           </div>
           <button onclick="openModal('recommendationModal')" class="btn-secondary text-xs !border-sky-400/40 text-sky-400">
-            <span>📜</span> View Decodes Lab Recommendation Letter[cite: 2]
+            <span>📜</span> View Decodes Lab Recommendation Letter
           </button>
         </div>
         
@@ -280,17 +289,19 @@
           <div class="card p-6 border-l-4 border-sky-400 relative overflow-hidden" data-aos="fade-up">
             <div class="flex flex-wrap justify-between items-start gap-2">
               <div>
-                <h3 class="text-xl font-bold text-white font-heading">Machine Learning Intern[cite: 3]</h3>
-                <p class="text-sm font-semibold text-sky-400 mt-0.5">FlyRank.AI[cite: 3]</p>
+                <h3 class="text-xl font-bold text-white font-heading">Machine Learning Intern</h3>
+                <p class="text-sm font-semibold text-sky-400 mt-0.5">FlyRank.AI</p>
               </div>
-              <span class="text-xs font-bold text-sky-400 bg-sky-950/60 border border-sky-800/60 px-3 py-1 rounded-full uppercase">July 2026 - Present[cite: 3]</span>
+              <span class="text-xs font-bold text-sky-400 bg-sky-950/60 border border-sky-800/60 px-3 py-1 rounded-full uppercase">July 2026 - Present</span>
             </div>
             <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-muted">
-              <li[cite: 3]>Assisted in developing and testing Machine Learning models for real-world applications[cite: 3].</li>
-              <li[cite: 3]>Performed extensive data collection, source data cleaning, data preprocessing, and systematic feature engineering for model training[cite: 3].</li>
-              <li[cite: 3]>Worked with mainstream scientific arrays via NumPy, Pandas, Scikit-learn, and Matplotlib libraries[cite: 3].</li>
-              <li[cite: 3]>Analyzed datasets and generated insights to support AI-driven solutions while conducting model evaluation and optimization[cite: 3].</li>
-              <li[cite: 3]>Collaborated effectively with team members using Git and GitHub for project version management and workflow tracking[cite: 3].</li>
+              <li>Assisted in developing and testing Machine Learning models for real-world applications.</li>
+              <li>Performed data collection, cleaning, preprocessing, and feature engineering for model training.</li>
+              <li>Worked with Python libraries such as NumPy, Pandas, Scikit-learn, and Matplotlib.</li>
+              <li>Analyzed datasets and generated insights to support AI-driven solutions.</li>
+              <li>Participated in model evaluation, optimization, and performance improvement.</li>
+              <li>Collaborated with team members using Git/GitHub for project management and version control.</li>
+              <li>Gained practical experience in Machine Learning workflows, data analysis, and AI development.</li>
             </ul>
           </div>
 
@@ -298,27 +309,29 @@
           <div class="card p-6 border-l-4 border-indigo-400 relative" data-aos="fade-up">
             <div class="flex flex-wrap justify-between items-start gap-2">
               <div>
-                <h3 class="text-xl font-bold text-white font-heading">Artificial Intelligence Intern[cite: 3, 4]</h3>
-                <p class="text-sm font-semibold text-indigo-400 mt-0.5">Decode Labs (Govt. Registered Enterprise)[cite: 2]</p>
+                <h3 class="text-xl font-bold text-white font-heading">Artificial Intelligence Intern</h3>
+                <p class="text-sm font-semibold text-indigo-400 mt-0.5">Decode Labs (Govt. Registered Enterprise)</p>
               </div>
               <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-indigo-400 bg-indigo-950/60 border border-indigo-800/60 px-3 py-1 rounded-full uppercase">June 2026 - August 2026[cite: 2, 4]</span>
+                <span class="text-xs font-bold text-indigo-400 bg-indigo-950/60 border border-indigo-800/60 px-3 py-1 rounded-full uppercase">June 2026 - August 2026</span>
               </div>
             </div>
 
             <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-muted">
-              <li[cite: 3]>Developed AI and Machine Learning projects using Python and modern AI tools to build intelligent chatbots and workflow automations[cite: 3].</li>
-              <li[cite: 3]>Conducted preprocessing, dataset exploration, and model evaluations to optimize inference speed and accuracy[cite: 3].</li>
-              <li[cite: 2]>Commended by company leadership for outstanding commitment to excellence, analytical problem solving, and translating theoretical concepts into production-ready software[cite: 2].</li>
+              <li>Developed AI and Machine Learning projects using Python and modern AI tools.</li>
+              <li>Built and tested intelligent applications, including chatbot and automation solutions.</li>
+              <li>Performed data preprocessing, analysis, and model evaluation to improve project performance.</li>
+              <li>Applied programming concepts to solve real-world problems and optimize workflows.</li>
+              <li>Strengthened practical skills in Artificial Intelligence, software development, and problem-solving.</li>
             </ul>
 
             <!-- Proof badges & triggers -->
             <div class="mt-5 pt-4 border-t border-slate-800/60 flex flex-wrap gap-3">
               <button onclick="openModal('recommendationModal')" class="text-xs bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 px-3.5 py-1.5 rounded-lg hover:bg-indigo-500/20 font-semibold flex items-center gap-1.5">
-                <span>📄</span> View Letter of Recommendation (Decode Labs)[cite: 2]
+                <span>📄</span> View Letter of Recommendation (Decode Labs)
               </button>
               <button onclick="openModal('decodesCertModal')" class="text-xs bg-sky-500/10 border border-sky-500/30 text-sky-300 px-3.5 py-1.5 rounded-lg hover:bg-sky-500/20 font-semibold flex items-center gap-1.5">
-                <span>🎓</span> View Internship Certificate (Decodelabs AIA074381)[cite: 4]
+                <span>🎓</span> View Internship Certificate (Decodelabs AIA074381)
               </button>
             </div>
           </div>
@@ -327,14 +340,16 @@
           <div class="card p-6 border-l-4 border-slate-400" data-aos="fade-up">
             <div class="flex flex-wrap justify-between items-start gap-2">
               <div>
-                <h3 class="text-xl font-bold text-white font-heading">Python Programming Intern[cite: 3]</h3>
-                <p class="text-sm font-semibold text-slate-300 mt-0.5">CodeAlpha[cite: 3]</p>
+                <h3 class="text-xl font-bold text-white font-heading">Python Programming Intern</h3>
+                <p class="text-sm font-semibold text-slate-300 mt-0.5">CodeAlpha</p>
               </div>
-              <span class="text-xs font-bold text-slate-400 bg-slate-900/60 border border-slate-800 px-3 py-1 rounded-full uppercase">May 2026 - June 2026[cite: 3]</span>
+              <span class="text-xs font-bold text-slate-400 bg-slate-900/60 border border-slate-800 px-3 py-1 rounded-full uppercase">May 2026 - June 2026</span>
             </div>
             <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-muted">
-              <li[cite: 3]>Developed Python-based modular applications and automated solutions applying core Object-Oriented Programming (OOP) concepts[cite: 3].</li>
-              <li[cite: 3]>Tested, debugged, and optimized script execution pipelines for maximum performance and stability[cite: 3].</li>
+              <li>Developed Python-based applications and automation solutions.</li>
+              <li>Applied OOP concepts and software development best practices.</li>
+              <li>Tested, debugged, and optimized code for improved performance.</li>
+              <li>Collaborated on real-world projects to enhance programming and problem-solving skills.</li>
             </ul>
           </div>
         </div>
@@ -353,28 +368,28 @@
           <div class="card p-6 space-y-4" data-aos="fade-up">
             <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
               <span class="text-xl">🧠</span>
-              <h3 class="text-base font-bold text-sky-400 font-heading">AI & Machine Learning[cite: 3]</h3>
+              <h3 class="text-base font-bold text-sky-400 font-heading">AI & Machine Learning</h3>
             </div>
             <div class="space-y-3">
               <div>
-                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Supervised & Predictive ML[cite: 3]</span><span>Advanced</span></div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Supervised & Predictive ML</span><span>Advanced</span></div>
                 <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-2 rounded-full" style="width: 90%"></div></div>
               </div>
               <div>
-                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Data Cleaning & Feature Engineering[cite: 3]</span><span>Advanced</span></div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Data Cleaning & Feature Engineering</span><span>Advanced</span></div>
                 <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-2 rounded-full" style="width: 88%"></div></div>
               </div>
               <div>
-                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Model Evaluation & Optimization[cite: 3]</span><span>Intermediate</span></div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Model Evaluation & Optimization</span><span>Intermediate</span></div>
                 <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-2 rounded-full" style="width: 82%"></div></div>
               </div>
               <div>
-                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Data Visualization (Matplotlib)[cite: 3]</span><span>Advanced</span></div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Data Visualization (Matplotlib)</span><span>Advanced</span></div>
                 <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-2 rounded-full" style="width: 85%"></div></div>
               </div>
             </div>
             <div class="pt-2 flex flex-wrap gap-1.5">
-              <span class="skill-pill">Scikit-learn[cite: 3]</span><span class="skill-pill">Pandas[cite: 3]</span><span class="skill-pill">NumPy[cite: 3]</span><span class="skill-pill">Streamlit[cite: 3]</span>
+              <span class="skill-pill">Scikit-learn</span><span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span><span class="skill-pill">Streamlit</span>
             </div>
           </div>
 
@@ -382,28 +397,28 @@
           <div class="card p-6 space-y-4" data-aos="fade-up" data-aos-delay="100">
             <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
               <span class="text-xl">💻</span>
-              <h3 class="text-base font-bold text-sky-400 font-heading">Languages & Systems[cite: 3]</h3>
+              <h3 class="text-base font-bold text-sky-400 font-heading">Languages & Systems</h3>
             </div>
             <div class="space-y-3">
               <div>
-                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Python Development[cite: 3]</span><span>Advanced</span></div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Python Development</span><span>Advanced</span></div>
                 <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-cyan-400 h-2 rounded-full" style="width: 92%"></div></div>
               </div>
               <div>
-                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>C++ Core & Data Structures[cite: 3]</span><span>Advanced</span></div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>C++ Core & Data Structures</span><span>Advanced</span></div>
                 <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-cyan-400 h-2 rounded-full" style="width: 85%"></div></div>
               </div>
               <div>
-                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>C# Programming[cite: 3]</span><span>Intermediate</span></div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>C# Programming</span><span>Intermediate</span></div>
                 <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-cyan-400 h-2 rounded-full" style="width: 78%"></div></div>
               </div>
               <div>
-                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Relational DB (MySQL, phpMyAdmin)[cite: 3]</span><span>Intermediate</span></div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-white"><span>Relational DB (MySQL, phpMyAdmin)</span><span>Intermediate</span></div>
                 <div class="w-full bg-slate-800/60 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-sky-400 to-cyan-400 h-2 rounded-full" style="width: 80%"></div></div>
               </div>
             </div>
             <div class="pt-2 flex flex-wrap gap-1.5">
-              <span class="skill-pill">OOP[cite: 3]</span><span class="skill-pill">Docker[cite: 3]</span><span class="skill-pill">HTML5/CSS[cite: 3]</span><span class="skill-pill">Git / GitHub[cite: 3]</span>
+              <span class="skill-pill">OOP</span><span class="skill-pill">Docker</span><span class="skill-pill">HTML5/CSS</span><span class="skill-pill">Git / GitHub</span>
             </div>
           </div>
 
@@ -411,23 +426,23 @@
           <div class="card p-6 space-y-4" data-aos="fade-up" data-aos-delay="200">
             <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
               <span class="text-xl">🌟</span>
-              <h3 class="text-base font-bold text-sky-400 font-heading">Professional & Soft Skills[cite: 3]</h3>
+              <h3 class="text-base font-bold text-sky-400 font-heading">Professional & Soft Skills</h3>
             </div>
             <div class="space-y-2.5 text-xs text-muted">
               <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
-                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Problem Solving & Critical Thinking[cite: 3]</span>
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Problem Solving & Critical Thinking</span>
               </div>
               <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
-                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Cross-Functional Team Collaboration[cite: 3]</span>
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Cross-Functional Team Collaboration</span>
               </div>
               <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
-                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Technical Presentation & Communication[cite: 3]</span>
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Technical Presentation & Communication</span>
               </div>
               <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
-                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Analytical Research & Documentation[cite: 3]</span>
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Analytical Research & Documentation</span>
               </div>
               <div class="flex items-center gap-2 p-2 bg-slate-900/40 rounded-lg border border-slate-800/60">
-                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Agile Workflow & Version Control[cite: 3]</span>
+                <span class="text-sky-400 font-bold">✓</span> <span class="text-white font-medium">Agile Workflow & Version Control</span>
               </div>
             </div>
           </div>
@@ -438,21 +453,21 @@
         <div class="card mt-8 p-6 border-sky-500/20 text-center">
           <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Complete Tooling & Technology Stack</h4>
           <div class="flex flex-wrap gap-2 justify-center">
-            <span class="skill-pill font-bold">Python[cite: 3]</span>
-            <span class="skill-pill font-bold">C++[cite: 3]</span>
-            <span class="skill-pill font-bold">C#[cite: 3]</span>
-            <span class="skill-pill font-bold">Scikit-learn[cite: 3]</span>
-            <span class="skill-pill font-bold">NumPy[cite: 3]</span>
-            <span class="skill-pill font-bold">Pandas[cite: 3]</span>
-            <span class="skill-pill font-bold">Matplotlib[cite: 3]</span>
-            <span class="skill-pill font-bold">Streamlit[cite: 3]</span>
-            <span class="skill-pill font-bold">MySQL[cite: 3]</span>
-            <span class="skill-pill font-bold">Docker[cite: 3]</span>
-            <span class="skill-pill font-bold">phpMyAdmin[cite: 3]</span>
-            <span class="skill-pill font-bold">HTML5 / CSS3[cite: 3]</span>
-            <span class="skill-pill font-bold">Git & GitHub[cite: 3]</span>
-            <span class="skill-pill font-bold">Data Preprocessing[cite: 3]</span>
-            <span class="skill-pill font-bold">Model Optimization[cite: 3]</span>
+            <span class="skill-pill font-bold">Python</span>
+            <span class="skill-pill font-bold">C++</span>
+            <span class="skill-pill font-bold">C#</span>
+            <span class="skill-pill font-bold">Scikit-learn</span>
+            <span class="skill-pill font-bold">NumPy</span>
+            <span class="skill-pill font-bold">Pandas</span>
+            <span class="skill-pill font-bold">Matplotlib</span>
+            <span class="skill-pill font-bold">Streamlit</span>
+            <span class="skill-pill font-bold">MySQL</span>
+            <span class="skill-pill font-bold">Docker</span>
+            <span class="skill-pill font-bold">phpMyAdmin</span>
+            <span class="skill-pill font-bold">HTML5 / CSS3</span>
+            <span class="skill-pill font-bold">Git & GitHub</span>
+            <span class="skill-pill font-bold">Data Preprocessing</span>
+            <span class="skill-pill font-bold">Model Optimization</span>
           </div>
         </div>
       </div>
@@ -470,11 +485,11 @@
           <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
             <div>
               <img src="assets/projects/route.png" class="w-full h-40 object-cover rounded-xl mb-4 border border-slate-700/40" alt="AI Smart Route Optimization Visual Screenshot" onerror="this.src='https://images.unsplash.com/photo-1524661135-423995f22d0b?w=500&auto=format&fit=crop&q=60';">
-              <h3 class="text-lg font-bold text-white font-heading">AI Smart Route Optimization System[cite: 3]</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed"[cite: 3]>Developed an AI-powered route optimization system to determine efficient travel paths using machine learning and data analysis techniques with an interactive Streamlit UI[cite: 3].</p>
+              <h3 class="text-lg font-bold text-white font-heading">AI Smart Route Optimization System</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed">Developed an AI-powered route optimization system to determine efficient travel paths using machine learning and data analysis techniques with an interactive Streamlit UI.</p>
             </div>
             <div class="mt-4 flex flex-col gap-2">
-              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">Python[cite: 3]</span><span class="skill-pill text-[11px]">Streamlit</span><span class="skill-pill text-[11px]">ML</span></div>
+              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">Python</span><span class="skill-pill text-[11px]">Streamlit</span><span class="skill-pill text-[11px]">ML</span></div>
               <a href="https://github.com/Rohaanrz05/Smart-Route-detection-system" target="_blank" class="text-xs text-sky-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
             </div>
           </div>
@@ -483,11 +498,11 @@
           <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
             <div>
               <img src="assets/projects/airline.png" class="w-full h-40 object-cover rounded-xl mb-4 border border-slate-700/40" alt="Airline System Screenshot" onerror="this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&auto=format&fit=crop&q=60';">
-              <h3 class="text-lg font-bold text-white font-heading">Airline Reservation Management System[cite: 3]</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed"[cite: 3]>Designed and developed a reservation management system implementing flight booking, cancellation, passenger handling, and automated ticket generation in C++[cite: 3].</p>
+              <h3 class="text-lg font-bold text-white font-heading">Airline Reservation Management System</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed">Designed and developed a reservation management system implementing flight booking, cancellation, passenger handling, and automated ticket generation in C++.</p>
             </div>
             <div class="mt-4 flex flex-col gap-2">
-              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">C++ Core[cite: 3]</span><span class="skill-pill text-[11px]">Databases[cite: 3]</span><span class="skill-pill text-[11px]">File I/O</span></div>
+              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">C++ Core</span><span class="skill-pill text-[11px]">Databases</span><span class="skill-pill text-[11px]">File I/O</span></div>
               <a href="https://github.com/Rohaanrz05/airline-reservation-system-" target="_blank" class="text-xs text-sky-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Source Code &rarr;</a>
             </div>
           </div>
@@ -498,11 +513,11 @@
               <div class="w-full h-40 rounded-xl mb-4 bg-gradient-to-tr from-slate-900 to-indigo-950 border border-slate-700/50 flex items-center justify-center text-4xl">
                 🌐
               </div>
-              <h3 class="text-lg font-bold text-white font-heading">AI Impact on Society Research[cite: 3]</h3>
-              <p class="mt-2 text-xs text-muted leading-relaxed"[cite: 3]>Conducted a comprehensive research study analyzing the influence, ethical considerations, cybersecurity dynamics, and societal implications of AI across industries[cite: 3].</p>
+              <h3 class="text-lg font-bold text-white font-heading">AI Impact on Society Research</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed">Conducted a comprehensive research study analyzing the influence, ethical considerations, cybersecurity dynamics, and societal implications of AI across industries.</p>
             </div>
             <div class="mt-4 flex flex-col gap-2">
-              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">Data Analysis[cite: 3]</span><span class="skill-pill text-[11px]">Research[cite: 3]</span><span class="skill-pill text-[11px]">Ethics[cite: 3]</span></div>
+              <div class="flex flex-wrap gap-1.5"><span class="skill-pill text-[11px]">Data Analysis</span><span class="skill-pill text-[11px]">Research</span><span class="skill-pill text-[11px]">Ethics</span></div>
               <a href="https://github.com/Rohaanrz05/AI-Impact-on-society" target="_blank" class="text-xs text-sky-400 hover:underline font-semibold flex items-center gap-1 mt-2">View Research Repository &rarr;</a>
             </div>
           </div>
@@ -566,40 +581,40 @@
           <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up">
             <span class="text-emerald-400 font-black text-lg">✓</span>
             <div>
-              <h4 class="text-sm font-bold text-white">BS AI Student at Sir Syed CASE[cite: 3]</h4>
-              <p class="text-xs text-muted mt-0.5">Top-tier academic tracking in machine learning and system architectures[cite: 3].</p>
+              <h4 class="text-sm font-bold text-white">BS AI Student at Sir Syed CASE</h4>
+              <p class="text-xs text-muted mt-0.5">Top-tier academic tracking in machine learning and system architectures.</p>
             </div>
           </div>
 
           <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up" data-aos-delay="100">
             <span class="text-emerald-400 font-black text-lg">✓</span>
             <div>
-              <h4 class="text-sm font-bold text-white">Letter of Recommendation Recipient[cite: 2]</h4>
-              <p class="text-xs text-muted mt-0.5">Awarded by Decode Labs for excellence in Artificial Intelligence workflows[cite: 2].</p>
+              <h4 class="text-sm font-bold text-white">Letter of Recommendation Recipient</h4>
+              <p class="text-xs text-muted mt-0.5">Awarded by Decode Labs for excellence in Artificial Intelligence workflows.</p>
             </div>
           </div>
 
           <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up" data-aos-delay="200">
             <span class="text-emerald-400 font-black text-lg">✓</span>
             <div>
-              <h4 class="text-sm font-bold text-white">Anthropic Claude 101 Certified[cite: 1]</h4>
-              <p class="text-xs text-muted mt-0.5">Validated competency in Anthropic Claude ecosystem and prompt modeling[cite: 1].</p>
+              <h4 class="text-sm font-bold text-white">Anthropic Claude 101 Certified</h4>
+              <p class="text-xs text-muted mt-0.5">Validated competency in Anthropic Claude ecosystem and prompt modeling.</p>
             </div>
           </div>
 
           <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up">
             <span class="text-emerald-400 font-black text-lg">✓</span>
             <div>
-              <h4 class="text-sm font-bold text-white">Triple Industry Internship Completion[cite: 3]</h4>
-              <p class="text-xs text-muted mt-0.5">Successfully served at FlyRank.AI, Decode Labs, and CodeAlpha[cite: 2, 3].</p>
+              <h4 class="text-sm font-bold text-white">Triple Industry Internship Completion</h4>
+              <p class="text-xs text-muted mt-0.5">Successfully served at FlyRank.AI, Decode Labs, and CodeAlpha.</p>
             </div>
           </div>
 
           <div class="card p-4 border-l-4 border-emerald-400 flex items-start gap-3" data-aos="fade-up" data-aos-delay="100">
             <span class="text-emerald-400 font-black text-lg">✓</span>
             <div>
-              <h4 class="text-sm font-bold text-white">Deployed AI Smart Route System[cite: 3]</h4>
-              <p class="text-xs text-muted mt-0.5">Integrated predictive heuristic models with dynamic visual interfaces[cite: 3].</p>
+              <h4 class="text-sm font-bold text-white">Deployed AI Smart Route System</h4>
+              <p class="text-xs text-muted mt-0.5">Integrated predictive heuristic models with dynamic visual interfaces.</p>
             </div>
           </div>
 
@@ -624,11 +639,11 @@
             <div>
               <div class="w-full h-32 rounded-xl mb-3 bg-slate-900 border border-indigo-500/30 flex flex-col items-center justify-center p-2">
                 <span class="text-2xl mb-1">🎓</span>
-                <span class="text-[10px] font-bold text-indigo-300 uppercase">DECODELABS VIRTUAL INTERNSHIP[cite: 4]</span>
-                <span class="text-[9px] text-slate-400 mt-1">ID: AIA074381[cite: 4]</span>
+                <span class="text-[10px] font-bold text-indigo-300 uppercase">DECODELABS VIRTUAL INTERNSHIP</span>
+                <span class="text-[9px] text-slate-400 mt-1">ID: AIA074381</span>
               </div>
-              <h4 class="font-bold text-white text-sm">Decodes Lab AI Internship[cite: 4]</h4>
-              <p class="text-xs text-indigo-400 mt-1">Virtual Internship AI Completion[cite: 4]</p>
+              <h4 class="font-bold text-white text-sm">Decodes Lab AI Internship</h4>
+              <p class="text-xs text-indigo-400 mt-1">Virtual Internship AI Completion</p>
             </div>
             <button class="mt-3 text-xs text-indigo-300 hover:text-indigo-200 font-bold underline">Click to View Certificate &rarr;</button>
           </div>
@@ -638,11 +653,11 @@
             <div>
               <div class="w-full h-32 rounded-xl mb-3 bg-slate-900 border border-sky-500/30 flex flex-col items-center justify-center p-2">
                 <span class="text-2xl mb-1">🤖</span>
-                <span class="text-[10px] font-bold text-sky-300 uppercase">ANTHROPIC[cite: 1]</span>
-                <span class="text-[11px] font-bold text-white mt-1">Claude 101 Certified[cite: 1]</span>
+                <span class="text-[10px] font-bold text-sky-300 uppercase">ANTHROPIC</span>
+                <span class="text-[11px] font-bold text-white mt-1">Claude 101 Certified</span>
               </div>
-              <h4 class="font-bold text-white text-sm">Claude 101 Certificate[cite: 1]</h4>
-              <p class="text-xs text-sky-400 mt-1">Anthropic Official Credential[cite: 1]</p>
+              <h4 class="font-bold text-white text-sm">Claude 101 Certificate</h4>
+              <p class="text-xs text-sky-400 mt-1">Anthropic Official Credential</p>
             </div>
             <button class="mt-3 text-xs text-sky-300 hover:text-sky-200 font-bold underline">Click to View Certificate &rarr;</button>
           </div>
@@ -652,13 +667,13 @@
             <div>
               <div class="w-full h-32 rounded-xl mb-3 bg-slate-900 border border-sky-500/20 flex flex-col items-center justify-center p-2">
                 <span class="text-2xl mb-1">📈</span>
-                <span class="text-[10px] font-bold text-sky-300 uppercase">FlyRank.AI[cite: 3]</span>
-                <span class="text-[9px] text-slate-400 mt-1">ML Engineering Track[cite: 3]</span>
+                <span class="text-[10px] font-bold text-sky-300 uppercase">FlyRank.AI</span>
+                <span class="text-[9px] text-slate-400 mt-1">ML Engineering Track</span>
               </div>
-              <h4 class="font-bold text-white text-sm">Machine Learning Track[cite: 3]</h4>
-              <p class="text-xs text-sky-400 mt-1">FlyRank.AI Practical Validation[cite: 3]</p>
+              <h4 class="font-bold text-white text-sm">Machine Learning Track</h4>
+              <p class="text-xs text-sky-400 mt-1">FlyRank.AI Practical Validation</p>
             </div>
-            <span class="mt-3 text-[11px] text-slate-400 font-semibold">Active In-Progress Track[cite: 3]</span>
+            <span class="mt-3 text-[11px] text-slate-400 font-semibold">Active In-Progress Track</span>
           </div>
 
           <!-- CodeAlpha Python -->
@@ -666,11 +681,11 @@
             <div>
               <div class="w-full h-32 rounded-xl mb-3 bg-slate-900 border border-slate-700 flex flex-col items-center justify-center p-2">
                 <span class="text-2xl mb-1">🐍</span>
-                <span class="text-[10px] font-bold text-slate-300 uppercase">CodeAlpha[cite: 3]</span>
-                <span class="text-[9px] text-slate-400 mt-1">Python Development Track[cite: 3]</span>
+                <span class="text-[10px] font-bold text-slate-300 uppercase">CodeAlpha</span>
+                <span class="text-[9px] text-slate-400 mt-1">Python Development Track</span>
               </div>
-              <h4 class="font-bold text-white text-sm">Python Programming Token[cite: 3]</h4>
-              <p class="text-xs text-slate-400 mt-1">CodeAlpha Internship[cite: 3]</p>
+              <h4 class="font-bold text-white text-sm">Python Programming Token</h4>
+              <p class="text-xs text-slate-400 mt-1">CodeAlpha Internship</p>
             </div>
             <span class="mt-3 text-[11px] text-slate-400 font-semibold">Verified Credential</span>
           </div>
@@ -688,35 +703,35 @@
         <div class="space-y-6">
           <div class="card p-6 border-l-4 border-sky-400" data-aos="fade-up">
             <div class="flex flex-wrap justify-between items-baseline gap-2">
-              <h3 class="text-xl font-bold text-white font-heading">Sir Syed CASE Institute of Technology, Islamabad[cite: 3]</h3>
-              <span class="text-xs font-bold text-sky-400 bg-sky-950/60 px-3 py-1 rounded-full border border-sky-900">2024 - Present | 5th Semester[cite: 3]</span>
+              <h3 class="text-xl font-bold text-white font-heading">Sir Syed CASE Institute of Technology, Islamabad</h3>
+              <span class="text-xs font-bold text-sky-400 bg-sky-950/60 px-3 py-1 rounded-full border border-sky-900">2024 - Present | 5th Semester</span>
             </div>
-            <p class="text-sm text-sky-400 font-semibold mt-1">Bachelor of Science in Artificial Intelligence (BS-AI)[cite: 3]</p>
+            <p class="text-sm text-sky-400 font-semibold mt-1">Bachelor of Science in Artificial Intelligence (BS-AI)</p>
             <p class="text-xs text-slate-400 font-bold mt-1">Expected Graduation: 2028</p>
             
             <div class="mt-4 pt-4 border-t border-slate-700/40">
               <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Core Studied Disciplines:</h4>
               <div class="flex flex-wrap gap-2">
-                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Artificial Intelligence[cite: 3]</span>
-                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Machine Learning[cite: 3]</span>
-                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Database Systems[cite: 3]</span>
-                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Data Structures[cite: 3]</span>
-                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Software Engineering[cite: 3]</span>
-                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Calculus[cite: 3]</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Artificial Intelligence</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Machine Learning</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Database Systems</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Data Structures</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Software Engineering</span>
+                <span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• Calculus</span>
               </div>
             </div>
           </div>
 
           <div class="grid gap-4 sm:grid-cols-2">
             <div class="card p-5" data-aos="fade-up">
-              <h4 class="font-bold text-white font-heading">Punjab College Blue Area Campus, Islamabad[cite: 3]</h4>
-              <p class="text-xs text-sky-400 font-semibold mt-0.5">Intermediate in Computer Science (ICS) | 2022 - 2024[cite: 3]</p>
-              <p class="text-[11px] text-muted mt-2"[cite: 3]>Built a strong foundation in programming, analytical thinking, logic design, and mathematical problem-solving[cite: 3].</p>
+              <h4 class="font-bold text-white font-heading">Punjab College Blue Area Campus, Islamabad</h4>
+              <p class="text-xs text-sky-400 font-semibold mt-0.5">Intermediate in Computer Science (ICS) | 2022 - 2024</p>
+              <p class="text-[11px] text-muted mt-2">Built a strong foundation in programming, analytical thinking, logic design, and mathematical problem-solving.</p>
             </div>
             <div class="card p-5" data-aos="fade-up">
-              <h4 class="font-bold text-white font-heading">SLS Montessori & High School, Islamabad[cite: 3]</h4>
-              <p class="text-xs text-sky-400 font-semibold mt-0.5">Matriculation (Computer Science) | 2020 - 2022[cite: 3]</p>
-              <p class="text-[11px] text-muted mt-2"[cite: 3]>Acquired fundamental knowledge in computing, information technology concepts, and mathematics[cite: 3].</p>
+              <h4 class="font-bold text-white font-heading">SLS Montessori & High School, Islamabad</h4>
+              <p class="text-xs text-sky-400 font-semibold mt-0.5">Matriculation (Computer Science) | 2020 - 2022</p>
+              <p class="text-[11px] text-muted mt-2">Acquired fundamental knowledge in computing, information technology concepts, and mathematics.</p>
             </div>
           </div>
         </div>
@@ -738,6 +753,9 @@
               <button onclick="triggerCVPDFDownload()" class="btn-primary text-sm">
                 <span>⬇️</span> Download Official PDF
               </button>
+              <button onclick="openModal('resumePDFModal')" class="btn-secondary text-sm">
+                <span>📄</span> Open Resume PDF Viewer
+              </button>
               <button onclick="printCV()" class="btn-secondary text-sm">
                 <span>🖨️</span> Print Resume
               </button>
@@ -746,84 +764,109 @@
             <div class="mt-8 p-4 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2">
               <div class="text-xs font-bold text-sky-400 uppercase tracking-wider">Document Summary</div>
               <div class="text-xs text-muted">Format: Standard Clean A4 PDF</div>
-              <div class="text-xs text-muted">Author: M. Rohaan Zahid[cite: 3]</div>
+              <div class="text-xs text-muted">Author: M. Rohaan Zahid</div>
               <div class="text-xs text-muted">Status: Open for Internships & AI Engineering Roles</div>
             </div>
           </div>
 
-          <!-- Printable / Visual Resume Preview -->
-          <div id="cvPreview" class="rounded-xl bg-white p-7 text-slate-900 border border-slate-300 text-[10px] leading-relaxed shadow-2xl space-y-4 font-sans">
+          <!-- Printable / Visual Resume Preview (Light Blue, Black & White Style) -->
+          <div id="cvPreview" class="rounded-xl bg-white p-7 text-slate-900 border border-sky-200 text-[10px] leading-relaxed shadow-2xl space-y-4 font-sans relative overflow-hidden">
+            <!-- Top Light Blue Accent Bar -->
+            <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-sky-400 to-indigo-500"></div>
+
             <!-- Header -->
-            <div class="border-b-2 border-slate-900 pb-3 text-center">
-              <h1 class="text-xl font-black tracking-wide text-slate-900 uppercase"[cite: 3]>ROHAAN ZAHID</h1>
-              <p class="text-[9.5px] font-bold text-sky-800 tracking-[0.2em] mt-0.5"[cite: 3]>AI PROGRAMMER & SOFTWARE DEVELOPER | MACHINE LEARNING ENTHUSIAST</p>
-              <p class="text-[8.5px] text-slate-600 mt-1"[cite: 3]>Islamabad, PK | rohaanzahid.04@gmail.com | 03338705793 | github.com/Rohaanrz05[cite: 3]</p>
+            <div class="border-b-2 border-slate-900 pb-3 text-center pt-2">
+              <h1 class="text-xl font-black tracking-wide text-slate-900 uppercase">ROHAAN ZAHID</h1>
+              <p class="text-[9.5px] font-bold text-sky-700 tracking-[0.15em] mt-0.5 uppercase">AI Programmer & Software Developer | Machine Learning Enthusiast</p>
+              <p class="text-[8.5px] text-slate-600 mt-1">Street 08, House 420, FMC A Block, B-17, Islamabad | rohaanzahid.04@gmail.com | 03338705793 | github.com/Rohaanrz05</p>
             </div>
 
             <!-- Summary -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Summary</h3>
-              <p class="text-[9px] text-slate-700 mt-1 leading-normal"[cite: 3]>
-                Artificial Intelligence undergraduate at Sir Syed CASE Institute of Technology with hands-on experience in C++, Python, database management, web development, and machine learning projects[cite: 3]. Proven track record across multiple technical internships and passionate about building AI-powered real-world tools[cite: 3].
+              <h3 class="font-black text-slate-900 uppercase border-b border-sky-300 text-[10px] tracking-wider pb-0.5 text-sky-900">Summary</h3>
+              <p class="text-[9px] text-slate-700 mt-1 leading-normal">
+                I am an Artificial Intelligence undergraduate at Sir Syed CASE Institute of Technology with a strong interest in AI, software development, and emerging technologies. I have hands-on experience in C++, Python, database management, web development, and machine learning projects. Throughout my academic journey, I have developed projects including AI-based route optimization systems, airline reservation systems, robotic parking systems, and web applications. Motivated learner who enjoys solving complex problems, building innovative solutions, and continuously improving technical skills.
               </p>
             </div>
 
             <!-- Technical Skills -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Key Skills</h3>
+              <h3 class="font-black text-slate-900 uppercase border-b border-sky-300 text-[10px] tracking-wider pb-0.5 text-sky-900">Key Skills</h3>
               <p class="text-[9px] text-slate-700 mt-1 leading-normal">
-                <b[cite: 3]>Technical:</b> Python, C++, C# Programming, HTML5, CSS, MySQL, Docker, phpMyAdmin, Git, GitHub[cite: 3].<br>
-                <b[cite: 3]>AI & Data Science:</b> Machine Learning, Supervised Learning, Model Training & Evaluation, Data Cleaning/Preprocessing, NumPy, Pandas, Scikit-learn, Matplotlib, Streamlit[cite: 3].<br>
-                <b[cite: 3]>Soft Skills:</b> Problem Solving, Critical Thinking, Team Collaboration, Communication, Time Management, Research Skills, Presentation Skills[cite: 3].
+                <b>Technical Skills:</b> Python | C++ | C# Programming | HTML5 | CSS | MySQL | Docker | phpMyAdmin | Git | GitHub<br>
+                <b>AI & Data Science Skills:</b> Machine Learning | Data Analysis | Data Preprocessing | Supervised Learning | Model Training | Model Evaluation | Data Visualization | NumPy | Pandas | Scikit-learn | Matplotlib | Streamlit<br>
+                <b>Soft Skills:</b> Problem Solving | Critical Thinking | Team Collaboration | Communication | Time Management | Research Skills | Presentation Skills
               </p>
             </div>
 
             <!-- Experience -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Work Experience</h3>
-              <div class="mt-1 space-y-1.5">
+              <h3 class="font-black text-slate-900 uppercase border-b border-sky-300 text-[10px] tracking-wider pb-0.5 text-sky-900">Work Experience</h3>
+              <div class="mt-1 space-y-2">
                 <div>
                   <div class="flex justify-between font-bold text-[9px]">
-                    <span[cite: 3]>FlyRank.AI — Machine Learning Intern</span>
-                    <span class="text-slate-500 font-normal"[cite: 3]>July 2026 - Present</span>
+                    <span class="text-slate-900">Internship At FlyRank.AI — Machine Learning Intern</span>
+                    <span class="text-slate-500 font-normal">July 2026 - Present</span>
                   </div>
-                  <p class="text-[8.5px] text-slate-600"[cite: 3]>Collected and cleaned datasets, engineered features, built Scikit-learn models, evaluated metrics, and managed code via Git/GitHub[cite: 3].</p>
+                  <ul class="list-disc pl-4 text-[8.5px] text-slate-600 mt-0.5 space-y-0.5">
+                    <li>Assisted in developing and testing Machine Learning models for real-world applications.</li>
+                    <li>Performed data collection, cleaning, preprocessing, and feature engineering for model training.</li>
+                    <li>Worked with Python libraries such as NumPy, Pandas, Scikit-learn, and Matplotlib.</li>
+                    <li>Analyzed datasets and generated insights to support AI-driven solutions; evaluated and optimized model performance.</li>
+                  </ul>
                 </div>
                 <div>
                   <div class="flex justify-between font-bold text-[9px]">
-                    <span[cite: 3]>Decode Labs — Artificial Intelligence Intern</span>
-                    <span class="text-slate-500 font-normal"[cite: 3]>July 2026 - August 2026</span>
+                    <span class="text-slate-900">Internship At Decodes Lab — Artificial Intelligence Intern</span>
+                    <span class="text-slate-500 font-normal">July 2026 - August 2026</span>
                   </div>
-                  <p class="text-[8.5px] text-slate-600"[cite: 3]>Built AI automation solutions, chatbot scripts, executed data preprocessing, and earned official Letter of Recommendation[cite: 2, 3].</p>
+                  <ul class="list-disc pl-4 text-[8.5px] text-slate-600 mt-0.5 space-y-0.5">
+                    <li>Developed AI and Machine Learning projects using Python and modern AI tools.</li>
+                    <li>Built and tested intelligent applications, including chatbot and automation solutions.</li>
+                    <li>Performed data preprocessing, analysis, and model evaluation to improve project performance.</li>
+                  </ul>
                 </div>
                 <div>
                   <div class="flex justify-between font-bold text-[9px]">
-                    <span[cite: 3]>CodeAlpha — Python Programming Intern</span>
-                    <span class="text-slate-500 font-normal"[cite: 3]>May 2026 - June 2026</span>
+                    <span class="text-slate-900">Internship At CodeAlpha — Python Programming Intern</span>
+                    <span class="text-slate-500 font-normal">May 2026 - June 2026</span>
                   </div>
-                  <p class="text-[8.5px] text-slate-600"[cite: 3]>Developed Python applications applying OOP concepts, tested and debugged code files to optimize execution speed[cite: 3].</p>
+                  <ul class="list-disc pl-4 text-[8.5px] text-slate-600 mt-0.5 space-y-0.5">
+                    <li>Developed Python-based applications and automation solutions applying OOP concepts.</li>
+                    <li>Tested, debugged, and optimized code for improved performance.</li>
+                  </ul>
                 </div>
               </div>
             </div>
 
             <!-- Projects -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Key Projects</h3>
+              <h3 class="font-black text-slate-900 uppercase border-b border-sky-300 text-[10px] tracking-wider pb-0.5 text-sky-900">Projects</h3>
               <p class="text-[9px] text-slate-700 mt-1 leading-normal">
-                <b[cite: 3]>AI Smart Route Optimization:</b> Heuristic route selection module built using Machine Learning and interactive Streamlit UI[cite: 3].<br>
-                <b[cite: 3]>Airline Reservation System:</b> Modular flight management platform in C++ with passenger records and booking logic[cite: 3].<br>
-                <b[cite: 3]>AI Impact on Society:</b> Detailed research analysis detailing ethical, economic, and technological AI implications[cite: 3].
+                <b>AI Smart Route Optimization System:</b> Developed an AI-powered route optimization system to determine efficient travel paths using machine learning and data analysis techniques. Built an interactive frontend and integrated AI-based route recommendations.<br>
+                <b>Airline Reservation System:</b> Designed and developed a reservation management system using C++ and database concepts. Implemented booking, cancellation, passenger management, and ticket generation features.<br>
+                <b>AI Impact on Society:</b> Conducted a comprehensive study on the influence of Artificial Intelligence across healthcare, education, business, cybersecurity, and daily life.
               </p>
             </div>
 
             <!-- Education -->
             <div>
-              <h3 class="font-black text-slate-900 uppercase border-b border-slate-300 text-[10px] tracking-wider pb-0.5">Education</h3>
-              <div class="mt-1 flex justify-between font-bold text-[9px]">
-                <span[cite: 3]>Sir Syed CASE Institute of Technology — BS Artificial Intelligence</span>
-                <span class="text-slate-500 font-normal"[cite: 3]>2024 - Present (5th Semester)</span>
+              <h3 class="font-black text-slate-900 uppercase border-b border-sky-300 text-[10px] tracking-wider pb-0.5 text-sky-900">Education</h3>
+              <div class="mt-1">
+                <div class="flex justify-between font-bold text-[9px]">
+                  <span>Sir Syed CASE Institute of Technology, Islamabad — BS-AI</span>
+                  <span class="text-slate-500 font-normal">2024 - Present | 5th Semester</span>
+                </div>
+                <p class="text-[8.5px] text-slate-600">Coursework: Artificial Intelligence, Machine Learning, Data Structures, Database Systems, Software Engineering, Calculus.</p>
+                <div class="flex justify-between font-bold text-[9px] mt-1">
+                  <span>Punjab College Blue Area Campus, Islamabad — ICS</span>
+                  <span class="text-slate-500 font-normal">2022 - 2024</span>
+                </div>
+                <div class="flex justify-between font-bold text-[9px] mt-0.5">
+                  <span>SLS Montessori & High School, Islamabad — Matriculation</span>
+                  <span class="text-slate-500 font-normal">2020 - 2022</span>
+                </div>
               </div>
-              <p class="text-[8.5px] text-slate-600"[cite: 3]>Coursework: Machine Learning, Database Systems, Data Structures, Software Engineering, OOP, Calculus[cite: 3].</p>
             </div>
           </div>
         </div>
@@ -849,10 +892,10 @@
 
           <div class="card p-6 text-xs space-y-4 text-muted font-medium" data-aos="fade-left">
             <h3 class="text-base font-bold text-sky-400 font-heading border-b border-slate-800 pb-2">Direct Contact Channels</h3>
-            <p[cite: 3]><span class="font-black text-white text-[10px] block uppercase tracking-wide">✉️ Email Address:</span> rohaanzahid.04@gmail.com[cite: 3]</p>
-            <p[cite: 3]><span class="font-black text-white text-[10px] block uppercase tracking-wide">📞 Phone Number:</span> 03338705793[cite: 3]</p>
-            <p[cite: 3]><span class="font-black text-white text-[10px] block uppercase tracking-wide">📍 Location:</span> Islamabad, Pakistan[cite: 3]</p>
-            <p[cite: 3]><span class="font-black text-white text-[10px] block uppercase tracking-wide">🌐 GitHub:</span> github.com/Rohaanrz05[cite: 3]</p>
+            <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">✉️ Email Address:</span> rohaanzahid.04@gmail.com</p>
+            <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">📞 Phone Number:</span> 03338705793</p>
+            <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">📍 Location:</span> Street 08, House 420, FMC A Block, B-17 MultiGarden, Islamabad</p>
+            <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">🌐 GitHub:</span> github.com/Rohaanrz05</p>
             <p><span class="font-black text-white text-[10px] block uppercase tracking-wide">📖 Author Platform:</span> <a href="https://books.rohaanzahid.space" target="_blank" class="text-amber-400 underline">books.rohaanzahid.space ↗</a></p>
           </div>
         </div>
@@ -861,72 +904,141 @@
 
   </main>
 
-  <!-- Interactive Modals for Credentials & Letter of Recommendation -->
+  <!-- Interactive Document Viewing Modals (PDFs & High-Fidelity Previews) -->
   
-  <!-- Decodes Lab Recommendation Modal -->
+  <!-- 1. Decodes Lab Recommendation Modal -->
   <div id="recommendationModal" class="modal" onclick="closeModalOnBackdrop(event, 'recommendationModal')">
-    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-sky-400/30 relative">
+    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-sky-400/30 relative flex flex-col">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
         <div>
-          <h3 class="text-lg font-bold text-white font-heading"[cite: 2]>Letter of Recommendation — Decode Labs</h3>
-          <p class="text-xs text-sky-400"[cite: 2]>Govt. Registered Enterprise | 2 August 2026</p>
+          <h3 class="text-lg font-bold text-white font-heading">Letter of Recommendation — Decode Labs</h3>
+          <p class="text-xs text-sky-400">Official Letter | 2 August 2026</p>
         </div>
-        <button onclick="closeModal('recommendationModal')" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+        <div class="flex items-center gap-2">
+          <a href="Letter_of_Recommendation.pdf" target="_blank" class="text-xs bg-slate-800 hover:bg-slate-700 text-white px-3 py-1.5 rounded-lg font-bold">Open Full PDF ↗</a>
+          <button onclick="closeModal('recommendationModal')" class="text-slate-400 hover:text-white text-2xl font-bold ml-2">&times;</button>
+        </div>
       </div>
-      <div class="space-y-3 text-xs leading-relaxed text-slate-300 font-normal">
-        <blockquote class="border-l-2 border-indigo-400 pl-3 py-1 italic bg-indigo-950/20 text-slate-200"[cite: 2]>
-          "Throughout his tenure, he consistently demonstrated an outstanding commitment to excellence, seamlessly integrating into our fast-paced virtual work environment and consistently exceeding performance expectations... Operating specifically within the Artificial Intelligence (AI) vertical, Rohaan Zahid showcased a remarkable ability to translate abstract theoretical concepts into robust, production-ready solutions."[cite: 2]
-        </blockquote>
-        <p[cite: 2]>
-          <strong>Contact Info:</strong> Decode Labs (+91 92360 11887 / 94739 35188) | www.decodelabs.tech | hr@decodelabs.tech[cite: 2]
-        </p>
+
+      <div class="w-full flex-1">
+        <!-- PDF Object Embed with Fallback Embed -->
+        <object data="Letter_of_Recommendation.pdf" type="application/pdf" class="doc-viewer-frame">
+          <div class="bg-white p-6 rounded-xl text-slate-900 text-xs leading-relaxed max-h-[60vh] overflow-y-auto shadow-inner">
+            <div class="text-center border-b pb-2 mb-3">
+              <h2 class="text-lg font-bold">Decode Labs — Letter of Recommendation</h2>
+              <p class="text-[10px] text-slate-500">Date: 2 August 2026 | www.decodelabs.tech</p>
+            </div>
+            <p class="mb-2"><strong>To: Whom It May Concern</strong></p>
+            <p class="mb-3">Dear Hiring Manager,</p>
+            <p class="mb-3">It is with immense pleasure that we write this letter of recommendation for <strong>Rohaan Zahid</strong>, who successfully completed a rigorous and comprehensive internship program at Decode Labs. Throughout his tenure, he consistently demonstrated an outstanding commitment to excellence, seamlessly integrating into our fast-paced virtual work environment and consistently exceeding performance expectations.</p>
+            <p class="mb-3">During his time with us, Rohaan Zahid was entrusted with a diverse portfolio of challenging, high-impact projects. He exhibited exceptional professional competence, tackling complex technical problems with a proactive, structured, and highly analytical approach. Operating specifically within the Artificial Intelligence (AI) vertical, Rohaan Zahid showcased a remarkable ability to translate abstract theoretical concepts into robust, production-ready solutions.</p>
+            <p class="mb-3">We have absolutely no hesitation in recommending Rohaan Zahid for any future academic or professional endeavors.</p>
+            <p class="mt-4 pt-2 border-t text-[10px] text-slate-600"><strong>Decode Labs Authorized Signatory</strong> | +91 92360 11887 | hr@decodelabs.tech</p>
+          </div>
+        </object>
       </div>
-      <div class="mt-6 flex justify-end">
-        <button onclick="closeModal('recommendationModal')" class="btn-secondary text-xs py-2">Close Window</button>
+
+      <div class="mt-4 flex justify-between items-center text-xs text-muted">
+        <span>Decode Labs Govt. Registered Enterprise</span>
+        <button onclick="closeModal('recommendationModal')" class="btn-secondary text-xs py-1.5">Close Document</button>
       </div>
     </div>
   </div>
 
-  <!-- Decodes Lab Certificate Modal -->
+  <!-- 2. Decodes Lab Certificate Modal -->
   <div id="decodesCertModal" class="modal" onclick="closeModalOnBackdrop(event, 'decodesCertModal')">
-    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-lg w-full text-center border border-indigo-500/40 relative">
+    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-indigo-500/40 relative flex flex-col">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
-        <h3 class="text-base font-bold text-white font-heading"[cite: 4]>Decode Labs Certificate of Completion</h3>
-        <button onclick="closeModal('decodesCertModal')" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
-      </div>
-      <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-3">
-        <div class="text-2xl">🎓</div>
-        <div class="text-xs font-bold text-indigo-400 uppercase tracking-widest"[cite: 4]>Global Internship Credential</div>
-        <div class="text-lg font-black text-white font-heading"[cite: 4]>Rohaan Zahid</div>
-        <div class="text-xs text-slate-300"[cite: 4]>Virtual Internship Artificial Intelligence (AI)</div>
-        <div class="text-[11px] text-slate-400 pt-2 border-t border-slate-800"[cite: 4]>
-          <strong>Student ID:</strong> AIA074381<br[cite: 4]>
-          <strong>Duration:</strong> June 30, 2026 – July 30, 2026<br[cite: 4]>
-          <strong>Issue Date:</strong> July 31, 2026[cite: 4]
+        <div>
+          <h3 class="text-base font-bold text-white font-heading">Decode Labs Certificate of Completion</h3>
+          <p class="text-xs text-indigo-400">Student ID: AIA074381</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="DecodeLabs Internship Certificate.pdf" target="_blank" class="text-xs bg-slate-800 hover:bg-slate-700 text-white px-3 py-1.5 rounded-lg font-bold">Open Full PDF ↗</a>
+          <button onclick="closeModal('decodesCertModal')" class="text-slate-400 hover:text-white text-2xl font-bold ml-2">&times;</button>
         </div>
       </div>
-      <div class="mt-5 flex justify-center">
-        <button onclick="closeModal('decodesCertModal')" class="btn-secondary text-xs py-2">Close</button>
+
+      <div class="w-full flex-1">
+        <object data="DecodeLabs Internship Certificate.pdf" type="application/pdf" class="doc-viewer-frame">
+          <div class="bg-white p-8 rounded-xl text-slate-900 text-center space-y-4 max-h-[60vh] overflow-y-auto">
+            <div class="text-indigo-900 font-bold uppercase tracking-widest text-xs">DECODELABS VIRTUAL INTERNSHIP PROGRAM</div>
+            <h2 class="text-2xl font-black text-slate-900 font-heading">CERTIFICATE OF COMPLETION</h2>
+            <p class="text-xs text-slate-500">THIS CERTIFICATE IS PROUDLY PRESENTED TO</p>
+            <h1 class="text-2xl font-black text-indigo-600 underline">Rohaan Zahid</h1>
+            <p class="text-xs text-slate-700 max-w-md mx-auto">Has successfully completed the Decodelabs Virtual Internship Program in <strong>Artificial Intelligence (AI)</strong>, demonstrating dedication, consistency, and hands-on problem-solving skills across real-world projects and collaborative tasks.</p>
+            <div class="text-xs text-slate-600 pt-4 border-t border-slate-300 grid grid-cols-2">
+              <div><strong>DURATION:</strong> June 30, 2026 – July 30, 2026</div>
+              <div><strong>DATE OF ISSUE:</strong> July 31, 2026</div>
+            </div>
+          </div>
+        </object>
+      </div>
+
+      <div class="mt-4 flex justify-between items-center text-xs text-muted">
+        <span>Decodelabs Global Internship Credential</span>
+        <button onclick="closeModal('decodesCertModal')" class="btn-secondary text-xs py-1.5">Close</button>
       </div>
     </div>
   </div>
 
-  <!-- Anthropic Claude 101 Modal -->
+  <!-- 3. Anthropic Claude 101 Modal -->
   <div id="claudeModal" class="modal" onclick="closeModalOnBackdrop(event, 'claudeModal')">
-    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-md w-full text-center border border-sky-400/40 relative">
+    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-sky-400/40 relative flex flex-col">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
-        <h3 class="text-base font-bold text-white font-heading"[cite: 1]>Anthropic Credential</h3>
-        <button onclick="closeModal('claudeModal')" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+        <div>
+          <h3 class="text-base font-bold text-white font-heading">Anthropic Claude 101 Certificate</h3>
+          <p class="text-xs text-sky-400">Official Anthropic Credential</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="60128636-e368-40c5-b6c2-e1336f7bb76d.pdf" target="_blank" class="text-xs bg-slate-800 hover:bg-slate-700 text-white px-3 py-1.5 rounded-lg font-bold">Open Full PDF ↗</a>
+          <button onclick="closeModal('claudeModal')" class="text-slate-400 hover:text-white text-2xl font-bold ml-2">&times;</button>
+        </div>
       </div>
-      <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-3">
-        <div class="text-2xl">🤖</div>
-        <div class="text-xs font-bold text-sky-400 uppercase tracking-widest"[cite: 1]>Certificate of Completion</div>
-        <div class="text-xl font-black text-white font-heading"[cite: 1]>Rohaan Zahid</div>
-        <div class="text-sm font-semibold text-slate-200"[cite: 1]>Claude 101</div>
-        <div class="text-xs text-slate-400 uppercase tracking-widest font-bold pt-2 border-t border-slate-800"[cite: 1]>Anthropic</div>
+
+      <div class="w-full flex-1">
+        <object data="60128636-e368-40c5-b6c2-e1336f7bb76d.pdf" type="application/pdf" class="doc-viewer-frame">
+          <div class="bg-white p-8 rounded-xl text-slate-900 text-center space-y-4 max-h-[60vh] overflow-y-auto">
+            <div class="text-sky-900 font-bold uppercase tracking-widest text-xs">CERTIFICATE OF COMPLETION</div>
+            <p class="text-xs text-slate-500">This is to certify that</p>
+            <h1 class="text-2xl font-black text-slate-900 underline">Rohaan Zahid</h1>
+            <p class="text-xs text-slate-700">has completed</p>
+            <h2 class="text-xl font-black text-sky-600">Claude 101</h2>
+            <div class="text-sm font-black tracking-widest text-slate-900 pt-4 uppercase">ANTHROPIC</div>
+          </div>
+        </object>
       </div>
-      <div class="mt-5 flex justify-center">
-        <button onclick="closeModal('claudeModal')" class="btn-secondary text-xs py-2">Close</button>
+
+      <div class="mt-4 flex justify-between items-center text-xs text-muted">
+        <span>Anthropic Certified</span>
+        <button onclick="closeModal('claudeModal')" class="btn-secondary text-xs py-1.5">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Resume PDF Viewer Modal -->
+  <div id="resumePDFModal" class="modal" onclick="closeModalOnBackdrop(event, 'resumePDFModal')">
+    <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-sky-400/40 relative flex flex-col">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+        <div>
+          <h3 class="text-base font-bold text-white font-heading">Engineer Resume Viewer</h3>
+          <p class="text-xs text-sky-400">M. Rohaan Zahid — Light Blue Black & White Resume</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="Engineer Resume in Light Blue Black and White Simple Style.pdf" target="_blank" class="text-xs bg-slate-800 hover:bg-slate-700 text-white px-3 py-1.5 rounded-lg font-bold">Open Full PDF ↗</a>
+          <button onclick="closeModal('resumePDFModal')" class="text-slate-400 hover:text-white text-2xl font-bold ml-2">&times;</button>
+        </div>
+      </div>
+
+      <div class="w-full flex-1">
+        <object data="Engineer Resume in Light Blue Black and White Simple Style.pdf" type="application/pdf" class="doc-viewer-frame">
+          <p class="p-6 text-center text-xs text-slate-700">Preview not supported by browser. <a href="Engineer Resume in Light Blue Black and White Simple Style.pdf" target="_blank" class="text-sky-600 underline font-bold">Click here to open the resume PDF directly.</a></p>
+        </object>
+      </div>
+
+      <div class="mt-4 flex justify-between items-center text-xs text-muted">
+        <button onclick="triggerCVPDFDownload()" class="btn-primary text-xs py-1.5">Download A4 PDF</button>
+        <button onclick="closeModal('resumePDFModal')" class="btn-secondary text-xs py-1.5">Close</button>
       </div>
     </div>
   </div>
@@ -955,7 +1067,7 @@
     <div class="mx-auto max-w-7xl px-5 grid gap-6 sm:grid-cols-3 items-start text-center sm:text-left">
       <div>
         <h4 class="text-sm font-bold text-sky-400 font-heading mb-1.5">M. Rohaan Zahid</h4>
-        <p class="text-[11px] text-muted leading-relaxed"[cite: 3]>AI Programmer & Software Developer[cite: 3]. Crafting intelligent machine learning applications and scalable web systems[cite: 3].</p>
+        <p class="text-[11px] text-muted leading-relaxed">AI Programmer & Software Developer. Crafting intelligent machine learning applications and scalable web systems.</p>
       </div>
       <div>
         <h4 class="text-sm font-bold text-white font-heading mb-2">Navigation Links</h4>
@@ -972,9 +1084,9 @@
       <div>
         <h4 class="text-sm font-bold text-white font-heading mb-2">Connect Directly</h4>
         <div class="flex justify-center sm:justify-start gap-4 text-muted font-bold text-[11px]">
-          <a href="https://github.com/Rohaanrz05" target="_blank" class="hover:text-sky-400"[cite: 3]>GitHub</a>
-          <a href="https://www.linkedin.com/in/rohaan-zahid-510850400/" target="_blank" class="hover:text-sky-400"[cite: 3]>LinkedIn</a>
-          <a href="mailto:rohaanzahid.04@gmail.com" class="hover:text-sky-400"[cite: 3]>Email</a>
+          <a href="https://github.com/Rohaanrz05" target="_blank" class="hover:text-sky-400">GitHub</a>
+          <a href="https://www.linkedin.com/in/rohaan-zahid-510850400/" target="_blank" class="hover:text-sky-400">LinkedIn</a>
+          <a href="mailto:rohaanzahid.04@gmail.com" class="hover:text-sky-400">Email</a>
           <a href="https://books.rohaanzahid.space" target="_blank" class="text-amber-400 hover:underline">books.rohaanzahid.space</a>
         </div>
       </div>
@@ -1219,7 +1331,7 @@
       }
     });
 
-    // Enhanced Interactive Quantum Particle System with Constellation Links & Mouse Attraction
+    // Quantum Particle System with Constellation Links & Mouse Attraction
     class QuantumParticleField {
       constructor(canvas) {
         this.canvas = canvas;
