@@ -16,7 +16,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,6 +97,19 @@
       border: 1px solid rgba(148, 163, 184, 0.2);
       background-color: #ffffff;
     }
+
+    /* Typing cursor effect */
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      margin-left: 4px;
+      background-color: #38bdf8;
+      animation: cursorBlink 0.9s infinite;
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
   </style>
 </head>
 
@@ -167,15 +179,15 @@
           <div class="absolute -right-20 -top-20 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
           <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-          <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center relative z-10">
+          <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center relative z-10">
             <div data-aos="fade-right">
               <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-400/10 border border-sky-400/25 text-sky-400 text-xs font-bold uppercase tracking-wider mb-5">
                 <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span> Artificial Intelligence & Systems
               </div>
               <h2 class="text-3xl sm:text-4xl md:text-6xl font-black leading-tight tracking-tight font-heading text-white">
                 M. Rohaan Zahid <br>
-                <span class="inline-block bg-gradient-to-r from-sky-400 via-indigo-400 to-cyan-300 bg-clip-text text-transparent">
-                  <span id="typing"></span>
+                <span class="inline-flex items-center bg-gradient-to-r from-sky-400 via-indigo-400 to-cyan-300 bg-clip-text text-transparent min-h-[1.25em]">
+                  <span id="typing"></span><span class="typing-cursor">&nbsp;</span>
                 </span>
               </h2>
               
@@ -210,12 +222,12 @@
               </div>
             </div>
 
-            <!-- Profile Showcase Card with JavaScript Dynamic Canvas Border Animation -->
+            <!-- Profile Showcase Card with Audio-Wave Circle Animation -->
             <div class="card p-7 text-center border-sky-400/20 bg-slate-900/40 relative group" data-aos="fade-left" id="avatarCard">
-              <div class="relative mx-auto h-52 w-52 mb-4 flex items-center justify-center">
-                <!-- JS Animation Canvas for Circular Border -->
+              <div class="relative mx-auto h-64 w-64 mb-2 flex items-center justify-center">
+                <!-- Circular Radial Audio Equalizer Canvas -->
                 <canvas id="avatar-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
-                <img src="https://i.postimg.cc/P5FzQ0S9/mypic.jpg" alt="M. Rohaan Zahid" class="relative z-10 mx-auto h-44 w-44 rounded-full object-cover shadow-2xl transition-transform duration-300 group-hover:scale-105" />
+                <img src="https://i.postimg.cc/P5FzQ0S9/mypic.jpg" alt="M. Rohaan Zahid" class="relative z-10 mx-auto h-40 w-40 rounded-full object-cover shadow-2xl border-2 border-sky-400/40 transition-transform duration-300 group-hover:scale-105" />
               </div>
               <h3 class="text-2xl font-black text-white font-heading">M. Rohaan Zahid</h3>
               <p class="mt-1 text-xs text-sky-400 font-bold tracking-widest uppercase">AI Programmer & Software Engineer</p>
@@ -230,20 +242,41 @@
           </div>
         </div>
 
-        <!-- Integrated About & Executive Bio -->
+        <!-- Integrated About & Upgraded Executive Bio -->
         <div class="grid gap-6 md:grid-cols-3">
-          <div class="glass rounded-3xl p-7 md:col-span-2" data-aos="fade-up">
-            <h3 class="text-xs font-bold uppercase tracking-[0.3em] text-sky-400 mb-3">Executive Summary</h3>
-            <h4 class="text-2xl font-black text-white font-heading mb-4">Bridging Theoretical AI with Real-World Systems</h4>
+          <div class="glass rounded-3xl p-7 md:p-8 md:col-span-2 relative overflow-hidden" data-aos="fade-up">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="h-2 w-2 rounded-full bg-sky-400 animate-pulse"></span>
+              <h3 class="text-xs font-bold uppercase tracking-[0.3em] text-sky-400">Executive Summary</h3>
+            </div>
+            
+            <h4 class="text-2xl sm:text-3xl font-black text-white font-heading mb-5">
+              Architecting <span id="execTyping" class="text-sky-400"></span><span class="typing-cursor">&nbsp;</span>
+            </h4>
+
+            <!-- Structured Interactive Executive Overview -->
             <div class="space-y-4 text-sm leading-relaxed text-muted font-normal">
-              <p>
-                I am an Artificial Intelligence undergraduate at <strong>Sir Syed CASE Institute of Technology</strong> with a strong passion for AI, software engineering, and emerging tech stacks. I have hands-on experience developing projects including AI-based route optimization systems, airline reservation platforms, robotic parking automation, and web applications.
+              <p class="text-slate-300 text-base leading-relaxed">
+                I am an Artificial Intelligence undergraduate at <strong>Sir Syed CASE Institute of Technology</strong> specializing in the convergence of applied machine learning, production data workflows, and robust software engineering. My technical orientation is centered on solving non-trivial algorithmic problems and turning mathematical heuristics into reliable, production-ready software architectures.
               </p>
+
+              <div class="grid sm:grid-cols-3 gap-3 my-4">
+                <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-sky-500/40 transition-colors">
+                  <div class="text-sky-400 font-bold text-xs uppercase tracking-wider mb-1">01 / Applied ML</div>
+                  <p class="text-[12px] text-slate-300">Feature engineering, heuristic modeling, Scikit-learn, and interactive evaluation dashboards.</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-indigo-500/40 transition-colors">
+                  <div class="text-indigo-400 font-bold text-xs uppercase tracking-wider mb-1">02 / Systems Dev</div>
+                  <p class="text-[12px] text-slate-300">Object-oriented C++, relational databases, automated bookings, and fault-tolerant algorithms.</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-amber-500/40 transition-colors">
+                  <div class="text-amber-400 font-bold text-xs uppercase tracking-wider mb-1">03 / Publication</div>
+                  <p class="text-[12px] text-slate-300">Independent researcher & author operating high-volume landing portals and documentation.</p>
+                </div>
+              </div>
+
               <p>
-                I am a motivated and detail-oriented learner who enjoys solving complex problems, building innovative solutions, and continuously improving technical skills. My goal is to apply my knowledge of Artificial Intelligence and software engineering to create impactful technologies while growing as a professional in the tech industry.
-              </p>
-              <p>
-                Beyond system development, I am an active writer and independent author—managing historical publications and landing architectures through my dedicated platform at <a href="https://books.rohaanzahid.space" target="_blank" class="text-amber-400 underline font-semibold hover:text-amber-300">books.rohaanzahid.space</a>.
+                Across industry-grade internships at <strong>FlyRank.AI</strong>, <strong>Decode Labs</strong>, and <strong>CodeAlpha</strong>, I have designed intelligent conversational tools, built heuristic route optimization engines, and streamlined model performance pipelines. I bring an analytical, disciplined work ethic committed to measurable engineering impact.
               </p>
             </div>
           </div>
@@ -1160,20 +1193,47 @@
     // Initialize AOS
     AOS.init({ duration: 750, once: true });
 
-    // Animated Typing strings
-    new Typed("#typing", {
-      strings: [
-        "AI Programmer & Developer", 
-        "Machine Learning Enthusiast", 
-        "Python & C++ Engineer", 
-        "Published Author & Researcher"
-      ],
-      typeSpeed: 55,
-      backSpeed: 35,
-      loop: true
-    });
+    // Lightweight Non-Lagging Typing Engine (Hero Title & Executive Bio)
+    class SmoothTypeEngine {
+      constructor(elementId, phrases, options = {}) {
+        this.el = document.getElementById(elementId);
+        this.phrases = phrases;
+        this.typeSpeed = options.typeSpeed || 65;
+        this.backSpeed = options.backSpeed || 35;
+        this.pauseDelay = options.pauseDelay || 1600;
+        this.phraseIndex = 0;
+        this.charIndex = 0;
+        this.isDeleting = false;
+        if (this.el) this.tick();
+      }
 
-    // LocalStorage Download Counter
+      tick() {
+        const currentPhrase = this.phrases[this.phraseIndex];
+        
+        if (this.isDeleting) {
+          this.charIndex--;
+          this.el.textContent = currentPhrase.substring(0, this.charIndex);
+        } else {
+          this.charIndex++;
+          this.el.textContent = currentPhrase.substring(0, this.charIndex);
+        }
+
+        let speed = this.isDeleting ? this.backSpeed : this.typeSpeed;
+
+        if (!this.isDeleting && this.charIndex === currentPhrase.length) {
+          speed = this.pauseDelay;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.charIndex === 0) {
+          this.isDeleting = false;
+          this.phraseIndex = (this.phraseIndex + 1) % this.phrases.length;
+          speed = 300;
+        }
+
+        setTimeout(() => this.tick(), speed);
+      }
+    }
+
+    // LocalStorage Download Counter & Repo Fetch
     window.addEventListener("load", () => {
       const storedCount = localStorage.getItem("resumeDownloads") || 0;
       document.getElementById("downloadCount").textContent = storedCount;
@@ -1240,7 +1300,6 @@
       }
     }
 
-    // Google Drive direct download redirection + counter
     function triggerCVPDFDownload() {
       let dlCounter = parseInt(localStorage.getItem("resumeDownloads") || 0);
       dlCounter++;
@@ -1272,16 +1331,17 @@
       }
     });
 
-    // Pure JavaScript Animated Circular Ring Frame for Profile Picture
-    class AvatarRingAnimation {
+    // Circular Audio-Wave / Equalizer Ring Animation
+    class AudioWaveRingAnimation {
       constructor(canvasId, cardId) {
         this.canvas = document.getElementById(canvasId);
         if (!this.canvas) return;
         this.ctx = this.canvas.getContext("2d");
         this.card = document.getElementById(cardId);
-        this.angle = 0;
-        this.speed = 0.02;
-        this.pulse = 0;
+        this.barsCount = 56;
+        this.rotSpeed = 0.008;
+        this.rotAngle = 0;
+        this.phase = 0;
         this.hovered = false;
 
         this.resize();
@@ -1297,9 +1357,11 @@
 
       resize() {
         const rect = this.canvas.getBoundingClientRect();
-        this.width = this.canvas.width = rect.width * (window.devicePixelRatio || 1);
-        this.height = this.canvas.height = rect.height * (window.devicePixelRatio || 1);
-        this.ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+        this.dpr = window.devicePixelRatio || 1;
+        this.canvas.width = rect.width * this.dpr;
+        this.canvas.height = rect.height * this.dpr;
+        this.ctx.setTransform(1, 0, 0, 1, 0, 0);
+        this.ctx.scale(this.dpr, this.dpr);
       }
 
       animate() {
@@ -1308,54 +1370,65 @@
         const h = rect.height;
         const cx = w / 2;
         const cy = h / 2;
-        const baseRadius = (Math.min(w, h) / 2) - 10;
+        const radius = 86; // Positioned right around the 160px avatar
 
         this.ctx.clearRect(0, 0, w, h);
 
-        const targetSpeed = this.hovered ? 0.05 : 0.02;
-        this.speed += (targetSpeed - this.speed) * 0.1;
-        this.angle += this.speed;
-        this.pulse += 0.04;
+        const targetRotSpeed = this.hovered ? 0.022 : 0.008;
+        this.rotSpeed += (targetRotSpeed - this.rotSpeed) * 0.1;
+        this.rotAngle += this.rotSpeed;
+        this.phase += this.hovered ? 0.09 : 0.045;
 
-        const dynamicRadius = baseRadius + Math.sin(this.pulse) * 2.5;
-
-        // Outer Neon Arc 1
-        this.ctx.save();
-        this.ctx.translate(cx, cy);
-        this.ctx.rotate(this.angle);
+        // Draw Base Circular Track
         this.ctx.beginPath();
-        this.ctx.arc(0, 0, dynamicRadius, 0, Math.PI * 1.15);
-        this.ctx.strokeStyle = "rgba(56, 189, 248, 0.9)";
-        this.ctx.lineWidth = 3;
-        this.ctx.shadowBlur = this.hovered ? 18 : 10;
-        this.ctx.shadowColor = "#38bdf8";
+        this.ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        this.ctx.strokeStyle = "rgba(56, 189, 248, 0.25)";
+        this.ctx.lineWidth = 1.5;
         this.ctx.stroke();
-        this.ctx.restore();
 
-        // Outer Neon Arc 2 (Counter-Rotating)
-        this.ctx.save();
-        this.ctx.translate(cx, cy);
-        this.ctx.rotate(-this.angle * 1.3);
+        // Draw Radial Audio Bars (Upside-down/inverted pulsing inward and outward)
+        for (let i = 0; i < this.barsCount; i++) {
+          const barAngle = (i / this.barsCount) * (Math.PI * 2) + this.rotAngle;
+          
+          // Harmonic wave equation for responsive frequency peaks
+          const wave1 = Math.sin(i * 0.45 + this.phase);
+          const wave2 = Math.cos(i * 0.85 - this.phase * 1.4);
+          const rawHeight = Math.abs(wave1 * 0.65 + wave2 * 0.35);
+          
+          const maxBarLen = this.hovered ? 26 : 17;
+          const barLength = Math.max(rawHeight * maxBarLen, 3);
+
+          // Inverted projection: extending inward and outward across the perimeter
+          const x1 = cx + Math.cos(barAngle) * (radius - 2);
+          const y1 = cy + Math.sin(barAngle) * (radius - 2);
+          const x2 = cx + Math.cos(barAngle) * (radius + barLength);
+          const y2 = cy + Math.sin(barAngle) * (radius + barLength);
+
+          this.ctx.beginPath();
+          this.ctx.moveTo(x1, y1);
+          this.ctx.lineTo(x2, y2);
+
+          // Dynamic Cyan to Indigo Neon Gradient
+          const grad = this.ctx.createLinearGradient(x1, y1, x2, y2);
+          grad.addColorStop(0, "rgba(56, 189, 248, 0.95)");
+          grad.addColorStop(1, "rgba(129, 140, 248, 0.75)");
+
+          this.ctx.strokeStyle = grad;
+          this.ctx.lineWidth = this.hovered ? 2.8 : 2;
+          this.ctx.lineCap = "round";
+
+          this.ctx.shadowBlur = this.hovered ? 8 : 4;
+          this.ctx.shadowColor = "#38bdf8";
+          this.ctx.stroke();
+        }
+
+        // Inner glowing ring accent
         this.ctx.beginPath();
-        this.ctx.arc(0, 0, dynamicRadius + 4, 0, Math.PI * 0.85);
-        this.ctx.strokeStyle = "rgba(129, 140, 248, 0.85)";
-        this.ctx.lineWidth = 2.5;
-        this.ctx.shadowBlur = this.hovered ? 15 : 8;
-        this.ctx.shadowColor = "#818cf8";
+        this.ctx.arc(cx, cy, radius - 4, 0, Math.PI * 2);
+        this.ctx.strokeStyle = "rgba(129, 140, 248, 0.35)";
+        this.ctx.lineWidth = 1;
+        this.ctx.shadowBlur = 0;
         this.ctx.stroke();
-        this.ctx.restore();
-
-        // Orbiting glowing particle
-        const particleAngle = this.angle * 2.2;
-        const px = cx + Math.cos(particleAngle) * (dynamicRadius + 3);
-        const py = cy + Math.sin(particleAngle) * (dynamicRadius + 3);
-
-        this.ctx.beginPath();
-        this.ctx.arc(px, py, this.hovered ? 4.5 : 3, 0, Math.PI * 2);
-        this.ctx.fillStyle = "#38bdf8";
-        this.ctx.shadowBlur = 12;
-        this.ctx.shadowColor = "#38bdf8";
-        this.ctx.fill();
 
         requestAnimationFrame(() => this.animate());
       }
@@ -1450,9 +1523,26 @@
       }
     }
 
+    // Launch Animations on Window Load
     window.addEventListener("load", () => {
       new QuantumParticleField(document.getElementById("quantum-canvas"));
-      new AvatarRingAnimation("avatar-canvas", "avatarCard");
+      new AudioWaveRingAnimation("avatar-canvas", "avatarCard");
+      
+      // Main Hero Heading Typewriter
+      new SmoothTypeEngine("typing", [
+        "AI Programmer & Developer",
+        "Machine Learning Enthusiast",
+        "Python & C++ Engineer",
+        "Published Author & Researcher"
+      ], { typeSpeed: 60, backSpeed: 30, pauseDelay: 1700 });
+
+      // Executive Summary Dynamic Typing Headline
+      new SmoothTypeEngine("execTyping", [
+        "Scalable AI Systems",
+        "Predictive ML Pipelines",
+        "Production C++ & Python Architecture",
+        "Intelligent Engineering Solutions"
+      ], { typeSpeed: 65, backSpeed: 32, pauseDelay: 2000 });
     });
   </script>
 </body>
