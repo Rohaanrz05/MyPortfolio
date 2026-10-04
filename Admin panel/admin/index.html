@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Management Console | Rohaan Zahid</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .heading { font-family: 'Space Grotesk', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+
+  <!-- Login Overlay -->
+  <div id="loginOverlay" class="fixed inset-0 bg-slate-950/95 flex items-center justify-center p-4 z-50">
+    <div class="bg-slate-900 border border-sky-500/30 rounded-2xl p-8 max-w-md w-full shadow-2xl">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-black heading text-white">Rohaan's Control Center</h2>
+        <p class="text-xs text-slate-400 mt-1">Authenticate to manage your dynamic portfolio</p>
+      </div>
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-xs uppercase text-slate-400 mb-1">Username</label>
+          <input type="text" id="username" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:border-sky-400 outline-none" required />
+        </div>
+        <div>
+          <label class="block text-xs uppercase text-slate-400 mb-1">Password</label>
+          <input type="password" id="password" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:border-sky-400 outline-none" required />
+        </div>
+        <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-2.5 rounded-lg text-sm transition-all">Sign In</button>
+        <p id="loginError" class="text-xs text-red-400 text-center hidden">Invalid credentials</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-sky-500/10 border border-sky-400/40 text-sky-400 flex items-center justify-center font-bold">RZ</div>
+        <h1 class="text-lg font-bold heading text-white">Admin Management Studio</h1>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="/" target="_blank" class="text-xs text-sky-400 hover:underline flex items-center gap-1 font-semibold">View Live Website ↗</a>
+        <button onclick="logout()" class="text-xs bg-slate-800 hover:bg-red-500/20 text-slate-300 hover:text-red-400 px-3 py-1.5 rounded-lg transition-colors border border-slate-700">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-6 py-10 space-y-12">
+
+    <!-- BLOCK 1: Career Vault & CV Hub -->
+    <section class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-8">
+      <div class="border-b border-slate-800 pb-3 mb-6">
+        <span class="text-xs font-bold text-sky-400 tracking-widest uppercase">Block 01</span>
+        <h2 class="text-xl font-bold heading text-white">Career Vault & Resume (CV) Settings</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Manage your active Google Drive PDF and download links across all sections</p>
+      </div>
+      <form id="cvForm" class="space-y-4">
+        <div>
+          <label class="block text-xs uppercase text-slate-400 mb-1">Official CV / Resume Google Drive Link</label>
+          <input type="url" id="cv_url" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm text-white focus:border-sky-400 outline-none" placeholder="https://drive.google.com/file/d/.../view" required />
+        </div>
+        <button type="submit" class="bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold px-5 py-2.5 rounded-lg transition-all">Update CV URL</button>
+      </form>
+    </section>
+
+    <!-- BLOCK 2: Custom Navigation Tabs & Portal Action Buttons -->
+    <section class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-8">
+      <div class="border-b border-slate-800 pb-3 mb-6">
+        <span class="text-xs font-bold text-amber-400 tracking-widest uppercase">Block 02</span>
+        <h2 class="text-xl font-bold heading text-white">Custom Portal Buttons & Custom Links</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Add or remove buttons like "Author Portal", blogs, or documentation pages in your header and hero</p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- New Button Form -->
+        <form id="buttonForm" class="space-y-4 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
+          <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider">Create Custom Button</h3>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Button Label</label>
+              <input type="text" id="btn_label" placeholder="e.g. Author Portal" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-white" required />
+            </div>
+            <div>
+              <label class="block text-xs text-slate-400 mb-1">Icon (Emoji)</label>
+              <input type="text" id="btn_icon" placeholder="📚" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-white" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs text-slate-400 mb-1">Target URL</label>
+            <input type="url" id="btn_url" placeholder="https://books.rohaanzahid.space" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-2 text-xs text-white" required />
+          </div>
+          <button type="submit" class="bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold px-4 py-2 rounded-lg">Add Button</button>
+        </form>
+        <!-- Existing Buttons List -->
+        <div>
+          <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3">Active Custom Buttons</h3>
+          <div id="buttonsList" class="space-y-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCK 3: Personal Profile & Contact Channels -->
+    <section class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-8">
+      <div class="border-b border-slate-800 pb-3 mb-6">
+        <span class="text-xs font-bold text-sky-400 tracking-widest uppercase">Block 03</span>
+        <h2 class="text-xl font-bold heading text-white">Profile, Titles & Contact Coordinates</h2>
+      </div>
+      <form id="profileForm" class="space-y-4">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs uppercase text-slate-400 mb-1">Display Name</label>
+            <input type="text" id="prof_name" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white" required />
+          </div>
+          <div>
+            <label class="block text-xs uppercase text-slate-400 mb-1">Sub-heading Title</label>
+            <input type="text" id="prof_title" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white" required />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs uppercase text-slate-400 mb-1">Hero Bio Description</label>
+          <textarea id="prof_bio" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white"></textarea>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs uppercase text-slate-400 mb-1">Email Address</label>
+            <input type="email" id="prof_email" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white" />
+          </div>
+          <div>
+            <label class="block text-xs uppercase text-slate-400 mb-1">Phone Number</label>
+            <input type="text" id="prof_phone" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white" />
+          </div>
+          <div>
+            <label class="block text-xs uppercase text-slate-400 mb-1">Physical Location</label>
+            <input type="text" id="prof_location" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white" />
+          </div>
+          <div>
+            <label class="block text-xs uppercase text-slate-400 mb-1">GitHub URL</label>
+            <input type="url" id="prof_github" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white" />
+          </div>
+        </div>
+        <button type="submit" class="bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold px-5 py-2.5 rounded-lg">Save Profile Settings</button>
+      </form>
+    </section>
+
+    <!-- BLOCK 4: Work Experience & Proof Documents -->
+    <section class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-8">
+      <div class="border-b border-slate-800 pb-3 mb-6">
+        <span class="text-xs font-bold text-sky-400 tracking-widest uppercase">Block 04</span>
+        <h2 class="text-xl font-bold heading text-white">Work Experience & Internship References</h2>
+      </div>
+      <div class="grid lg:grid-cols-[1fr_1.3fr] gap-8">
+        <form id="expForm" class="space-y-3 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300">Add New Experience</h3>
+          <div>
+            <label class="block text-[11px] text-slate-400">Job Role</label>
+            <input type="text" id="exp_role" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" required />
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400">Company</label>
+            <input type="text" id="exp_company" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" required />
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <label class="block text-[11px] text-slate-400">Period</label>
+              <input type="text" id="exp_period" placeholder="July 2026 - Aug 2026" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" required />
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-400">Status</label>
+              <input type="text" id="exp_status" placeholder="Completed" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400">Bullet Points (One per line)</label>
+            <textarea id="exp_points" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white"></textarea>
+          </div>
+          <button type="submit" class="bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-lg">Add Experience</button>
+        </form>
+        <div id="expList" class="space-y-3 overflow-y-auto max-h-[500px]"></div>
+      </div>
+    </section>
+
+    <!-- BLOCK 5: Featured Projects -->
+    <section class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-8">
+      <div class="border-b border-slate-800 pb-3 mb-6">
+        <span class="text-xs font-bold text-sky-400 tracking-widest uppercase">Block 05</span>
+        <h2 class="text-xl font-bold heading text-white">Projects Manager</h2>
+      </div>
+      <div class="grid lg:grid-cols-[1fr_1.3fr] gap-8">
+        <form id="projectForm" class="space-y-3 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300">Add New Project</h3>
+          <input type="text" id="proj_title" placeholder="Project Title" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" required />
+          <textarea id="proj_desc" placeholder="Project Description" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" required></textarea>
+          <input type="url" id="proj_github" placeholder="GitHub Repository URL" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" />
+          <input type="url" id="proj_live" placeholder="Live Demo URL (Optional)" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" />
+          <input type="text" id="proj_tags" placeholder="Tags (e.g. Python, Streamlit, ML)" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" />
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1">Project Screenshot</label>
+            <input type="file" id="proj_image" accept="image/*" class="w-full text-xs text-slate-400 file:bg-slate-800 file:border-0 file:rounded file:px-3 file:py-1 file:text-xs file:text-white" />
+          </div>
+          <button type="submit" class="bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-lg">Add Project</button>
+        </form>
+        <div id="projectsList" class="space-y-3 overflow-y-auto max-h-[500px]"></div>
+      </div>
+    </section>
+
+    <!-- BLOCK 6: Honors, Credentials & Documents -->
+    <section class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-8">
+      <div class="border-b border-slate-800 pb-3 mb-6">
+        <span class="text-xs font-bold text-sky-400 tracking-widest uppercase">Block 06</span>
+        <h2 class="text-xl font-bold heading text-white">Certificates & Verified Credentials</h2>
+      </div>
+      <div class="grid lg:grid-cols-[1fr_1.3fr] gap-8">
+        <form id="certForm" class="space-y-3 bg-slate-950/50 p-5 rounded-xl border border-slate-800">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300">Add Credential</h3>
+          <input type="text" id="cert_title" placeholder="Certificate Title" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" required />
+          <input type="text" id="cert_issuer" placeholder="Issuer (e.g. Anthropic, FlyRank.AI)" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" required />
+          <input type="text" id="cert_date" placeholder="Issue Date / Milestone" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" />
+          <input type="url" id="cert_url" placeholder="Google Drive View/Preview URL" class="w-full bg-slate-900 border border-slate-800 rounded p-2 text-xs text-white" required />
+          <button type="submit" class="bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-lg">Add Credential</button>
+        </form>
+        <div id="certsList" class="space-y-3 overflow-y-auto max-h-[500px]"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    let globalState = {};
+
+    // Check Authentication
+    async function checkAuth() {
+      const res = await fetch('/api/check-auth');
+      const data = await res.json();
+      if (data.authenticated) {
+        document.getElementById('loginOverlay').classList.add('hidden');
+        loadData();
+      } else {
+        document.getElementById('loginOverlay').classList.remove('hidden');
+      }
+    }
+
+    // Login Form
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+        })
+      });
+      if (res.ok) {
+        document.getElementById('loginOverlay').classList.add('hidden');
+        loadData();
+      } else {
+        document.getElementById('loginError').classList.remove('hidden');
+      }
+    });
+
+    async function logout() {
+      await fetch('/api/logout', { method: 'POST' });
+      location.reload();
+    }
+
+    // Load Data
+    async function loadData() {
+      const res = await fetch('/api/portfolio');
+      globalState = await res.json();
+
+      // Profile & CV Block
+      if (globalState.profile) {
+        document.getElementById('cv_url').value = globalState.profile.cv_url || '';
+        document.getElementById('prof_name').value = globalState.profile.name || '';
+        document.getElementById('prof_title').value = globalState.profile.title || '';
+        document.getElementById('prof_bio').value = globalState.profile.bio || '';
+        document.getElementById('prof_email').value = globalState.profile.email || '';
+        document.getElementById('prof_phone').value = globalState.profile.phone || '';
+        document.getElementById('prof_location').value = globalState.profile.location || '';
+        document.getElementById('prof_github').value = globalState.profile.github || '';
+      }
+
+      // Buttons
+      renderButtons();
+      // Experiences
+      renderExperiences();
+      // Projects
+      renderProjects();
+      // Certs
+      renderCerts();
+    }
+
+    // CV Form
+    document.getElementById('cvForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const cv_url = document.getElementById('cv_url').value;
+      await fetch('/api/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...globalState.profile, cv_url })
+      });
+      alert('CV Link successfully updated!');
+    });
+
+    // Custom Buttons
+    function renderButtons() {
+      const container = document.getElementById('buttonsList');
+      container.innerHTML = (globalState.buttons || []).map(b => `
+        <div class="flex items-center justify-between p-3 bg-slate-950/50 border border-slate-800 rounded-lg text-xs">
+          <div class="flex items-center gap-2">
+            <span>${b.icon}</span>
+            <span class="font-bold text-white">${b.label}</span>
+            <span class="text-slate-500 font-mono text-[10px] truncate max-w-xs">${b.url}</span>
+          </div>
+          <button onclick="deleteButton(${b.id})" class="text-red-400 hover:text-red-300 font-bold ml-2">Delete</button>
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('buttonForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      await fetch('/api/buttons', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          label: document.getElementById('btn_label').value,
+          icon: document.getElementById('btn_icon').value,
+          url: document.getElementById('btn_url').value,
+          is_external: 1,
+          position: 'header'
+        })
+      });
+      e.target.reset();
+      loadData();
+    });
+
+    async function deleteButton(id) {
+      if (confirm('Delete this button?')) {
+        await fetch(`/api/buttons/${id}`, { method: 'DELETE' });
+        loadData();
+      }
+    }
+
+    // Profile Form
+    document.getElementById('profileForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      await fetch('/api/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: document.getElementById('prof_name').value,
+          title: document.getElementById('prof_title').value,
+          bio: document.getElementById('prof_bio').value,
+          email: document.getElementById('prof_email').value,
+          phone: document.getElementById('prof_phone').value,
+          location: document.getElementById('prof_location').value,
+          github: document.getElementById('prof_github').value,
+          linkedin: globalState.profile.linkedin,
+          cv_url: document.getElementById('cv_url').value
+        })
+      });
+      alert('Profile details saved!');
+    });
+
+    // Render Experiences
+    function renderExperiences() {
+      const container = document.getElementById('expList');
+      container.innerHTML = (globalState.experiences || []).map(exp => `
+        <div class="p-3.5 bg-slate-950/60 border border-slate-800 rounded-lg text-xs space-y-1">
+          <div class="flex justify-between font-bold text-white">
+            <span>${exp.role} - <span class="text-sky-400">${exp.company}</span></span>
+            <button onclick="deleteExp(${exp.id})" class="text-red-400 hover:text-red-300 font-normal">Remove</button>
+          </div>
+          <p class="text-slate-400 text-[11px]">${exp.period}</p>
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('expForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      await fetch('/api/experiences', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          role: document.getElementById('exp_role').value,
+          company: document.getElementById('exp_company').value,
+          period: document.getElementById('exp_period').value,
+          status: document.getElementById('exp_status').value,
+          points: document.getElementById('exp_points').value
+        })
+      });
+      e.target.reset();
+      loadData();
+    });
+
+    async function deleteExp(id) {
+      if (confirm('Delete this experience?')) {
+        await fetch(`/api/experiences/${id}`, { method: 'DELETE' });
+        loadData();
+      }
+    }
+
+    // Render Projects
+    function renderProjects() {
+      const container = document.getElementById('projectsList');
+      container.innerHTML = (globalState.projects || []).map(p => `
+        <div class="p-3 bg-slate-950/60 border border-slate-800 rounded-lg text-xs flex justify-between items-center">
+          <div>
+            <h4 class="font-bold text-white">${p.title}</h4>
+            <p class="text-slate-400 text-[11px] truncate max-w-sm">${p.description}</p>
+          </div>
+          <button onclick="deleteProject(${p.id})" class="text-red-400 hover:text-red-300 font-bold ml-2">Delete</button>
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('projectForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('title', document.getElementById('proj_title').value);
+      formData.append('description', document.getElementById('proj_desc').value);
+      formData.append('github_url', document.getElementById('proj_github').value);
+      formData.append('live_url', document.getElementById('proj_live').value);
+      const imgFile = document.getElementById('proj_image').files[0];
+      if (imgFile) formData.append('image', imgFile);
+
+      await fetch('/api/projects', { method: 'POST', body: formData });
+      e.target.reset();
+      loadData();
+    });
+
+    async function deleteProject(id) {
+      if (confirm('Delete this project?')) {
+        await fetch(`/api/projects/${id}`, { method: 'DELETE' });
+        loadData();
+      }
+    }
+
+    // Render Certs
+    function renderCerts() {
+      const container = document.getElementById('certsList');
+      container.innerHTML = (globalState.certificates || []).map(c => `
+        <div class="p-3 bg-slate-950/60 border border-slate-800 rounded-lg text-xs flex justify-between items-center">
+          <div>
+            <h4 class="font-bold text-white">${c.title}</h4>
+            <p class="text-sky-400 text-[11px]">${c.issuer}</p>
+          </div>
+          <button onclick="deleteCert(${c.id})" class="text-red-400 hover:text-red-300 font-bold ml-2">Delete</button>
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('certForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      await fetch('/api/certificates', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: document.getElementById('cert_title').value,
+          issuer: document.getElementById('cert_issuer').value,
+          issue_date: document.getElementById('cert_date').value,
+          direct_url: document.getElementById('cert_url').value
+        })
+      });
+      e.target.reset();
+      loadData();
+    });
+
+    async function deleteCert(id) {
+      if (confirm('Delete this credential?')) {
+        await fetch(`/api/certificates/${id}`, { method: 'DELETE' });
+        loadData();
+      }
+    }
+
+    window.onload = checkAuth;
+  </script>
+</body>
+</html>
