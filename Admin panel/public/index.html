@@ -7,17 +7,14 @@
   <meta name="keywords" content="Rohaan Zahid, AI Developer, Machine Learning, Artificial Intelligence, Portfolio, Author" />
   <meta name="author" content="M. Rohaan Zahid" />
   <title>M. Rohaan Zahid | AI Programmer & Software Developer</title>
-
   <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/616/616430.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -31,12 +28,10 @@
       }
     }
   </script>
-
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: "Inter", sans-serif; transition: background-color 0.3s, color 0.3s; }
     .nav-tab, button, a, [onclick] { cursor: pointer !important; }
-
     /* Dark Theme Base (Default) */
     body.dark { background-color: #020617; color: #f8fafc; }
     body.dark #quantum-canvas { background: radial-gradient(circle at 50% 20%, #0d1527 0%, #020617 80%); }
@@ -44,7 +39,6 @@
     body.dark .card { background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(148, 163, 184, 0.14); }
     body.dark .text-muted { color: #94a3b8; }
     body.dark .nav-tab { color: #94a3b8; }
-
     /* Light Theme Base */
     body.light { background-color: #f8fafc; color: #0f172a; }
     body.light #quantum-canvas { background: radial-gradient(circle at 50% 20%, #e0f2fe 0%, #f8fafc 85%); }
@@ -53,16 +47,13 @@
     body.light .text-muted { color: #475569; }
     body.light .text-white { color: #0f172a; }
     body.light .nav-tab { color: #475569; }
-
     #quantum-canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -2; pointer-events: auto; }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
-
     /* Navigation styling */
     .nav-tab { padding: 9px 15px; border-radius: 999px; font-weight: 600; font-size: 13px; transition: all 0.25s ease-in-out; white-space: nowrap; }
     .nav-tab:hover { color: #38bdf8 !important; background: rgba(56, 189, 248, 0.09) !important; }
     .nav-tab.active { color: #020617 !important; background: linear-gradient(135deg, #38bdf8, #818cf8) !important; box-shadow: 0 0 25px rgba(56, 189, 248, 0.4); }
-
     /* Interactive Buttons */
     .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 22px; border-radius: 999px; background: linear-gradient(135deg, #38bdf8, #818cf8); color: #020617; font-weight: 700; transition: all 0.25s ease-in-out; border: none; }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(56, 189, 248, 0.35); }
@@ -71,39 +62,32 @@
     body.dark .btn-secondary { background: rgba(15, 23, 42, 0.65); color: #f1f5f9; }
     body.light .btn-secondary { background: rgba(255, 255, 255, 0.85); color: #0f172a; border-color: rgba(15, 23, 42, 0.15); }
     .btn-secondary:hover { border-color: #38bdf8; color: #38bdf8 !important; transform: translateY(-2px); background: rgba(56, 189, 248, 0.08); }
-
     .skill-pill { display: inline-flex; align-items: center; padding: 5px 11px; border-radius: 999px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.22); color: #0284c7; font-weight: 600; font-size: 12px; transition: transform 0.2s; }
     body.dark .skill-pill { color: #38bdf8; }
     .skill-pill:hover { transform: translateY(-2px); }
-
     .mobile-menu { display: none; }
     .mobile-menu.show { display: block; }
-
     /* Modal Styling */
     .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(2, 6, 23, 0.88); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1rem; }
     .modal.show { display: flex; }
     .doc-viewer-frame { width: 100%; height: 72vh; border-radius: 12px; border: 1px solid rgba(148, 163, 184, 0.2); background-color: #ffffff; }
-
     /* Typing cursor */
     .typing-cursor { display: inline-block; width: 3px; margin-left: 4px; background-color: #38bdf8; animation: cursorBlink 0.9s infinite; }
     @keyframes cursorBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
   </style>
 </head>
-
 <body class="dark">
   <canvas id="quantum-canvas"></canvas>
-
   <!-- Navigation Header -->
   <header class="fixed top-0 left-0 right-0 z-50 border-b bg-opacity-80 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-950/85 border-slate-200/70 bg-white/85">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5">
       <button onclick="openTab('profile')" class="flex items-center gap-3 text-left">
         <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-sky-400/40 bg-sky-400/10 text-lg font-black text-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.2)]">RZ</div>
         <div>
-          <h1 class="text-base font-black tracking-tight font-heading">M. Rohaan Zahid</h1>
+          <h1 class="text-base font-black tracking-tight font-heading prof-dyn-name">M. Rohaan Zahid</h1>
           <p id="dyn-header-title" class="text-[9px] font-bold tracking-[0.25em] text-sky-400 uppercase">AI Programmer & Developer</p>
         </div>
       </button>
-
       <!-- Desktop Nav -->
       <nav class="hidden items-center gap-1 xl:flex">
         <button class="nav-tab active" data-tab="profile" onclick="openTab('profile')">Profile</button>
@@ -114,12 +98,7 @@
         <button class="nav-tab" data-tab="education" onclick="openTab('education')">Education</button>
         <button class="nav-tab" data-tab="cv" onclick="openTab('cv')">Career Vault</button>
         <button class="nav-tab" data-tab="contact" onclick="openTab('contact')">Contact</button>
-        <!-- Dynamic Header Custom Action Button -->
-        <a id="dyn-author-btn" href="https://books.rohaanzahid.space" target="_blank" class="nav-tab border border-amber-400/40 text-amber-400 hover:!text-amber-300 hover:!bg-amber-400/10 flex items-center gap-1.5 ml-1" title="Visit Portal">
-          <span>📚</span> <span id="dyn-author-text">Author Portal ↗</span>
-        </a>
       </nav>
-
       <div class="flex items-center gap-2.5">
         <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-xl border border-slate-300 dark:border-slate-800 hover:text-sky-400 transition-colors" title="Toggle Theme">🌙</button>
         <div class="hidden lg:block">
@@ -128,7 +107,6 @@
         <button onclick="toggleMobileMenu()" class="rounded-xl border p-2.5 font-bold xl:hidden text-sky-400 border-slate-300 dark:border-slate-800">☰</button>
       </div>
     </div>
-
     <!-- Mobile Nav Dropdown -->
     <div id="mobileMenu" class="mobile-menu border-t px-5 py-4 xl:hidden dark:border-slate-800/60 dark:bg-slate-950/95 border-slate-200/70 bg-white/95 max-h-[80vh] overflow-y-auto">
       <div class="grid gap-1">
@@ -140,15 +118,10 @@
         <button class="nav-tab text-left" data-tab="education" onclick="openTab('education'); toggleMobileMenu()">Education</button>
         <button class="nav-tab text-left" data-tab="cv" onclick="openTab('cv'); toggleMobileMenu()">Career Vault (Resume)</button>
         <button class="nav-tab text-left" data-tab="contact" onclick="openTab('contact'); toggleMobileMenu()">Contact</button>
-        <a id="dyn-author-mobile" href="https://books.rohaanzahid.space" target="_blank" class="nav-tab text-left text-amber-400 font-bold flex items-center justify-between border-t border-slate-800/40 pt-2 mt-1">
-          <span id="dyn-author-text-mobile">📚 Author Portal (books.rohaanzahid.space)</span> <span>↗</span>
-        </a>
       </div>
     </div>
   </header>
-
   <main class="mx-auto max-w-7xl px-4 sm:px-6 pb-20 pt-24">
-
     <!-- 1. PROFILE SECTION -->
     <section id="profile" class="tab-panel active">
       <div class="space-y-8">
@@ -156,36 +129,29 @@
         <div class="glass rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
           <div class="absolute -right-20 -top-20 w-80 h-80 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
           <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
           <div class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center relative z-10">
             <div data-aos="fade-right">
               <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-400/10 border border-sky-400/25 text-sky-400 text-xs font-bold uppercase tracking-wider mb-5">
                 <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span> Artificial Intelligence & Systems
               </div>
               <h2 class="text-3xl sm:text-4xl md:text-6xl font-black leading-tight tracking-tight font-heading text-white">
-                M. Rohaan Zahid <br>
+                <span class="prof-dyn-name">M. Rohaan Zahid</span> <br>
                 <span class="inline-flex items-center bg-gradient-to-r from-sky-400 via-indigo-400 to-cyan-300 bg-clip-text text-transparent min-h-[1.25em]">
                   <span id="typing"></span><span class="typing-cursor">&nbsp;</span>
                 </span>
               </h2>
-
               <!-- Dynamic Hero Bio -->
               <p id="dyn-hero-bio" class="mt-5 text-base sm:text-lg leading-relaxed text-muted font-normal">
                 Artificial Intelligence undergraduate at <strong>Sir Syed CASE Institute of Technology</strong> with a strong focus on AI, software development, and emerging technologies. Hands-on experience in C++, Python, database management, web development, and machine learning pipelines.
               </p>
-
-              <div class="mt-8 flex flex-wrap gap-3.5 items-center">
+              <div class="mt-8 flex flex-wrap gap-3.5 items-center" id="hero-action-buttons">
                 <button onclick="triggerCVPDFDownload()" class="btn-primary">
                   <span>📄</span> Download Resume
                 </button>
                 <button onclick="openTab('contact')" class="btn-secondary">
                   Contact Me
                 </button>
-                <a id="dyn-author-hero" href="https://books.rohaanzahid.space" target="_blank" class="btn-secondary !border-amber-500/40 text-amber-400 hover:!bg-amber-400/10" title="Visit Portal">
-                  <span>📖</span> <span id="dyn-author-text-hero">Author Portal ↗</span>
-                </a>
               </div>
-
               <!-- Quick Links -->
               <div class="mt-6 flex items-center gap-3">
                 <a id="dyn-linkedin" href="https://www.linkedin.com/in/rohaan-zahid-510850400/" target="_blank" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="LinkedIn Profile">
@@ -194,20 +160,19 @@
                 <a id="dyn-github" href="https://github.com/Rohaanrz05" target="_blank" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="GitHub Profile">
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
                 </a>
-                <a href="mailto:rohaanzahid.04@gmail.com" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="Email">
+                <a id="dyn-email-link" href="mailto:rohaanzahid.04@gmail.com" class="p-2.5 bg-slate-900/60 rounded-xl border border-slate-700/50 text-white hover:text-sky-400 hover:border-sky-400 transition-all shadow-md" title="Email">
                   <span class="text-sm">✉️</span>
                 </a>
-                <span class="text-xs text-muted font-medium ml-2">📍 Islamabad, Pakistan</span>
+                <span id="dyn-location" class="text-xs text-muted font-medium ml-2">📍 Islamabad, Pakistan</span>
               </div>
             </div>
-
             <!-- Profile Showcase Card with Audio-Wave Animation -->
             <div class="card p-7 text-center border-sky-400/20 bg-slate-900/40 relative group" data-aos="fade-left" id="avatarCard">
               <div class="relative mx-auto h-64 w-64 mb-2 flex items-center justify-center">
                 <canvas id="avatar-canvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
                 <img src="https://i.postimg.cc/P5FzQ0S9/mypic.jpg" alt="M. Rohaan Zahid" class="relative z-10 mx-auto h-40 w-40 rounded-full object-cover shadow-2xl border-2 border-sky-400/40 transition-transform duration-300 group-hover:scale-105" />
               </div>
-              <h3 class="text-2xl font-black text-white font-heading">M. Rohaan Zahid</h3>
+              <h3 class="text-2xl font-black text-white font-heading prof-dyn-name">M. Rohaan Zahid</h3>
               <p id="dyn-avatar-title" class="mt-1 text-xs text-sky-400 font-bold tracking-widest uppercase">AI Programmer & Software Engineer</p>
               
               <div class="mt-5 grid grid-cols-2 gap-2 text-left text-xs bg-slate-950/50 p-3.5 rounded-xl border border-slate-800">
@@ -219,7 +184,6 @@
             </div>
           </div>
         </div>
-
         <!-- Integrated About & Executive Summary -->
         <div class="grid gap-6 md:grid-cols-3">
           <div class="glass rounded-3xl p-7 md:p-8 md:col-span-2 relative overflow-hidden" data-aos="fade-up">
@@ -231,12 +195,10 @@
             <h4 class="text-2xl sm:text-3xl font-black text-white font-heading mb-5">
               Architecting <span id="execTyping" class="text-sky-400"></span><span class="typing-cursor">&nbsp;</span>
             </h4>
-
             <div class="space-y-4 text-sm leading-relaxed text-muted font-normal">
               <p class="text-slate-300 text-base leading-relaxed">
                 I am an Artificial Intelligence undergraduate at <strong>Sir Syed CASE Institute of Technology</strong> specializing in the convergence of applied machine learning, production data workflows, and robust software engineering. My technical orientation is centered on solving non-trivial algorithmic problems and turning mathematical heuristics into reliable, production-ready software architectures.
               </p>
-
               <div class="grid sm:grid-cols-3 gap-3 my-4">
                 <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-sky-500/40 transition-colors">
                   <div class="text-sky-400 font-bold text-xs uppercase tracking-wider mb-1">01 / Applied ML</div>
@@ -251,13 +213,11 @@
                   <p class="text-[12px] text-slate-300">Independent researcher & author operating high-volume landing portals and documentation.</p>
                 </div>
               </div>
-
               <p>
                 Across industry-grade internships at <strong>FlyRank.AI</strong>, <strong>Decode Labs</strong>, and <strong>CodeAlpha</strong>, I have designed intelligent conversational tools, built heuristic route optimization engines, and streamlined model performance pipelines.
               </p>
             </div>
           </div>
-
           <!-- Quick Metrics Column -->
           <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-1">
             <div class="card p-5 border-l-4 border-sky-400" data-aos="fade-up" data-aos-delay="100">
@@ -265,13 +225,11 @@
               <p class="text-xs font-bold text-white mt-0.5">Software & AI Projects</p>
               <p class="text-[11px] text-muted mt-1">From heuristic route prediction models to C++ systems.</p>
             </div>
-
             <div class="card p-5 border-l-4 border-indigo-400" data-aos="fade-up" data-aos-delay="200">
               <span class="text-2xl font-black text-indigo-400 font-heading">3 Completed Tracks</span>
               <p class="text-xs font-bold text-white mt-0.5">Industry Internships</p>
               <p class="text-[11px] text-muted mt-1">Experience at FlyRank.AI, Decodes Lab, and CodeAlpha.</p>
             </div>
-
             <div class="card p-5 border-l-4 border-amber-400" data-aos="fade-up" data-aos-delay="300">
               <span class="text-2xl font-black text-amber-400 font-heading">Author & Creator</span>
               <p class="text-xs font-bold text-white mt-0.5">Author Portal Online</p>
@@ -281,7 +239,6 @@
         </div>
       </div>
     </section>
-
     <!-- 2. WORK EXPERIENCE SECTION -->
     <section id="experience" class="tab-panel">
       <div class="glass rounded-[2.5rem] p-8 md:p-12">
@@ -295,13 +252,12 @@
         <div id="dynamic-experience" class="space-y-6"></div>
       </div>
     </section>
-
     <!-- 3. SKILLS MATRIX SECTION -->
     <section id="skills" class="tab-panel">
       <div class="glass rounded-[2.5rem] p-8 md:p-12">
         <p class="font-bold uppercase tracking-[0.45em] text-sky-400 text-xs">Competencies</p>
         <h2 class="mt-1 text-3xl font-black md:text-5xl tracking-tight text-white font-heading mb-8">Technical & Core Skills Matrix</h2>
-
+        
         <div class="card p-6 space-y-5 mb-8" data-aos="fade-up">
           <div class="flex items-center justify-between border-b border-slate-800 pb-3">
             <h3 class="text-base font-bold text-sky-400 font-heading flex items-center gap-2">
@@ -312,15 +268,13 @@
           <!-- Dynamic Skills Grid -->
           <div id="dynamic-skills" class="grid gap-5 md:grid-cols-2"></div>
         </div>
-
         <div class="card mt-8 p-6 border-sky-500/20 text-center">
           <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Complete Tooling & Technology Stack</h4>
-          <!-- Dynamic Skill Pills Cloud -->
+          <!-- Dynamic Skill Badges Cloud -->
           <div id="dynamic-skill-pills" class="flex flex-wrap gap-2 justify-center"></div>
         </div>
       </div>
     </section>
-
     <!-- 4. PROJECTS SECTION -->
     <section id="projects" class="tab-panel">
       <div class="glass rounded-[2.5rem] p-8 md:p-12">
@@ -330,7 +284,6 @@
         <div id="dynamic-projects" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
       </div>
     </section>
-
     <!-- 5. HONORS & CREDENTIALS SECTION -->
     <section id="credentials" class="tab-panel">
       <div class="glass rounded-[2.5rem] p-8 md:p-12">
@@ -344,17 +297,15 @@
         <div id="dynamic-certificates" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
       </div>
     </section>
-
     <!-- 6. EDUCATION SECTION -->
     <section id="education" class="tab-panel">
       <div class="glass rounded-[2.5rem] p-8 md:p-12">
         <p class="font-bold uppercase tracking-[0.45em] text-sky-400 text-xs">Academic Foundation</p>
         <h2 class="mt-1 text-3xl font-black md:text-5xl tracking-tight text-white font-heading mb-8">Academic Timeline</h2>
-        <!-- Dynamic Education Timeline -->
+        <!-- Dynamic Education Injection Container -->
         <div id="dynamic-education" class="space-y-6"></div>
       </div>
     </section>
-
     <!-- 7. CAREER VAULT -->
     <section id="cv" class="tab-panel">
       <div class="glass rounded-[2.5rem] p-8 md:p-12">
@@ -378,19 +329,18 @@
           <div class="rounded-xl bg-white p-7 text-slate-900 border border-sky-200 text-[10px] leading-relaxed shadow-2xl space-y-4 font-sans relative overflow-hidden">
             <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-sky-400 to-indigo-500"></div>
             <div class="border-b-2 border-slate-900 pb-3 text-center pt-2">
-              <h1 class="text-xl font-black tracking-wide text-slate-900 uppercase">ROHAAN ZAHID</h1>
-              <p class="text-[9.5px] font-bold text-sky-700 tracking-[0.15em] mt-0.5 uppercase">AI Programmer & Software Developer</p>
-              <p class="text-[8.5px] text-slate-600 mt-1">Islamabad | rohaanzahid.04@gmail.com | github.com/Rohaanrz05</p>
+              <h1 class="text-xl font-black tracking-wide text-slate-900 uppercase prof-dyn-name">ROHAAN ZAHID</h1>
+              <p class="text-[9.5px] font-bold text-sky-700 tracking-[0.15em] mt-0.5 uppercase" id="dyn-cv-title">AI Programmer & Software Developer</p>
+              <p class="text-[8.5px] text-slate-600 mt-1" id="dyn-cv-coords">Islamabad | rohaanzahid.04@gmail.com | github.com/Rohaanrz05</p>
             </div>
             <div>
               <h3 class="font-black text-slate-900 uppercase border-b border-sky-300 text-[10px] pb-0.5 text-sky-900">Summary</h3>
-              <p class="text-[9px] text-slate-700 mt-1 leading-normal">Artificial Intelligence undergraduate at Sir Syed CASE Institute of Technology specializing in ML pipelines and production software architectures.</p>
+              <p class="text-[9px] text-slate-700 mt-1 leading-normal" id="dyn-cv-summary">Artificial Intelligence undergraduate at Sir Syed CASE Institute of Technology specializing in ML pipelines and production software architectures.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-
     <!-- 8. CONTACT SECTION -->
     <section id="contact" class="tab-panel">
       <div class="glass rounded-[2.5rem] p-8 md:p-12">
@@ -407,17 +357,16 @@
           </div>
           <div class="card p-6 text-xs space-y-4 text-muted font-medium" data-aos="fade-left">
             <h3 class="text-base font-bold text-sky-400 font-heading border-b border-slate-800 pb-2">Direct Contact Channels</h3>
-            <p><span class="font-black text-white text-[10px] block uppercase">✉️ Email:</span> rohaanzahid.04@gmail.com</p>
-            <p><span class="font-black text-white text-[10px] block uppercase">📞 Phone:</span> 03338705793</p>
-            <p><span class="font-black text-white text-[10px] block uppercase">📍 Location:</span> Islamabad, Pakistan</p>
+            <p><span class="font-black text-white text-[10px] block uppercase">✉️ Email:</span> <span id="dyn-contact-email">rohaanzahid.04@gmail.com</span></p>
+            <p><span class="font-black text-white text-[10px] block uppercase">📞 Phone:</span> <span id="dyn-contact-phone">03338705793</span></p>
+            <p><span class="font-black text-white text-[10px] block uppercase">📍 Location:</span> <span id="dyn-contact-location">Islamabad, Pakistan</span></p>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- Document Preview Modal (Embedded Iframe Viewer) -->
+  <!-- Document Preview Modal -->
   <div id="dynamicCertModal" class="modal" onclick="closeModalOnBackdrop(event, 'dynamicCertModal')">
     <div class="card bg-slate-950 p-6 md:p-8 rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto border border-sky-400/40 relative flex flex-col">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
@@ -456,22 +405,56 @@
           if (data.profile.title) {
             const titleEl = document.getElementById('dyn-header-title');
             if (titleEl) titleEl.innerText = data.profile.title;
+            const avTitle = document.getElementById('dyn-avatar-title');
+            if (avTitle) avTitle.innerText = data.profile.title;
+            const cvTitle = document.getElementById('dyn-cv-title');
+            if (cvTitle) cvTitle.innerText = data.profile.title;
           }
           if (data.profile.bio) {
             const bioEl = document.getElementById('dyn-hero-bio');
             if (bioEl) bioEl.innerText = data.profile.bio;
+            const cvSummary = document.getElementById('dyn-cv-summary');
+            if (cvSummary) cvSummary.innerText = data.profile.bio;
+          }
+          if (data.profile.location) {
+            const locEl = document.getElementById('dyn-location');
+            if (locEl) locEl.innerText = `📍 ${data.profile.location}`;
+            const cLoc = document.getElementById('dyn-contact-location');
+            if (cLoc) cLoc.innerText = data.profile.location;
+          }
+          if (data.profile.email) {
+            const emLink = document.getElementById('dyn-email-link');
+            if (emLink) emLink.href = `mailto:${data.profile.email}`;
+            const cEmail = document.getElementById('dyn-contact-email');
+            if (cEmail) cEmail.innerText = data.profile.email;
+          }
+          if (data.profile.phone) {
+            const cPhone = document.getElementById('dyn-contact-phone');
+            if (cPhone) cPhone.innerText = data.profile.phone;
+          }
+          if (data.profile.github) {
+            const ghLink = document.getElementById('dyn-github');
+            if (ghLink) ghLink.href = data.profile.github;
+          }
+          if (data.profile.linkedin) {
+            const inLink = document.getElementById('dyn-linkedin');
+            if (inLink) inLink.href = data.profile.linkedin;
+          }
+          // CV Card Sub-coordinates
+          const cvCoords = document.getElementById('dyn-cv-coords');
+          if (cvCoords) {
+            cvCoords.innerText = `${data.profile.location || 'Islamabad'} | ${data.profile.email || 'rohaanzahid.04@gmail.com'} | ${data.profile.github ? data.profile.github.replace('https://', '') : 'github.com/Rohaanrz05'}`;
           }
         }
 
-        // 2. Custom Navigation Buttons (Author Portal and any others added)
+        // 2. Custom Navigation Buttons (Author Portal & Any others)
         const navContainer = document.querySelector('header nav');
         const mobileContainer = document.querySelector('#mobileMenu .grid');
+        const heroButtons = document.getElementById('hero-action-buttons');
         if (data.buttons && data.buttons.length > 0) {
-          // Remove previously injected dynamic custom buttons
           document.querySelectorAll('.injected-dyn-btn').forEach(e => e.remove());
-
           data.buttons.forEach(btn => {
-            // Desktop Button
+            // Header Desktop Nav Button
             const a = document.createElement('a');
             a.href = btn.url;
             a.target = btn.is_external ? '_blank' : '_self';
@@ -479,19 +462,74 @@
             a.innerHTML = `<span>${btn.icon || '🔗'}</span> ${btn.label} ↗`;
             navContainer.appendChild(a);
 
-            // Mobile Button
+            // Mobile Nav Button
             const m = document.createElement('a');
             m.href = btn.url;
             m.target = btn.is_external ? '_blank' : '_self';
             m.className = 'nav-tab text-left text-amber-400 font-bold flex items-center justify-between border-t border-slate-800/40 pt-2 mt-1 injected-dyn-btn';
             m.innerHTML = `<span>${btn.icon || '🔗'} ${btn.label}</span> <span>↗</span>`;
             mobileContainer.appendChild(m);
+
+            // Hero Secondary Button
+            if (heroButtons) {
+              const hBtn = document.createElement('a');
+              hBtn.href = btn.url;
+              hBtn.target = btn.is_external ? '_blank' : '_self';
+              hBtn.className = 'btn-secondary !border-amber-500/40 text-amber-400 hover:!bg-amber-400/10 injected-dyn-btn';
+              hBtn.innerHTML = `<span>${btn.icon || '📖'}</span> ${btn.label} ↗`;
+              heroButtons.appendChild(hBtn);
+            }
           });
         }
 
-        // 3. Experience with Modal Triggers
+        // 3. Technical Skills Matrix (PROPERLY CONNECTED)
+        const skillsContainer = document.getElementById('dynamic-skills');
+        const pillContainer = document.getElementById('dynamic-skill-pills');
+        if (skillsContainer && data.skills && data.skills.length > 0) {
+          skillsContainer.innerHTML = data.skills.map(s => `
+            <div>
+              <div class="flex justify-between text-xs font-bold mb-1.5 text-white">
+                <span>${s.name}</span>
+                <span class="text-sky-400 font-mono">${s.proficiency}%</span>
+              </div>
+              <div class="w-full bg-slate-800/80 h-2.5 rounded-full overflow-hidden p-0.5 border border-slate-700/50">
+                <div class="bg-gradient-to-r from-sky-400 via-indigo-400 to-cyan-300 h-full rounded-full transition-all duration-700" style="width: ${s.proficiency}%"></div>
+              </div>
+            </div>
+          `).join('');
+
+          if (pillContainer) {
+            pillContainer.innerHTML = data.skills.map(s => `
+              <span class="skill-pill font-bold">${s.name}</span>
+            `).join('');
+          }
+        }
+
+        // 4. Academic Timeline & Education (PROPERLY CONNECTED)
+        const eduContainer = document.getElementById('dynamic-education');
+        if (eduContainer && data.education && data.education.length > 0) {
+          eduContainer.innerHTML = data.education.map(ed => `
+            <div class="card p-6 border-l-4 border-sky-400" data-aos="fade-up">
+              <div class="flex flex-wrap justify-between items-baseline gap-2">
+                <h3 class="text-xl font-bold text-white font-heading">${ed.institution}</h3>
+                <span class="text-xs font-bold text-sky-400 bg-sky-950/60 px-3 py-1 rounded-full border border-sky-900">${ed.period}</span>
+              </div>
+              <p class="text-sm text-sky-400 font-semibold mt-1">${ed.degree}</p>
+              ${ed.disciplines ? `
+                <div class="mt-4 pt-4 border-t border-slate-700/40">
+                  <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-2">Core Disciplines:</h4>
+                  <div class="flex flex-wrap gap-2">
+                    ${ed.disciplines.split(',').map(d => `<span class="bg-slate-900/60 border border-slate-800 text-slate-300 text-[11px] font-medium px-2.5 py-1 rounded-md">• ${d.trim()}</span>`).join('')}
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+          `).join('');
+        }
+
+        // 5. Work Experience
         const expContainer = document.getElementById('dynamic-experience');
-        if (expContainer && data.experiences) {
+        if (expContainer && data.experiences && data.experiences.length > 0) {
           expContainer.innerHTML = data.experiences.map(e => `
             <div class="card p-6 border-l-4 border-sky-400 relative overflow-hidden" data-aos="fade-up">
               <div class="flex flex-wrap justify-between items-start gap-2">
@@ -508,9 +546,9 @@
           `).join('');
         }
 
-        // 4. Projects Showcase
+        // 6. Featured Projects
         const projContainer = document.getElementById('dynamic-projects');
-        if (projContainer && data.projects) {
+        if (projContainer && data.projects && data.projects.length > 0) {
           projContainer.innerHTML = data.projects.map(p => `
             <div class="card p-5 flex flex-col justify-between" data-aos="fade-up">
               <div>
@@ -532,9 +570,9 @@
           `).join('');
         }
 
-        // 5. Honors & Credentials (PDF Modal Viewers)
+        // 7. Honors & Credentials (PDF Modal Viewer)
         const certContainer = document.getElementById('dynamic-certificates');
-        if (certContainer && data.certificates) {
+        if (certContainer && data.certificates && data.certificates.length > 0) {
           certContainer.innerHTML = data.certificates.map(c => `
             <div class="card p-4 flex flex-col justify-between text-center group cursor-pointer hover:border-sky-400 transition-all" onclick="showDocumentModal('${c.title.replace(/'/g, "\\'")}', '${c.issuer.replace(/'/g, "\\'")}', '${c.pdf_url}')" data-aos="zoom-in">
               <div>
@@ -551,7 +589,7 @@
           `).join('');
         }
 
-      } catch(err) {
+      } catch (err) {
         console.error('Dynamic portfolio load error:', err);
       }
     }
@@ -577,6 +615,7 @@
         if (frame) frame.src = "";
       }
     }
+
     function closeModalOnBackdrop(event, id) {
       if (event.target.id === id) closeModal(id);
     }
@@ -609,12 +648,20 @@
     }
 
     function triggerCVPDFDownload() {
+      let dlCounter = parseInt(localStorage.getItem("resumeDownloads") || 0);
+      dlCounter++;
+      localStorage.setItem("resumeDownloads", dlCounter);
+      document.getElementById("downloadCount").textContent = dlCounter;
       window.open(window.currentCVUrl || "https://drive.google.com/file/d/1dYY_z03Ax_fhmrKHXxkyNUVDHeym-0Xu/view?usp=sharing", "_blank");
     }
+
     function printCV() { window.print(); }
 
     window.addEventListener("load", () => {
       loadDynamicPortfolio();
+      const storedCount = localStorage.getItem("resumeDownloads") || 0;
+      const dlEl = document.getElementById("downloadCount");
+      if (dlEl) dlEl.textContent = storedCount;
       new QuantumParticleField(document.getElementById("quantum-canvas"));
       new AudioWaveRingAnimation("avatar-canvas", "avatarCard");
       new SmoothTypeEngine("typing", [
