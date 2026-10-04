@@ -451,30 +451,37 @@
         const navContainer = document.querySelector('header nav');
         const mobileContainer = document.querySelector('#mobileMenu .grid');
         const heroButtons = document.getElementById('hero-action-buttons');
+
         if (data.buttons && data.buttons.length > 0) {
+          // Clear any previously injected buttons to avoid duplicates
           document.querySelectorAll('.injected-dyn-btn').forEach(e => e.remove());
+
           data.buttons.forEach(btn => {
-            // Header Desktop Nav Button
-            const a = document.createElement('a');
-            a.href = btn.url;
-            a.target = btn.is_external ? '_blank' : '_self';
-            a.className = 'nav-tab border border-amber-400/40 text-amber-400 hover:!text-amber-300 hover:!bg-amber-400/10 flex items-center gap-1.5 ml-1 injected-dyn-btn';
-            a.innerHTML = `<span>${btn.icon || '🔗'}</span> ${btn.label} ↗`;
-            navContainer.appendChild(a);
+            // 1. Desktop Nav Button
+            if (navContainer) {
+              const a = document.createElement('a');
+              a.href = btn.url;
+              a.target = '_blank';
+              a.className = 'nav-tab border border-amber-400/40 text-amber-400 hover:!text-amber-300 hover:!bg-amber-400/10 flex items-center gap-1.5 ml-1 injected-dyn-btn';
+              a.innerHTML = `<span>${btn.icon || '🔗'}</span> ${btn.label} ↗`;
+              navContainer.appendChild(a);
+            }
 
-            // Mobile Nav Button
-            const m = document.createElement('a');
-            m.href = btn.url;
-            m.target = btn.is_external ? '_blank' : '_self';
-            m.className = 'nav-tab text-left text-amber-400 font-bold flex items-center justify-between border-t border-slate-800/40 pt-2 mt-1 injected-dyn-btn';
-            m.innerHTML = `<span>${btn.icon || '🔗'} ${btn.label}</span> <span>↗</span>`;
-            mobileContainer.appendChild(m);
+            // 2. Mobile Menu Button
+            if (mobileContainer) {
+              const m = document.createElement('a');
+              m.href = btn.url;
+              m.target = '_blank';
+              m.className = 'nav-tab text-left text-amber-400 font-bold flex items-center justify-between border-t border-slate-800/40 pt-2 mt-1 injected-dyn-btn';
+              m.innerHTML = `<span>${btn.icon || '🔗'} ${btn.label}</span> <span>↗</span>`;
+              mobileContainer.appendChild(m);
+            }
 
-            // Hero Secondary Button
+            // 3. Hero Section Button
             if (heroButtons) {
               const hBtn = document.createElement('a');
               hBtn.href = btn.url;
-              hBtn.target = btn.is_external ? '_blank' : '_self';
+              hBtn.target = '_blank';
               hBtn.className = 'btn-secondary !border-amber-500/40 text-amber-400 hover:!bg-amber-400/10 injected-dyn-btn';
               hBtn.innerHTML = `<span>${btn.icon || '📖'}</span> ${btn.label} ↗`;
               heroButtons.appendChild(hBtn);

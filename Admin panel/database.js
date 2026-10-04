@@ -70,6 +70,15 @@ db.exec(`
     image_url TEXT,
     tags TEXT
   );
+  
+  CREATE TABLE IF NOT EXISTS nav_buttons (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    label TEXT,
+    url TEXT,
+    icon TEXT,
+    is_external INTEGER DEFAULT 1
+  );
+
 
   CREATE TABLE IF NOT EXISTS certificates (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -79,6 +88,8 @@ db.exec(`
     pdf_url TEXT,
     badge_icon TEXT DEFAULT '📜'
   );
+  
+  
 `);
 
 // Create Default Admin (admin / admin123)

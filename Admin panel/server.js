@@ -137,6 +137,8 @@ app.delete('/api/education/:id', authRequired, (req, res) => {
   res.json({ success: true });
 });
 
+
+
 // 5. Projects
 app.post('/api/projects', authRequired, upload.single('image'), (req, res) => {
   const { title, description, github_url, live_url } = req.body;
@@ -168,17 +170,41 @@ app.delete('/api/certificates/:id', authRequired, (req, res) => {
   res.json({ success: true });
 });
 
+
+// Add Custom Button
+app.post('/api/buttons', authRequired, (req, res) => {
+  const { label, url, icon } = req.body;
+  const result = db.prepare(`
+    INSERT INTO nav_buttons (label, url, icon, is_external) 
+    VALUES (?, ?, ?, 1)
+  `).run(label, url, icon || '🔗');
+  res.json({ id: result.lastInsertRowid, success: true });
+});
+
+// Delete Custom Button
+app.delete('/api/buttons/:id', authRequired, (req, res) => {
+  db.prepare('DELETE FROM nav_buttons WHERE id = ?').run(req.params.id);
+  res.json({ success: true });
+});
+
 // Add these routes to server.js before app.listen()
 
 // Get full dynamic portfolio data
 app.get('/api/portfolio', (req, res) => {
   const profile = db.prepare('SELECT * FROM profile WHERE id = 1').get();
-  const buttons = db.prepare('SELECT * FROM nav_buttons ORDER BY id ASC').all();
+  // Fetch custom buttons
+  let buttons = [];
+  try {
+    buttons = db.prepare('SELECT * FROM nav_buttons ORDER BY id ASC').all();
+  } catch (e) {
+    buttons = [];
+  }
   const skills = db.prepare('SELECT * FROM skills ORDER BY proficiency DESC').all();
   const experiences = db.prepare('SELECT * FROM experiences ORDER BY id DESC').all();
   const education = db.prepare('SELECT * FROM education ORDER BY id ASC').all();
   const projects = db.prepare('SELECT * FROM projects ORDER BY id DESC').all();
   const certificates = db.prepare('SELECT * FROM certificates ORDER BY id DESC').all();
+
   res.json({ profile, buttons, skills, experiences, education, projects, certificates });
 });
 
