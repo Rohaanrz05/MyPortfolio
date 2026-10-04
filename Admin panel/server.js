@@ -168,8 +168,6 @@ app.delete('/api/certificates/:id', authRequired, (req, res) => {
   res.json({ success: true });
 });
 
-const PORT = 3000;
-
 // Add these routes to server.js before app.listen()
 
 // Get full dynamic portfolio data
@@ -209,8 +207,8 @@ app.delete('/api/buttons/:id', authRequired, (req, res) => {
   res.json({ success: true });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-  console.log(`Open Admin Panel: http://localhost:${PORT}/admin`);
-  console.log(`Open Portfolio:   http://localhost:${PORT}/`);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });
