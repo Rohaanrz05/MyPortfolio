@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Send request to portfolio
         run: |
-          curl -fsS --max-time 30 https://rohaanzahid.space/\ -o /dev/null
+          curl -fsS -o /dev/null https://rohaanzahid.space/
